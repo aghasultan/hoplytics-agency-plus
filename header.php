@@ -80,11 +80,3 @@
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
-<?php
-// Restored Logic: Open container for inner pages to prevent full-width breakdown
-// But skip for front page since it handles its own sections.
-if ( ! is_front_page() && ! is_page_template( 'elementor_header_footer' ) && ! is_page_template( 'templates/skeleton.php' ) ) { ?>
-    <div class="container">
-        <div class="inner-wrapper">
-	<?php
-}

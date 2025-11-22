@@ -10,21 +10,29 @@
 get_header();
 ?>
 
-    <div id="primary" class="content-area">
-        <main id="main" class="site-main">
+    <div class="container">
+        <div class="inner-wrapper">
 
-            <section class="error-404 not-found">
-                <header class="page-header">
-                    <h2 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'agency-plus' ); ?></h2>
-                </header><!-- .page-header -->
+            <div id="primary" class="content-area w-full">
+                <main id="main" class="site-main">
 
-                <div class="page-content">
-                    <p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links from main navigation or go to home page.', 'agency-plus' ); ?></p>
-                </div><!-- .page-content -->
-            </section><!-- .error-404 -->
+                    <section class="error-404 not-found">
+                        <header class="page-header">
+                            <h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'agency-plus' ); ?></h1>
+                        </header><!-- .page-header -->
 
-        </main><!-- #main -->
-    </div><!-- #primary -->
+                        <div class="page-content error-404-content">
+                            <p class="error-404-text"><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links from the menu or return to the homepage.', 'agency-plus' ); ?></p>
+
+                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn btn-primary">Go Back Home</a>
+                        </div><!-- .page-content -->
+                    </section><!-- .error-404 -->
+
+                </main><!-- #main -->
+            </div><!-- #primary -->
+
+        </div>
+    </div>
 
 <?php
 get_footer();
