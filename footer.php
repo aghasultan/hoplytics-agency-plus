@@ -12,7 +12,9 @@ defined( 'ABSPATH' ) || exit;
         <div class="container">
             <div class="grid grid-4">
                 <div class="footer-brand">
-                    <h3 class="footer-brand-title"><?php bloginfo( 'name' ); ?></h3>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo-link">
+                        <img src="<?php echo esc_url( hoplytics_get_local_logo_url() ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="footer-logo" width="150" style="margin-bottom: 1rem;">
+                    </a>
                     <p class="text-sm text-muted"><?php bloginfo( 'description' ); ?></p>
                 </div>
 

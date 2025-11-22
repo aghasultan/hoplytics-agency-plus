@@ -15,6 +15,15 @@ if ( ! defined( 'HOPLYTICS_VERSION' ) ) {
 }
 
 /**
+ * Helper to get the local logo URL.
+ *
+ * @return string The URL of the local logo image.
+ */
+function hoplytics_get_local_logo_url() {
+	return get_template_directory_uri() . '/assets/images/logo-horizontal.png';
+}
+
+/**
  * Sets up theme defaults and registers support for various WordPress features.
  */
 require get_template_directory() . '/inc/setup.php';

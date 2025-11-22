@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoplytics - Agency Theme</title>
+    <style>
+        /* Minimal CSS from style.css to support layout */
+        :root {
+            --color-primary: #0f172a;
+            --color-text: #334155;
+            --font-body: 'Inter', sans-serif;
+        }
+        body { font-family: var(--font-body); margin: 0; color: var(--color-text); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 1rem 0; }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; }
+        .site-logo-link img { display: block; height: auto; }
+        .site-footer { background: #0f172a; color: #fff; padding: 4rem 0; margin-top: 4rem; }
+        .text-muted { color: #94a3b8; }
+        .footer-logo { margin-bottom: 1rem; display: block; }
+
+        /* Login Page Styles Simulation */
+        .login-page-body { background: #f1f5f9; display: flex; align-items: center; justify-content: center; height: 100vh; }
+        .login-box { background: #fff; padding: 2rem; width: 320px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .login-logo {
+            background-image: url('../assets/images/logo-horizontal.png');
+            height: 80px;
+            width: 300px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: 0 auto 2rem;
+            display: block;
+        }
+
+        /* Grid simulation */
+        .grid { display: grid; gap: 2rem; }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="site-header">
+        <div class="container header-inner">
+            <div class="site-branding">
+                <a class="site-logo-link" href="#">
+                    <!-- Simulating the PHP output: hoplytics_get_local_logo_url() -->
+                    <img src="../assets/images/logo-horizontal.png" alt="Hoplytics" class="custom-logo" width="180" height="50">
+                </a>
+            </div>
+            <nav>Menu items...</nav>
+        </div>
+    </div>
+
+    <div class="container" style="padding: 4rem 0;">
+        <h1>Main Content Area</h1>
+        <p>This is a simulation of the theme output to verify the logo placement.</p>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="grid grid-4">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo-link">
+                         <!-- Simulating the PHP output -->
+                        <img src="../assets/images/logo-horizontal.png" alt="Hoplytics" class="footer-logo" width="150" style="margin-bottom: 1rem;">
+                    </a>
+                    <p class="text-sm text-muted">Data-driven digital agency.</p>
+                </div>
+                <div>Footer Col 2</div>
+                <div>Footer Col 3</div>
+                <div>Footer Col 4</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Page Simulation (separate section for visual check) -->
+    <div class="login-page-body" style="height: 500px; border-top: 5px solid red; margin-top: 2rem;">
+        <div class="login-box">
+            <a href="#" class="login-logo"></a>
+            <form>
+                <p>Login Form Here</p>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
