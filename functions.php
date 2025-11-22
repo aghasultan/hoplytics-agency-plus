@@ -7,6 +7,8 @@
 
 declare(strict_types=1);
 
+defined( 'ABSPATH' ) || exit;
+
 if ( ! defined( 'HOPLYTICS_VERSION' ) ) {
 	// Define theme version
 	define( 'HOPLYTICS_VERSION', '3.0.0' );

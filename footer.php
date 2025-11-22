@@ -4,6 +4,8 @@
  *
  * @package Hoplytics
  */
+
+defined( 'ABSPATH' ) || exit;
 ?>
 
 	<footer id="colophon" class="site-footer">
@@ -32,16 +34,16 @@
                     <h4><?php esc_html_e('Services', 'hoplytics'); ?></h4>
                     <ul>
                         <!-- Dynamic list of services could go here -->
-                        <li><a href="/services/seo">SEO & Content</a></li>
-                        <li><a href="/services/paid-media">Paid Media</a></li>
-                        <li><a href="/services/cro">CRO & Analytics</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/services/seo' ) ); ?>"><?php esc_html_e( 'SEO & Content', 'hoplytics' ); ?></a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/services/paid-media' ) ); ?>"><?php esc_html_e( 'Paid Media', 'hoplytics' ); ?></a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/services/cro' ) ); ?>"><?php esc_html_e( 'CRO & Analytics', 'hoplytics' ); ?></a></li>
                     </ul>
                 </div>
 
                 <div class="footer-contact">
                     <h4><?php esc_html_e('Contact', 'hoplytics'); ?></h4>
-                    <p>hello@hoplytics.com</p>
-                    <p>+1 (555) 123-4567</p>
+                    <p><?php echo esc_html( 'hello@hoplytics.com' ); ?></p>
+                    <p><?php echo esc_html( '+1 (555) 123-4567' ); ?></p>
                 </div>
             </div>
 

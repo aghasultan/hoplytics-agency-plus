@@ -7,6 +7,8 @@
 
 declare(strict_types=1);
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Register Custom Post Types
  */
@@ -181,8 +183,12 @@ function hoplytics_save_meta( $post_id ) {
         return;
     }
 
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+
     if ( isset( $_POST['related_service_id'] ) ) {
-        update_post_meta( $post_id, '_related_service_id', sanitize_text_field( $_POST['related_service_id'] ) );
+        update_post_meta( $post_id, '_related_service_id', absint( wp_unslash( $_POST['related_service_id'] ) ) );
     }
 }
 add_action( 'save_post', 'hoplytics_save_meta' );

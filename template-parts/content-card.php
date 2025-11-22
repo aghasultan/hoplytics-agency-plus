@@ -1,3 +1,6 @@
+<?php
+defined( 'ABSPATH' ) || exit;
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('card h-full flex flex-col'); ?>>
 	<?php if ( has_post_thumbnail() ) : ?>
 	<div class="post-thumbnail mb-4 rounded overflow-hidden">

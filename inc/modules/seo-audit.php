@@ -7,6 +7,8 @@
 
 declare(strict_types=1);
 
+defined( 'ABSPATH' ) || exit;
+
 function hoplytics_seo_audit_shortcode() {
     ob_start();
     ?>

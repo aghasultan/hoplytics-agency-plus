@@ -7,6 +7,8 @@
 
 declare(strict_types=1);
 
+defined( 'ABSPATH' ) || exit;
+
 if ( ! function_exists( 'hoplytics_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.

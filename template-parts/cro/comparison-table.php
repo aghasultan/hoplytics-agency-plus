@@ -1,3 +1,6 @@
+<?php
+defined( 'ABSPATH' ) || exit;
+?>
 <div class="comparison-table-wrapper section">
     <div class="container">
         <h2 class="text-center mb-8">Us vs. Traditional Agencies</h2>

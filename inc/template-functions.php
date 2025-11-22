@@ -7,6 +7,8 @@
 
 declare(strict_types=1);
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Adds custom classes to the array of body classes.
  *
