@@ -5,6 +5,8 @@
  * @package Hoplytics
  */
 
+defined( 'ABSPATH' ) || exit;
+
 get_header();
 ?>
 

@@ -7,6 +7,8 @@
 
 declare(strict_types=1);
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Custom Login Logo
  */
@@ -65,15 +67,15 @@ add_action( 'wp_dashboard_setup', 'hoplytics_add_dashboard_widgets' );
  * Render Custom Dashboard Widget
  */
 function hoplytics_dashboard_widget_function() {
-    echo '<p>Welcome to your high-performance agency website. Manage your portfolio, services, and leads from the sidebar.</p>';
-    echo '<a href="' . esc_url( admin_url( 'edit.php?post_type=project' ) ) . '" class="button button-primary">Manage Projects</a> ';
-    echo '<a href="' . esc_url( admin_url( 'edit.php?post_type=service' ) ) . '" class="button">Manage Services</a>';
+    echo '<p>' . esc_html__( 'Welcome to your high-performance agency website. Manage your portfolio, services, and leads from the sidebar.', 'hoplytics' ) . '</p>';
+    echo '<a href="' . esc_url( admin_url( 'edit.php?post_type=project' ) ) . '" class="button button-primary">' . esc_html__( 'Manage Projects', 'hoplytics' ) . '</a> ';
+    echo '<a href="' . esc_url( admin_url( 'edit.php?post_type=service' ) ) . '" class="button">' . esc_html__( 'Manage Services', 'hoplytics' ) . '</a>';
 }
 
 /**
  * Custom Admin Footer Text
  */
 function hoplytics_admin_footer_text() {
-    echo 'Powered by <a href="https://hoplytics.com" target="_blank">Hoplytics AgencyOS</a>.';
+    echo wp_kses_post( 'Powered by <a href="https://hoplytics.com" target="_blank" rel="noopener noreferrer">Hoplytics AgencyOS</a>.' );
 }
 add_filter( 'admin_footer_text', 'hoplytics_admin_footer_text' );

@@ -1,3 +1,6 @@
+<?php
+defined( 'ABSPATH' ) || exit;
+?>
 <div class="social-proof-bar section bg-alt">
     <div class="container">
         <p class="text-center text-sm uppercase tracking-wide text-muted mb-4">Trusted by High-Growth Companies</p>

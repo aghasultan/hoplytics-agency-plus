@@ -7,6 +7,8 @@
 
 declare(strict_types=1);
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
  *

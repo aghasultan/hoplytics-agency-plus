@@ -1,3 +1,6 @@
+<?php
+defined( 'ABSPATH' ) || exit;
+?>
 <div class="pas-block section">
     <div class="container">
         <div class="grid grid-3">

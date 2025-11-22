@@ -7,6 +7,8 @@
 
 declare(strict_types=1);
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Output JSON-LD Schema in <head>
  */
@@ -131,25 +133,21 @@ function hoplytics_json_ld() {
     if ( is_post_type_archive('project') || is_post_type_archive('service') ) {
         global $wp_query;
         $items = array();
-        $position = 1;
 
-        while ( have_posts() ) {
-            the_post();
-            $items[] = array(
-                '@type' => 'ListItem',
-                'position' => $position,
-                'url' => get_permalink()
-            );
-            $position++;
+        if ( ! empty( $wp_query->posts ) ) {
+            foreach ( $wp_query->posts as $index => $post_item ) {
+                $items[] = array(
+                    '@type'    => 'ListItem',
+                    'position' => $index + 1,
+                    'url'      => get_permalink( $post_item )
+                );
+            }
         }
-
-        // Reset loop after peeking
-        rewind_posts();
 
         if ( ! empty( $items ) ) {
             $schema[] = array(
-                '@context' => 'https://schema.org',
-                '@type'    => 'ItemList',
+                '@context'        => 'https://schema.org',
+                '@type'           => 'ItemList',
                 'itemListElement' => $items
             );
         }
@@ -158,7 +156,7 @@ function hoplytics_json_ld() {
     // Output
     if ( ! empty( $schema ) ) {
         foreach ( $schema as $s ) {
-            echo '<script type="application/ld+json">' . json_encode( $s, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . '</script>' . "\n";
+            echo '<script type="application/ld+json">' . wp_json_encode( $s, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . '</script>' . "\n";
         }
     }
 }
