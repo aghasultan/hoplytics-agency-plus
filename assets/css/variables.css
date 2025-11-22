@@ -1,0 +1,84 @@
+/* ==========================================================================
+   #Variables & Style Kits
+   ========================================================================== */
+
+:root {
+    /* Global Defaults (Overridden by specific kits) */
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+
+    --container-width: 1200px;
+    --header-height: 80px;
+}
+
+/*
+ * 1. Tech-Futurist (Dark Mode Default, Neon Accents)
+ */
+body.style-kit-tech-futurist {
+    --color-bg: #0B0F19;
+    --color-bg-alt: #111827;
+    --color-text: #F3F4F6;
+    --color-text-muted: #9CA3AF;
+    --color-primary: #3B82F6;      /* Electric Blue */
+    --color-secondary: #8B5CF6;    /* Purple */
+    --color-accent: #10B981;       /* Neon Green */
+    --color-border: #1F2937;
+
+    --font-heading: 'Orbitron', sans-serif; /* Futuristic */
+    --font-body: 'Rajdhani', sans-serif;    /* Techy */
+
+    --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+
+    --radius-md: 2px; /* Sharper edges */
+    --radius-lg: 4px;
+}
+
+/*
+ * 2. Corporate-Stabilizer (White, Clean, Trust)
+ */
+body.style-kit-corporate-stabilizer {
+    --color-bg: #FFFFFF;
+    --color-bg-alt: #F8FAFC;
+    --color-text: #334155;
+    --color-text-muted: #64748B;
+    --color-primary: #0F172A;      /* Navy */
+    --color-secondary: #475569;    /* Slate */
+    --color-accent: #2563EB;       /* Trust Blue */
+    --color-border: #E2E8F0;
+
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --gradient-primary: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+
+    --radius-md: 6px;
+    --radius-lg: 12px;
+}
+
+/*
+ * 3. Creative-Disruptor (Bold, High Contrast, Kinetic)
+ */
+body.style-kit-creative-disruptor {
+    --color-bg: #FFFAF0;           /* Off-white/Cream */
+    --color-bg-alt: #FEEBC8;
+    --color-text: #1A202C;
+    --color-text-muted: #4A5568;
+    --color-primary: #000000;      /* Stark Black */
+    --color-secondary: #FF0080;    /* Hot Pink */
+    --color-accent: #ECC94B;       /* Yellow */
+    --color-border: #000000;
+
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+
+    --gradient-primary: linear-gradient(45deg, #FF0080, #ECC94B);
+
+    --radius-md: 0px;  /* Brutalist */
+    --radius-lg: 0px;
+    --border-width: 2px;
+}

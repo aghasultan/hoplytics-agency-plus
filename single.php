@@ -2,90 +2,84 @@
 /**
  * The template for displaying all single posts
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
  * @package Hoplytics
  */
 
 get_header();
 ?>
 
-    <div class="container">
-        <div class="inner-wrapper has-sidebar">
+	<main id="primary" class="site-main container section">
 
-            <!-- Main Content Column -->
-            <div id="primary" class="content-area">
-                <main id="main" class="site-main">
+        <div class="inner-wrapper-centered">
+		<?php
+		while ( have_posts() ) :
+			the_post();
+            ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <header class="entry-header mb-8 text-center">
+                    <?php the_title( '<h1 class="entry-title mb-4 text-4xl font-bold">', '</h1>' ); ?>
+                    <div class="entry-meta text-muted">
+                        <?php echo get_the_date(); ?> &bull; <?php the_author(); ?>
+                    </div>
+                </header>
 
+                <?php if ( has_post_thumbnail() ) : ?>
+                <div class="post-thumbnail mb-8 rounded-lg overflow-hidden shadow-lg">
+                    <?php the_post_thumbnail( 'full', array( 'class' => 'w-100 h-auto' ) ); ?>
+                </div>
+                <?php endif; ?>
+
+                <div class="entry-content prose max-w-none">
                     <?php
-                    while ( have_posts() ) :
-                        the_post();
+                    the_content();
 
-                        ?>
-                        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-                            <!-- Post Header -->
-                            <header class="entry-header single-post-header">
-                                <div class="entry-meta single-post-meta">
-                                    <?php echo get_the_date(); ?> &middot; <?php the_category(', '); ?>
-                                </div>
-                                <?php the_title( '<h1 class="entry-title single-post-title">', '</h1>' ); ?>
-
-                                <?php if ( has_post_thumbnail() ) : ?>
-                                    <div class="post-thumbnail single-post-thumbnail">
-                                        <?php the_post_thumbnail( 'full' ); ?>
-                                    </div>
-                                <?php endif; ?>
-                            </header>
-
-                            <!-- Post Content -->
-                            <div class="entry-content single-entry-content">
-                                <?php
-                                the_content();
-
-                                wp_link_pages( array(
-                                    'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'hoplytics' ),
-                                    'after'  => '</div>',
-                                ) );
-                                ?>
-                            </div>
-
-                            <!-- Post Footer -->
-                            <footer class="entry-footer single-post-footer">
-                                <?php
-                                the_tags( '<div class="tags-links"><span style="font-weight:600;">Tags:</span> ', ', ', '</div>' );
-                                ?>
-
-                                <!-- Post Navigation -->
-                                <?php
-                                the_post_navigation( array(
-                                    'prev_text' => '<span class="nav-subtitle">Previous:</span> <span class="nav-title">%title</span>',
-                                    'next_text' => '<span class="nav-subtitle nav-next">Next:</span> <span class="nav-title">%title</span>',
-                                ) );
-                                ?>
-                            </footer>
-
-                        </article>
-
-                        <?php
-                        // If comments are open or we have at least one comment, load up the comment template.
-                        if ( comments_open() || get_comments_number() ) :
-                            comments_template();
-                        endif;
-
-                    endwhile; // End of the loop.
+                    wp_link_pages(
+                        array(
+                            'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'hoplytics' ),
+                            'after'  => '</div>',
+                        )
+                    );
                     ?>
+                </div>
 
-                </main><!-- #main -->
-            </div><!-- #primary -->
+                <footer class="entry-footer mt-12 pt-8 border-t border-gray-200">
+                    <?php
+                    /* translators: used between list items, there is a space after the comma */
+                    $categories_list = get_the_category_list( esc_html__( ', ', 'hoplytics' ) );
+                    if ( $categories_list ) {
+                        /* translators: 1: list of categories. */
+                        printf( '<span class="cat-links block mb-2">' . esc_html__( 'Posted in %1$s', 'hoplytics' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                    }
 
-            <!-- Sidebar Column -->
-            <aside id="secondary" class="widget-area">
-                <?php get_sidebar(); ?>
-            </aside><!-- #secondary -->
+                    /* translators: used between list items, there is a space after the comma */
+                    $tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'hoplytics' ) );
+                    if ( $tags_list ) {
+                        /* translators: 1: list of tags. */
+                        printf( '<span class="tags-links block">' . esc_html__( 'Tagged %1$s', 'hoplytics' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                    }
+                    ?>
+                </footer>
+            </article>
 
-        </div><!-- .inner-wrapper -->
-    </div><!-- .container -->
+            <?php
+            // If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+
+            // Navigation
+            the_post_navigation(
+                array(
+                    'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'hoplytics' ) . '</span> <span class="nav-title">%title</span>',
+                    'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'hoplytics' ) . '</span> <span class="nav-title">%title</span>',
+                )
+            );
+
+		endwhile; // End of the loop.
+		?>
+        </div>
+
+	</main><!-- #main -->
 
 <?php
 get_footer();
