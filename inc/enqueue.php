@@ -19,17 +19,29 @@ function hoplytics_scripts() {
     wp_enqueue_style( 'hoplytics-main', get_template_directory_uri() . '/assets/css/main.css', array('hoplytics-variables'), HOPLYTICS_VERSION );
 
     // Main Theme Script (Mobile Menu, Interactions)
-	wp_enqueue_script( 'hoplytics-main', get_template_directory_uri() . '/assets/js/main.js', array(), HOPLYTICS_VERSION, true );
+    wp_enqueue_script( 'hoplytics-main', get_template_directory_uri() . '/assets/js/main.js', array(), HOPLYTICS_VERSION, true );
 
     // Conditional Loading: Chart.js for ROI Calculator or specific visualizations
     // We only load this if the ROI calculator is on the page or if we are on a page using charts
-    if ( is_page_template( 'page-landing.php' ) || has_block( 'hoplytics/roi-calculator' ) || is_singular('project') ) {
-         wp_enqueue_script( 'chart-js', 'https://cdn.jsdelivr.net/npm/chart.js', array(), '4.4.0', true );
+    wp_register_script( 'chart-js', 'https://cdn.jsdelivr.net/npm/chart.js', array(), '4.4.0', true );
+
+    $should_load_chart = is_page_template( 'page-landing.php' ) || is_singular( 'project' ) || is_front_page() || has_block( 'hoplytics/roi-calculator' );
+
+    $post = get_post();
+
+    if ( $post instanceof WP_Post ) {
+        if ( has_shortcode( $post->post_content, 'roi_calculator' ) || has_block( 'hoplytics/roi-calculator', $post->post_content ) ) {
+            $should_load_chart = true;
+        }
     }
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    if ( $should_load_chart ) {
+        wp_enqueue_script( 'chart-js' );
+    }
+
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+        wp_enqueue_script( 'comment-reply' );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'hoplytics_scripts' );
 
