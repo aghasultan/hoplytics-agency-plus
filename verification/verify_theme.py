@@ -1,42 +1,49 @@
-from playwright.sync_api import sync_playwright, expect
+from playwright.sync_api import sync_playwright
 import os
 
-def verify_theme_visuals():
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
+def verify_theme(page):
+    # 1. Load the mock page
+    file_path = os.path.abspath("verification/mock-front-page.html")
+    page.goto(f"file://{file_path}")
 
-        # Load the mock HTML file
-        cwd = os.getcwd()
-        file_path = f"file://{cwd}/verification/mock-front-page.html"
+    # 2. Verify Title and Header
+    page.wait_for_selector("header.site-header")
+    assert page.title() == "Hoplytics - Front Page Verification"
+    print("Header and Title Verified.")
 
-        print(f"Navigating to {file_path}")
-        page.goto(file_path)
+    # 3. Test ROI Calculator Interaction
+    # Click the button
+    page.click("#roi-calculate-btn")
 
-        # 1. Verify Header CTA Button class application
-        cta_btn = page.locator('.header-cta-btn')
-        expect(cta_btn).to_be_visible()
+    # Wait for results to appear (JS logic adds display: block)
+    page.wait_for_selector("#roi-text-results", state="visible")
 
-        # 2. Verify Footer Grid
-        footer_grid = page.locator('.footer-top-grid')
-        expect(footer_grid).to_have_css('display', 'grid')
+    # Verify Calculation: 5000 budget / 2.5 CPC = 2000 Clicks
+    # 2000 * 3.5% (0.035) = 70 Conversions
+    # 70 * 150 AOV = $10,500 Revenue
+    revenue_text = page.text_content("#roi-revenue")
+    assert "$10,500" in revenue_text
+    print(f"ROI Calculator Verified: Revenue is {revenue_text}")
 
-        # 3. Verify Services Header (New Cleaned Class)
-        services_header = page.locator('.services-header')
-        expect(services_header).to_be_visible()
-        expect(services_header).to_have_css('text-align', 'center')
+    # 4. Test Style Kit Switching (Visual Check)
+    # Capture Default (Tech-Futurist)
+    page.screenshot(path="verification/theme-verification-tech.png")
 
-        # 4. Verify Service Links (New Cleaned Class)
-        service_link = page.locator('.service-link').first
-        expect(service_link).to_be_visible()
-        expect(service_link).to_have_css('font-weight', '600')
+    # Switch Class to Corporate-Stabilizer via JS
+    page.evaluate("document.body.className = 'home page style-kit-corporate-stabilizer'")
+    page.wait_for_timeout(500) # Allow render
+    page.screenshot(path="verification/theme-verification-corporate.png")
 
-        # Take a full page screenshot
-        screenshot_path = f"{cwd}/verification/theme-verification-final.png"
-        page.screenshot(path=screenshot_path, full_page=True)
-        print(f"Screenshot saved to {screenshot_path}")
+    # Switch Class to Creative-Disruptor via JS
+    page.evaluate("document.body.className = 'home page style-kit-creative-disruptor'")
+    page.wait_for_timeout(500)
+    page.screenshot(path="verification/theme-verification-creative.png")
 
-        browser.close()
+    print("Style Kit Screenshots Captured.")
 
 if __name__ == "__main__":
-    verify_theme_visuals()
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page()
+        verify_theme(page)
+        browser.close()

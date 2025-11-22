@@ -1,139 +1,119 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../assets/css/dark-mode.css">
-    <title>Hoplytics Mock Verification</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoplytics - Front Page Verification</title>
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Simulation of body classes for switching style kits */
+        /* We will inject this via JS for testing */
+    </style>
 </head>
-<body class="home blog">
-    <div id="page" class="site">
-        <header id="masthead" class="site-header">
-            <div class="container flex items-center justify-between h-full">
-                <div class="site-branding">
-                    <h1 class="site-title" style="font-size: 1.5rem; font-weight: 700;"><a href="#" rel="home" style="color: var(--color-primary);">Hoplytics</a></h1>
-                </div>
-                <nav id="site-navigation" class="main-navigation hidden-mobile">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </nav>
-                <div class="header-actions hidden-mobile">
-                     <a href="/contact" class="btn btn-primary btn-sm header-cta-btn">Get Started</a>
-                </div>
-            </div>
-        </header>
+<body class="home page style-kit-tech-futurist">
 
-        <div id="content" class="site-content">
-            <!-- Hero Section -->
-            <section class="hero-section bg-alt">
-                <div class="container">
+    <header id="masthead" class="site-header">
+        <div class="container header-inner">
+            <div class="site-branding">
+                <a href="#">Hoplytics</a>
+            </div>
+            <nav class="main-navigation hidden-mobile">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-cta hidden-mobile">
+                <a href="#contact" class="btn btn-primary">Get a Proposal</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="primary" class="site-main">
+
+        <section class="hero-section section">
+            <div class="container">
+                <div class="grid grid-2 items-center">
                     <div class="hero-content">
-                        <h1>Transform Your Digital Presence with Hoplytics</h1>
-                        <p>We build high-converting marketing strategies and modern websites for SaaS and agencies. Scale faster with data-driven growth.</p>
-                        <div class="hero-buttons">
-                            <a href="#" class="btn btn-primary">Book a Discovery Call</a>
-                            <a href="#" class="btn btn-secondary">View Our Services</a>
+                        <h1>Turn Your Traffic Into Revenue</h1>
+                        <p>We are the growth agency that focuses on what matters: ROI, ROAS, and Bottom Line.</p>
+                        <div class="flex gap-4" style="display:flex; gap: 1rem; margin-top: 1rem;">
+                            <a href="#audit" class="btn btn-primary">Get Free Audit</a>
+                            <a href="#portfolio" class="btn btn-outline">View Work</a>
                         </div>
                     </div>
-                    <div class="hero-image">
-                        <svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="600" height="400" rx="16" fill="#E2E8F0"/>
-                            <rect x="50" y="50" width="500" height="300" rx="8" fill="white"/>
-                            <circle cx="450" cy="200" r="60" fill="#3B82F6" fill-opacity="0.2"/>
-                        </svg>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Logos / Social Proof -->
-            <div class="section logos-section">
-                <div class="container">
-                    <p class="text-center logos-header">Trusted by innovative companies</p>
-                    <div class="flex items-center justify-between logos-container">
-                        <span class="logo-placeholder">ACME Corp</span>
-                        <span class="logo-placeholder">Globex</span>
-                        <span class="logo-placeholder">Soylent</span>
-                        <span class="logo-placeholder">Initech</span>
+                    <div class="hero-visual">
+                        <div class="card bg-alt" style="height: 400px; display: flex; align-items: center; justify-content: center;">
+                            Hero Visual
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Services -->
-            <section id="services" class="section bg-alt">
-                <div class="container">
-                    <div class="services-header">
-                        <h2>Our Services</h2>
-                        <p>Everything you need to dominate your market.</p>
-                    </div>
-                    <div class="services-grid">
-                        <div class="card">
-                            <h3>SEO & Content</h3>
-                            <p>Rank higher and attract qualified leads.</p>
-                            <a href="#" class="service-link">Learn more &rarr;</a>
-                        </div>
-                        <div class="card">
-                            <h3>PPC & Paid Social</h3>
-                            <p>Maximize your ad spend with targeted campaigns.</p>
-                            <a href="#" class="service-link">Learn more &rarr;</a>
-                        </div>
-                        <div class="card">
-                            <h3>Web Design & Dev</h3>
-                            <p>Custom WordPress websites designed for speed.</p>
-                            <a href="#" class="service-link">Learn more &rarr;</a>
-                        </div>
-                    </div>
+        <!-- Social Proof -->
+        <div class="social-proof-bar section bg-alt">
+            <div class="container">
+                <p class="text-center text-sm uppercase tracking-wide text-muted mb-4" style="text-align: center; margin-bottom: 1rem; color: var(--color-text-muted);">Trusted by High-Growth Companies</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; opacity: 0.5;">
+                    <span class="text-xl font-bold">ACME Corp</span>
+                    <span class="text-xl font-bold">GlobalTech</span>
+                    <span class="text-xl font-bold">Nebula.io</span>
                 </div>
-            </section>
-
-            <!-- CTA Section -->
-            <section class="section text-center">
-                <div class="container">
-                    <div class="cta-box">
-                        <h2 class="cta-title">Ready to Scale Your Agency?</h2>
-                        <p class="cta-desc">Stop guessing and start growing. Schedule your free discovery call today.</p>
-                        <a href="#" class="btn btn-accent">Book Your Call Now</a>
-                    </div>
-                </div>
-            </section>
+            </div>
         </div>
 
-        <footer id="colophon" class="site-footer">
+        <!-- ROI Calculator Module Simulation -->
+        <section id="roi-calc" class="section bg-alt">
             <div class="container">
-                <div class="grid grid-3 footer-top-grid">
-                    <div>
-                        <h3 class="footer-brand-title">Hoplytics</h3>
-                        <p class="footer-brand-desc">Modern digital marketing for forward-thinking agencies.</p>
-                    </div>
-                    <div>
-                        <h4 class="footer-col-title">Company</h4>
-                        <ul class="footer-links">
-                            <li class="footer-link-item"><a href="#">About Us</a></li>
-                            <li class="footer-link-item"><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="footer-col-title">Get in Touch</h4>
-                        <a href="mailto:hello@hoplytics.com" class="footer-email-link">hello@hoplytics.com</a>
-                    </div>
-                </div>
-                <div class="site-info">
-                    <div class="flex justify-between items-center footer-bottom-flex">
-                        <div>&copy; 2023 Hoplytics. All rights reserved.</div>
+                <h2 class="text-center" style="text-align: center; margin-bottom: 2rem;">Calculate Your Potential</h2>
+                <div class="roi-calculator-wrapper card">
+                    <div class="roi-grid grid grid-2" style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div class="roi-inputs">
+                            <div class="form-group">
+                                <label>Monthly Budget ($)</label>
+                                <input type="number" id="roi-budget" value="5000" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Average Cost Per Click ($)</label>
+                                <input type="number" id="roi-cpc" value="2.50" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label>Conversion Rate (%)</label>
+                                <input type="number" id="roi-conversion" value="3.5" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label>Average Order Value ($)</label>
+                                <input type="number" id="roi-aov" value="150" min="0">
+                            </div>
+                            <button id="roi-calculate-btn" class="btn btn-primary w-100" style="width: 100%;">Calculate Potential Revenue</button>
+                        </div>
+                        <div class="roi-results text-center" style="text-align: center;">
+                            <canvas id="roiChart"></canvas>
+                            <div id="roi-text-results" style="margin-top: 1rem; display: none;">
+                                <p>Estimated Revenue: <strong class="h3" id="roi-revenue" style="font-size: 1.5rem;">$0</strong></p>
+                                <p>Projected ROAS: <strong class="h3" id="roi-roas" style="font-size: 1.5rem;">0x</strong></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </footer>
-    </div>
+        </section>
 
-    <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/three-hero.js"></script>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p style="text-align: center;">&copy; 2023 Hoplytics. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Load the ROI Script -->
+    <script src="../assets/js/roi-calculator.js"></script>
+
 </body>
 </html>

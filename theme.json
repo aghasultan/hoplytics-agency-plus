@@ -1,0 +1,81 @@
+{
+    "version": 2,
+    "settings": {
+        "appearanceTools": true,
+        "layout": {
+            "contentSize": "1200px",
+            "wideSize": "1400px"
+        },
+        "typography": {
+            "fontSizes": [
+                {
+                    "slug": "small",
+                    "size": "0.875rem",
+                    "name": "Small"
+                },
+                {
+                    "slug": "medium",
+                    "size": "1rem",
+                    "name": "Medium"
+                },
+                {
+                    "slug": "large",
+                    "size": "1.5rem",
+                    "name": "Large"
+                },
+                {
+                    "slug": "xlarge",
+                    "size": "2.25rem",
+                    "name": "Extra Large"
+                },
+                {
+                    "slug": "huge",
+                    "size": "3rem",
+                    "name": "Huge"
+                }
+            ]
+        },
+        "color": {
+            "palette": [
+                {
+                    "slug": "primary",
+                    "color": "#0f172a",
+                    "name": "Primary"
+                },
+                {
+                    "slug": "secondary",
+                    "color": "#3b82f6",
+                    "name": "Secondary"
+                },
+                {
+                    "slug": "accent",
+                    "color": "#f97316",
+                    "name": "Accent"
+                },
+                {
+                    "slug": "base",
+                    "color": "#ffffff",
+                    "name": "Base"
+                },
+                {
+                    "slug": "contrast",
+                    "color": "#000000",
+                    "name": "Contrast"
+                }
+            ],
+            "custom": true
+        }
+    },
+    "templateParts": [
+        {
+            "area": "header",
+            "name": "header",
+            "title": "Header"
+        },
+        {
+            "area": "footer",
+            "name": "footer",
+            "title": "Footer"
+        }
+    ]
+}

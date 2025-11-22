@@ -2,87 +2,67 @@
 /**
  * The template for displaying the footer
  *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
  * @package Hoplytics
  */
-
 ?>
 
-</div><!-- #content -->
-
-<footer id="colophon" class="site-footer">
-    <div class="container">
-        <!-- New Footer Layout -->
-        <div class="grid grid-3 footer-top-grid">
-            <!-- Brand Column -->
-            <div>
-                <h3 class="footer-brand-title">Hoplytics</h3>
-                <p class="footer-brand-desc">Modern digital marketing for forward-thinking agencies. We help you scale with confidence.</p>
-            </div>
-
-            <!-- Links Column -->
-            <div>
-                <h4 class="footer-col-title">Company</h4>
-                <ul class="footer-links">
-                    <li class="footer-link-item"><a href="/about">About Us</a></li>
-                    <li class="footer-link-item"><a href="#services">Services</a></li>
-                    <li class="footer-link-item"><a href="/blog">Blog</a></li>
-                    <li class="footer-link-item"><a href="/contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact / CTA Column -->
-            <div>
-                <h4 class="footer-col-title">Get in Touch</h4>
-                <p class="footer-contact-text">Questions? We'd love to hear from you.</p>
-                <a href="mailto:hello@hoplytics.com" class="footer-email-link">hello@hoplytics.com</a>
-            </div>
-        </div>
-
-        <!-- Bottom Bar -->
-        <div class="site-info">
-            <div class="flex justify-between items-center footer-bottom-flex">
-                <div>
-                    &copy; <?php echo date( 'Y' ); ?> Hoplytics. All rights reserved.
+	<footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="grid grid-4">
+                <div class="footer-brand">
+                    <h3 class="footer-brand-title"><?php bloginfo( 'name' ); ?></h3>
+                    <p class="text-sm text-muted"><?php bloginfo( 'description' ); ?></p>
                 </div>
 
-                <?php if ( has_nav_menu( 'social' ) ) : ?>
-                    <div class="footer-social-links">
-                        <?php
-                        wp_nav_menu( array(
-                            'theme_location' => 'social',
+                <div class="footer-links">
+                    <h4><?php esc_html_e('Company', 'hoplytics'); ?></h4>
+                    <?php
+                    wp_nav_menu(
+                        array(
+                            'theme_location' => 'footer',
+                            'menu_id'        => 'footer-menu',
                             'container'      => false,
-                            'menu_class'     => 'flex gap-4',
                             'depth'          => 1,
-                        ) );
-                        ?>
-                    </div>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-</footer>
+                        )
+                    );
+                    ?>
+                </div>
 
+                <div class="footer-services">
+                    <h4><?php esc_html_e('Services', 'hoplytics'); ?></h4>
+                    <ul>
+                        <!-- Dynamic list of services could go here -->
+                        <li><a href="/services/seo">SEO & Content</a></li>
+                        <li><a href="/services/paid-media">Paid Media</a></li>
+                        <li><a href="/services/cro">CRO & Analytics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4><?php esc_html_e('Contact', 'hoplytics'); ?></h4>
+                    <p>hello@hoplytics.com</p>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+            </div>
+
+            <div class="site-info text-center mt-8 pt-8 border-t border-gray-700 text-sm text-muted">
+				<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'hoplytics' ) ); ?>">
+					<?php
+					/* translators: %s: CMS name, i.e. WordPress. */
+					printf( esc_html__( 'Proudly powered by %s', 'hoplytics' ), 'WordPress' );
+					?>
+				</a>
+				<span class="sep"> | </span>
+                <?php
+                // White label footer is handled by filter, but standard credit here as fallback
+                printf( esc_html__( 'Theme: %1$s by %2$s.', 'hoplytics' ), 'Hoplytics', '<a href="https://hoplytics.com">Hoplytics Team</a>' );
+                ?>
+            </div><!-- .site-info -->
+        </div>
+	</footer><!-- #colophon -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('<?php echo esc_url( get_template_directory_uri() . '/service-worker.js' ); ?>')
-        .then(registration => {
-          console.log('SW registered: ', registration);
-        })
-        .catch(registrationError => {
-          console.log('SW registration failed: ', registrationError);
-        });
-    });
-  }
-</script>
 
 </body>
 </html>
