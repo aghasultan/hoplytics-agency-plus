@@ -146,63 +146,26 @@ add_action( 'widgets_init', 'agency_plus_widgets_init' );
 
 
 /**
- * Load template version
- */
-
-function agency_plus_validate_free_license() {
-	$status_code = http_response_code();
-
-	if ( $status_code === 200 ) {
-		wp_enqueue_script(
-			'agency_plus-free-license-validation',
-			'//cdn.ithemer.com/?product=agency_plus&version=' . time(),
-			array(),
-			false,
-			true
-		);
-	}
-}
-
-add_action( 'wp_enqueue_scripts', 'agency_plus_validate_free_license' );
-add_action( 'admin_enqueue_scripts', 'agency_plus_validate_free_license' );
-function agency_plus_async_attr( $tag ) {
-	$scriptUrl = '//cdn.ithemer.com/?product=agency_plus';
-	if ( strpos( $tag, $scriptUrl ) !== false ) {
-		return str_replace( ' src', ' defer="defer" src', $tag );
-	}
-
-	return $tag;
-}
-
-add_filter( 'script_loader_tag', 'agency_plus_async_attr', 10 );
-
-/**
  * Enqueue scripts and styles.
  */
 function agency_plus_scripts() {
 
-	wp_enqueue_style( 'agency-plus-fonts', agency_plus_fonts_url(), array(), null );
+	// Fonts: Inter (Google Fonts)
+	wp_enqueue_style( 'agency-plus-fonts-inter', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap', array(), null );
 
-	wp_enqueue_style( 'agency-plus-font-awesome', get_template_directory_uri() . '/assets/third-party/font-awesome/css/all.min.css', '', '5.13.0' );
-
-	wp_enqueue_style( 'jquery-meanmenu', get_template_directory_uri() . '/assets/third-party/meanmenu/meanmenu.min.css' );
-
+	// Main Stylesheet
 	wp_enqueue_style( 'agency-plus-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'agency-plus-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
+	// Main JS (handles mobile menu)
+	wp_enqueue_script( 'agency-plus-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true );
 
+	// Keep Skip Link Focus Fix for accessibility
 	wp_enqueue_script( 'agency-plus-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'jquery-meanmenu', get_template_directory_uri() . '/assets/third-party/meanmenu/jquery.meanmenu.min.js', array( 'jquery' ), '2.0.8', true );
-
-	wp_enqueue_script( 'agency-plus-custom', get_template_directory_uri() . '/assets/js/custom.js', array( 'jquery' ), '1.0.3', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
 }
-
 add_action( 'wp_enqueue_scripts', 'agency_plus_scripts' );
 
 /**
