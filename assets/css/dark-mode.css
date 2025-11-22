@@ -1,0 +1,26 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    --color-primary: #f8fafc;    /* Invert: Slate 50 */
+    --color-text: #e2e8f0;       /* Slate 200 */
+    --color-text-light: #94a3b8; /* Slate 400 */
+    --color-bg: #0f172a;         /* Slate 900 */
+    --color-bg-alt: #1e293b;     /* Slate 800 */
+    --color-border: #334155;     /* Slate 700 */
+}
+body.dark-mode .card {
+    background: var(--color-bg-alt);
+    border-color: var(--color-border);
+}
+body.dark-mode .site-header {
+    background: var(--color-bg);
+    border-color: var(--color-border);
+}
+body.dark-mode .site-footer {
+     background-color: #020617;
+}
+body.dark-mode a {
+    color: var(--color-secondary);
+}
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
+    color: var(--color-primary);
+}

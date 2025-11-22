@@ -156,8 +156,24 @@ function agency_plus_scripts() {
 	// Main Stylesheet
 	wp_enqueue_style( 'agency-plus-style', get_stylesheet_uri() );
 
+    // Dark Mode Styles
+    wp_enqueue_style( 'agency-plus-dark-mode', get_template_directory_uri() . '/assets/css/dark-mode.css', array(), '1.0.0' );
+
 	// Main JS (handles mobile menu)
 	wp_enqueue_script( 'agency-plus-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true );
+
+	// Three.js (CDN)
+    wp_enqueue_script( 'three-js', 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', array(), '0.128.0', true );
+
+    // Immersive Scripts
+    wp_enqueue_script( 'agency-plus-three-hero', get_template_directory_uri() . '/assets/js/three-hero.js', array('three-js'), '1.0.0', true );
+    wp_enqueue_script( 'agency-plus-cursor', get_template_directory_uri() . '/assets/js/cursor.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'agency-plus-scroll-effects', get_template_directory_uri() . '/assets/js/scroll-effects.js', array(), '1.0.0', true );
+
+    // Dynamic Features
+    wp_enqueue_script( 'agency-plus-dynamic-mode', get_template_directory_uri() . '/assets/js/dynamic-mode.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'agency-plus-instant-load', get_template_directory_uri() . '/assets/js/instant-load.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'agency-plus-dev-tools', get_template_directory_uri() . '/assets/js/dev-tools.js', array(), '1.0.0', true );
 
 	// Keep Skip Link Focus Fix for accessibility
 	wp_enqueue_script( 'agency-plus-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
@@ -192,6 +208,11 @@ require get_template_directory() . '/inc/customizer/core.php';
  * Helper functions.
  */
 require get_template_directory() . '/inc/helpers.php';
+
+/**
+ * Health Check.
+ */
+require get_template_directory() . '/inc/health-check.php';
 
 /**
  * TGM Plugin activation.
