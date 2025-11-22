@@ -25,12 +25,12 @@ function hoplytics_scripts() {
     // We only load this if the ROI calculator is on the page or if we are on a page using charts
     wp_register_script( 'chart-js', 'https://cdn.jsdelivr.net/npm/chart.js', array(), '4.4.0', true );
 
-    $should_load_chart = is_page_template( 'page-landing.php' ) || is_singular( 'project' ) || is_front_page() || has_block( 'hoplytics/roi-calculator' );
+    $should_load_chart = is_page_template( 'page-landing.php' ) || is_singular( 'project' ) || is_front_page();
 
     $post = get_post();
 
     if ( $post instanceof WP_Post ) {
-        if ( has_shortcode( $post->post_content, 'roi_calculator' ) || has_block( 'hoplytics/roi-calculator', $post->post_content ) ) {
+        if ( has_shortcode( $post->post_content, 'roi_calculator' ) || has_block( 'hoplytics/roi-calculator', $post ) ) {
             $should_load_chart = true;
         }
     }
