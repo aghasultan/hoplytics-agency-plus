@@ -10,13 +10,7 @@
  */
 
 ?>
-<?php
-// Restored Logic: Close container if opened in header (inner pages)
-if ( ! is_front_page() && ! is_page_template( 'elementor_header_footer' ) && ! is_page_template( 'templates/skeleton.php' ) ) { ?>
-    </div><!-- .inner-wrapper -->
-    </div><!-- .container -->
-	<?php
-} ?>
+
 </div><!-- #content -->
 
 <footer id="colophon" class="site-footer">
@@ -32,7 +26,7 @@ if ( ! is_front_page() && ! is_page_template( 'elementor_header_footer' ) && ! i
             <!-- Links Column -->
             <div>
                 <h4 style="color: white; margin-bottom: 1rem;">Company</h4>
-                <ul style="list-style: none; padding: 0;">
+                <ul style="list-style: none; padding: 0; margin: 0;">
                     <li style="margin-bottom: 0.5rem;"><a href="/about">About Us</a></li>
                     <li style="margin-bottom: 0.5rem;"><a href="#services">Services</a></li>
                     <li style="margin-bottom: 0.5rem;"><a href="/blog">Blog</a></li>

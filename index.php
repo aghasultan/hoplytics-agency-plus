@@ -2,11 +2,6 @@
 /**
  * The main template file
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Agency_Plus
@@ -15,45 +10,51 @@
 get_header();
 ?>
 
-    <div id="primary" class="content-area">
-        <main id="main" class="site-main">
+    <div class="container">
+        <div class="inner-wrapper">
 
-			<?php
-			if ( have_posts() ) :
+            <header class="page-header page-header-centered">
+                <?php if ( is_home() && ! is_front_page() ) : ?>
+                    <h1 class="page-title"><?php single_post_title(); ?></h1>
+                <?php else : ?>
+                    <h1 class="page-title"><?php esc_html_e( 'Latest Insights', 'agency-plus' ); ?></h1>
+                <?php endif; ?>
+                <p class="page-subtitle">Thoughts on digital marketing, SEO, and growth.</p>
+            </header>
 
-				if ( is_home() && ! is_front_page() ) :
-					?>
-                    <header>
-                        <h2 class="page-title screen-reader-text"><?php single_post_title(); ?></h2>
-                    </header>
-				<?php
-				endif;
+            <!-- Grid Layout for Posts -->
+            <div id="primary" class="content-area w-full">
+                <main id="main" class="site-main">
 
-				/* Start the Loop */
-				while ( have_posts() ) :
-					the_post();
+                    <?php if ( have_posts() ) : ?>
+                        <div class="post-grid">
+                            <?php
+                            /* Start the Loop */
+                            while ( have_posts() ) :
+                                the_post();
+                                get_template_part( 'template-parts/content', 'card' );
+                            endwhile;
+                            ?>
+                        </div><!-- .post-grid -->
 
-					/*
-					 * Include the Post-Type-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-					 */
-					get_template_part( 'template-parts/content', get_post_type() );
+                        <?php
+                        the_posts_pagination( array(
+                            'prev_text' => '&larr; Previous',
+                            'next_text' => 'Next &rarr;',
+                        ) );
 
-				endwhile;
+                    else :
 
-				the_posts_pagination();
+                        get_template_part( 'template-parts/content', 'none' );
 
-			else :
+                    endif;
+                    ?>
 
-				get_template_part( 'template-parts/content', 'none' );
+                </main><!-- #main -->
+            </div><!-- #primary -->
 
-			endif;
-			?>
-
-        </main><!-- #main -->
-    </div><!-- #primary -->
+        </div><!-- .inner-wrapper -->
+    </div><!-- .container -->
 
 <?php
-get_sidebar();
 get_footer();
