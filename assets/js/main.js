@@ -1,5 +1,5 @@
 /**
- * Main JS for Agency Plus Theme (Redesign)
+ * Main JS for Hoplytics Theme (Redesign)
  * Handles mobile menu toggling and other interactions.
  */
 

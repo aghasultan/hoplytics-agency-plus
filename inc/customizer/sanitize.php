@@ -2,10 +2,10 @@
 /**
  * Sanitization functions.
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
-if ( ! function_exists( 'agency_plus_sanitize_select' ) ) :
+if ( ! function_exists( 'hoplytics_sanitize_select' ) ) :
 	/**
 	 * Sanitize select.
 	 *
@@ -15,7 +15,7 @@ if ( ! function_exists( 'agency_plus_sanitize_select' ) ) :
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
 	 * @return mixed Sanitized value.
 	 */
-	function agency_plus_sanitize_select( $input, $setting ) {
+	function hoplytics_sanitize_select( $input, $setting ) {
 
 		// Ensure input is clean.
 		$input = sanitize_text_field( $input );
@@ -29,7 +29,7 @@ if ( ! function_exists( 'agency_plus_sanitize_select' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'agency_plus_sanitize_checkbox' ) ) :
+if ( ! function_exists( 'hoplytics_sanitize_checkbox' ) ) :
 	/**
 	 * Sanitize checkbox.
 	 *
@@ -38,7 +38,7 @@ if ( ! function_exists( 'agency_plus_sanitize_checkbox' ) ) :
 	 * @param bool $checked Whether the checkbox is checked.
 	 * @return bool Whether the checkbox is checked.
 	 */
-	function agency_plus_sanitize_checkbox( $checked ) {
+	function hoplytics_sanitize_checkbox( $checked ) {
 
 		return ( ( isset( $checked ) && true === $checked ) ? true : false );
 
@@ -46,7 +46,7 @@ if ( ! function_exists( 'agency_plus_sanitize_checkbox' ) ) :
 endif;
 
 
-if ( ! function_exists( 'agency_plus_sanitize_positive_integer' ) ) :
+if ( ! function_exists( 'hoplytics_sanitize_positive_integer' ) ) :
 	/**
 	 * Sanitize positive integer.
 	 *
@@ -56,7 +56,7 @@ if ( ! function_exists( 'agency_plus_sanitize_positive_integer' ) ) :
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
 	 * @return int Sanitized number; otherwise, the setting default.
 	 */
-	function agency_plus_sanitize_positive_integer( $input, $setting ) {
+	function hoplytics_sanitize_positive_integer( $input, $setting ) {
 
 		$input = absint( $input );
 
@@ -67,7 +67,7 @@ if ( ! function_exists( 'agency_plus_sanitize_positive_integer' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'agency_plus_sanitize_dropdown_pages' ) ) :
+if ( ! function_exists( 'hoplytics_sanitize_dropdown_pages' ) ) :
 	/**
 	 * Sanitize dropdown pages.
 	 *
@@ -77,7 +77,7 @@ if ( ! function_exists( 'agency_plus_sanitize_dropdown_pages' ) ) :
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
 	 * @return int|string Page ID if the page is published; otherwise, the setting default.
 	 */
-	function agency_plus_sanitize_dropdown_pages( $page_id, $setting ) {
+	function hoplytics_sanitize_dropdown_pages( $page_id, $setting ) {
 
 		// Ensure $input is an absolute integer.
 		$page_id = absint( $page_id );
@@ -88,7 +88,7 @@ if ( ! function_exists( 'agency_plus_sanitize_dropdown_pages' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'agency_plus_sanitize_image' ) ) :
+if ( ! function_exists( 'hoplytics_sanitize_image' ) ) :
 	/**
 	 * Sanitize image.
 	 *
@@ -100,7 +100,7 @@ if ( ! function_exists( 'agency_plus_sanitize_image' ) ) :
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
 	 * @return string The image filename if the extension is allowed; otherwise, the setting default.
 	 */
-	function agency_plus_sanitize_image( $image, $setting ) {
+	function hoplytics_sanitize_image( $image, $setting ) {
 
 		/**
 		 * Array of valid image file types.
@@ -126,7 +126,7 @@ if ( ! function_exists( 'agency_plus_sanitize_image' ) ) :
 endif;
 
 
-if ( ! function_exists( 'agency_plus_sanitize_number_range' ) ) :
+if ( ! function_exists( 'hoplytics_sanitize_number_range' ) ) :
 	/**
 	 * Sanitize number range.
 	 *
@@ -138,7 +138,7 @@ if ( ! function_exists( 'agency_plus_sanitize_number_range' ) ) :
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
 	 * @return int|string The number, if it is zero or greater and falls within the defined range; otherwise, the setting default.
 	 */
-	function agency_plus_sanitize_number_range( $input, $setting ) {
+	function hoplytics_sanitize_number_range( $input, $setting ) {
 
 		// Ensure input is an absolute integer.
 		$input = absint( $input );
@@ -165,7 +165,7 @@ endif;
 // Sanitize textarea content
 //=============================================================
 
-if ( ! function_exists( 'agency_plus_sanitize_textarea' ) ) :
+if ( ! function_exists( 'hoplytics_sanitize_textarea' ) ) :
  	/**
  	 * Sanitize textarea content.
  	 *
@@ -175,10 +175,9 @@ if ( ! function_exists( 'agency_plus_sanitize_textarea' ) ) :
  	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
  	 * @return string Sanitized content.
  	 */
- 	function agency_plus_sanitize_textarea( $input, $setting ) {
+	function hoplytics_sanitize_textarea( $input, $setting ) {
 
  		return ( wp_kses_post( $input ) );
 
  	}
 endif;
-

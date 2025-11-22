@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
 ?>
@@ -38,7 +38,7 @@
 <?php wp_body_open(); ?>
 
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'agency-plus' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'hoplytics' ); ?></a>
 
 	<header id="masthead" class="site-header">
 		<div class="container flex items-center justify-between h-full">
@@ -54,7 +54,7 @@
             <!-- Mobile Menu Toggle -->
             <button id="menu-toggle" class="menu-toggle" aria-controls="site-navigation" aria-expanded="false">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                <span class="screen-reader-text"><?php esc_html_e( 'Menu', 'agency-plus' ); ?></span>
+                <span class="screen-reader-text"><?php esc_html_e( 'Menu', 'hoplytics' ); ?></span>
             </button>
 
             <!-- Navigation -->
@@ -73,14 +73,14 @@
             <div class="header-actions hidden-mobile">
                 <?php
                 // If WooCommerce cart is needed, we can add it back here cleanly.
-                if ( class_exists( 'WooCommerce' ) && agency_plus_get_option( 'show_cart_icon' ) ) {
+                if ( class_exists( 'WooCommerce' ) && hoplytics_get_option( 'show_cart_icon' ) ) {
                     $count = WC()->cart->get_cart_contents_count();
                     if ( $count > 0 ) {
                         echo '<a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-link">Cart (' . esc_html( $count ) . ')</a>';
                     }
                 }
                 ?>
-                 <a href="/contact" class="btn btn-primary btn-sm" style="margin-left: 1rem;">Get Started</a>
+                 <a href="/contact" class="btn btn-primary btn-sm header-cta-btn">Get Started</a>
             </div>
 		</div>
 	</header><!-- #masthead -->

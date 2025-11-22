@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
 /**
@@ -11,7 +12,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function agency_plus_body_classes( $classes ) {
+function hoplytics_body_classes( $classes ) {
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
@@ -24,18 +25,18 @@ function agency_plus_body_classes( $classes ) {
 
 	if( class_exists( 'WooCommerce' ) && is_woocommerce() ){
 		// Add class for global layout on woocommerce pages.
-		$shop_layout 	= agency_plus_get_option( 'shop_layout' );
+		$shop_layout 	= hoplytics_get_option( 'shop_layout' );
 		$classes[] = 'global-layout-' . esc_attr( $shop_layout );
 
 	}else{
 		// Add class for global layout.
-		$global_layout = agency_plus_get_option( 'global_layout' );
+		$global_layout = hoplytics_get_option( 'global_layout' );
 		$classes[] = 'global-layout-' . esc_attr( $global_layout );
 
 	}
 
 	//Add column class in body for woocommerce
-	$product_number = agency_plus_get_option( 'product_number' );
+	$product_number = hoplytics_get_option( 'product_number' );
 
 	if(  2 === $product_number || 3 === $product_number || 4 === $product_number ){
 
@@ -49,22 +50,22 @@ function agency_plus_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'agency_plus_body_classes' );
+add_filter( 'body_class', 'hoplytics_body_classes' );
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
  */
-function agency_plus_pingback_header() {
+function hoplytics_pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		printf( '<link rel="pingback" href="%s">', esc_url( get_bloginfo( 'pingback_url' ) ) );
 	}
 }
-add_action( 'wp_head', 'agency_plus_pingback_header' );
+add_action( 'wp_head', 'hoplytics_pingback_header' );
 
 //=============================================================
 // Function to change default excerpt
 //=============================================================
-if ( ! function_exists( 'agency_plus_implement_excerpt_length' ) ) :
+if ( ! function_exists( 'hoplytics_implement_excerpt_length' ) ) :
 
 	/**
 	 * Implement excerpt length.
@@ -74,9 +75,9 @@ if ( ! function_exists( 'agency_plus_implement_excerpt_length' ) ) :
 	 * @param int $length The number of words.
 	 * @return int Excerpt length.
 	 */
-	function agency_plus_implement_excerpt_length( $length ) {
+	function hoplytics_implement_excerpt_length( $length ) {
 
-		$excerpt_length = agency_plus_get_option( 'excerpt_length' );
+		$excerpt_length = hoplytics_get_option( 'excerpt_length' );
 
 		if ( absint( $excerpt_length ) > 0 ) {
 			$length = absint( $excerpt_length );
@@ -86,7 +87,7 @@ if ( ! function_exists( 'agency_plus_implement_excerpt_length' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'agency_plus_content_more_link' ) ) :
+if ( ! function_exists( 'hoplytics_content_more_link' ) ) :
 
 	/**
 	 * Implement read more in content.
@@ -97,9 +98,9 @@ if ( ! function_exists( 'agency_plus_content_more_link' ) ) :
 	 * @param string $more_link_text Read More text.
 	 * @return string Link.
 	 */
-	function agency_plus_content_more_link( $more_link, $more_link_text ) {
+	function hoplytics_content_more_link( $more_link, $more_link_text ) {
 
-		$read_more_text = agency_plus_get_option( 'readmore_text' );
+		$read_more_text = hoplytics_get_option( 'readmore_text' );
 
 		if ( ! empty( $read_more_text ) ) {
 
@@ -113,7 +114,7 @@ if ( ! function_exists( 'agency_plus_content_more_link' ) ) :
 
 endif;
 
-if ( ! function_exists( 'agency_plus_implement_read_more' ) ) :
+if ( ! function_exists( 'hoplytics_implement_read_more' ) ) :
 
 	/**
 	 * Implement read more in excerpt.
@@ -123,11 +124,11 @@ if ( ! function_exists( 'agency_plus_implement_read_more' ) ) :
 	 * @param string $more The string shown within the more link.
 	 * @return string The excerpt.
 	 */
-	function agency_plus_implement_read_more( $more ) {
+	function hoplytics_implement_read_more( $more ) {
 
 		$output = $more;
 
-		$read_more_text = agency_plus_get_option( 'readmore_text' );
+		$read_more_text = hoplytics_get_option( 'readmore_text' );
 
 		if ( ! empty( $read_more_text ) ) {
 
@@ -140,22 +141,22 @@ if ( ! function_exists( 'agency_plus_implement_read_more' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'agency_plus_hook_read_more_filters' ) ) :
+if ( ! function_exists( 'hoplytics_hook_read_more_filters' ) ) :
 
 	/**
 	 * Hook read more and excerpt length filters.
 	 *
 	 * @since 1.0.0
 	 */
-	function agency_plus_hook_read_more_filters() {
+	function hoplytics_hook_read_more_filters() {
 
-		add_filter( 'excerpt_length', 'agency_plus_implement_excerpt_length', 999 );
-		add_filter( 'the_content_more_link', 'agency_plus_content_more_link', 10, 2 );
-		add_filter( 'excerpt_more', 'agency_plus_implement_read_more' );
+		add_filter( 'excerpt_length', 'hoplytics_implement_excerpt_length', 999 );
+		add_filter( 'the_content_more_link', 'hoplytics_content_more_link', 10, 2 );
+		add_filter( 'excerpt_more', 'hoplytics_implement_read_more' );
 
 	}
 endif;
-add_action( 'wp', 'agency_plus_hook_read_more_filters' );
+add_action( 'wp', 'hoplytics_hook_read_more_filters' );
 
 if ( ! function_exists( 'wp_body_open' ) ) {
     /**
@@ -169,24 +170,24 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 //=============================================================
 // Function to include recommended plugins
 //=============================================================
-function agency_plus_register_required_plugins() {
+function hoplytics_register_required_plugins() {
 
 	$plugins = array(
 
 		array(
-			'name'      => esc_html__( 'Elementor Page Builder', 'agency-plus' ),
+			'name'      => esc_html__( 'Elementor Page Builder', 'hoplytics' ),
 			'slug'      => 'elementor',
 			'required'  => false,
 		),
 
 		array(
-			'name'      => esc_html__( 'Post Grid Elementor Addon', 'agency-plus' ),
+			'name'      => esc_html__( 'Post Grid Elementor Addon', 'hoplytics' ),
 			'slug'      => 'post-grid-elementor-addon',
 			'required'  => false,
 		),
 
 		/*array(
-			'name'      => esc_html__( 'Instagram Feed For Elementor', 'agency-plus' ),
+			'name'      => esc_html__( 'Instagram Feed For Elementor', 'hoplytics' ),
 			'slug'      => 'ifeed-for-elementor',
 			'required'  => false,
 		),*/
@@ -196,4 +197,4 @@ function agency_plus_register_required_plugins() {
 	tgmpa( $plugins );
 }
 
-add_action( 'tgmpa_register', 'agency_plus_register_required_plugins' );
+add_action( 'tgmpa_register', 'hoplytics_register_required_plugins' );

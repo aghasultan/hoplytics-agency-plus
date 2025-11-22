@@ -2,10 +2,10 @@
 /**
  * Core functions.
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
-if ( ! function_exists( 'agency_plus_get_option' ) ) :
+if ( ! function_exists( 'hoplytics_get_option' ) ) :
 
     /**
      * Get theme option.
@@ -15,7 +15,7 @@ if ( ! function_exists( 'agency_plus_get_option' ) ) :
      * @param string $key Option key.
      * @return mixed Option value.
      */
-    function agency_plus_get_option( $key ) {
+    function hoplytics_get_option( $key ) {
 
         if ( empty( $key ) ) {
 
@@ -23,11 +23,11 @@ if ( ! function_exists( 'agency_plus_get_option' ) ) :
 
         }
 
-        $agency_plus_default = agency_plus_get_default_theme_options();
+        $hoplytics_default = hoplytics_get_default_theme_options();
 
-        $default = ( isset( $agency_plus_default[ $key ] ) ) ? $agency_plus_default[ $key ] : '';
-        $theme_options = get_theme_mod( 'theme_options', $agency_plus_default );
-        $theme_options = array_merge( $agency_plus_default, $theme_options );
+        $default = ( isset( $hoplytics_default[ $key ] ) ) ? $hoplytics_default[ $key ] : '';
+        $theme_options = get_theme_mod( 'theme_options', $hoplytics_default );
+        $theme_options = array_merge( $hoplytics_default, $theme_options );
         $value = '';
 
         if ( isset( $theme_options[ $key ] ) ) {
@@ -40,7 +40,7 @@ if ( ! function_exists( 'agency_plus_get_option' ) ) :
 
 endif;
 
-if ( ! function_exists( 'agency_plus_get_default_theme_options' ) ) :
+if ( ! function_exists( 'hoplytics_get_default_theme_options' ) ) :
 
     /**
      * Get default theme options.
@@ -49,20 +49,20 @@ if ( ! function_exists( 'agency_plus_get_default_theme_options' ) ) :
      *
      * @return array Default theme options.
      */
-    function agency_plus_get_default_theme_options() {
+    function hoplytics_get_default_theme_options() {
 
         $defaults = array();
 
         $defaults['site_identity']          = 'title-text';
         $defaults['show_social_icons']      = true;
-        $defaults['nav_button_text']        = esc_html__( 'Contact Now', 'agency-plus' );
+        $defaults['nav_button_text']        = esc_html__( 'Contact Now', 'hoplytics' );
         $defaults['nav_button_link']        = '';
 
         $defaults['global_layout']          = 'right-sidebar';
         $defaults['excerpt_length']         = 40;
-        $defaults['readmore_text']          = esc_html__( 'Read More', 'agency-plus' );
+        $defaults['readmore_text']          = esc_html__( 'Read More', 'hoplytics' );
 
-        $defaults['copyright_text']         = esc_html__( 'Copyright &copy; [the-year] [the-site-title]. All rights reserved.', 'agency-plus' );
+        $defaults['copyright_text']         = esc_html__( 'Copyright &copy; [the-year] [the-site-title]. All rights reserved.', 'hoplytics' );
         $defaults['enable_social_icons']      = true;
         $defaults['enable_goto_top']          = true;
 
@@ -83,7 +83,7 @@ endif;
 //=============================================================
 // Get all options in array
 //=============================================================
-if ( ! function_exists( 'agency_plus_get_options' ) ) :
+if ( ! function_exists( 'hoplytics_get_options' ) ) :
 
     /**
      * Get all theme options in array.
@@ -92,7 +92,7 @@ if ( ! function_exists( 'agency_plus_get_options' ) ) :
      *
      * @return array Theme options.
      */
-    function agency_plus_get_options() {
+    function hoplytics_get_options() {
 
         $value = array();
 

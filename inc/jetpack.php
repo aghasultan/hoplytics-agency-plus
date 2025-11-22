@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 /**
  * Jetpack Compatibility File
  *
  * @link https://jetpack.com/
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
 /**
@@ -14,11 +15,11 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function agency_plus_jetpack_setup() {
+function hoplytics_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
-		'render'    => 'agency_plus_infinite_scroll_render',
+		'render'    => 'hoplytics_infinite_scroll_render',
 		'footer'    => 'page',
 	) );
 
@@ -28,7 +29,7 @@ function agency_plus_jetpack_setup() {
 	// Add theme support for Content Options.
 	add_theme_support( 'jetpack-content-options', array(
 		'post-details'    => array(
-			'stylesheet' => 'agency-plus-style',
+			'stylesheet' => 'hoplytics-style',
 			'date'       => '.posted-on',
 			'categories' => '.cat-links',
 			'tags'       => '.tags-links',
@@ -42,12 +43,12 @@ function agency_plus_jetpack_setup() {
 		),
 	) );
 }
-add_action( 'after_setup_theme', 'agency_plus_jetpack_setup' );
+add_action( 'after_setup_theme', 'hoplytics_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function agency_plus_infinite_scroll_render() {
+function hoplytics_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :

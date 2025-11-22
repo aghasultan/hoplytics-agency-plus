@@ -1,15 +1,15 @@
 /*!
-Theme Name: Agency Plus
-Theme URI: https://ithemer.com/themes/agency-plus/
-Author: WP Concern
-Author URI: https://ithemer.com/
-Description: Agency Plus is a secure, speed optimized and fully customizable multi-purpose WordPress theme.
-Version: 1.0.6
-Requires PHP: 7.2
-Tested up to: 5.5.1
+Theme Name: Hoplytics
+Theme URI: https://hoplytics.com/
+Author: Hoplytics Team
+Author URI: https://hoplytics.com/
+Description: Hoplytics is a high-performance, conversion-focused WordPress theme for digital agencies.
+Version: 2.0.0
+Requires PHP: 7.4
+Tested up to: 6.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: agency-plus
+Text Domain: hoplytics
 */
 
 /* ==========================================================================
@@ -372,7 +372,7 @@ input:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   #Homepage Styles (From front-page.php context)
+   #Homepage Styles
    ========================================================================== */
 /* Hero */
 .hero-section {
@@ -712,4 +712,137 @@ input:focus, textarea:focus {
     margin-bottom: var(--spacing-sm);
     font-size: 0.875rem;
     color: var(--color-text-light);
+}
+
+/* ==========================================================================
+   #Utility Classes (Extracted from Inline Styles)
+   ========================================================================== */
+
+/* Header */
+.header-cta-btn {
+    margin-left: 1rem;
+}
+
+/* Footer Grid & Elements */
+.footer-top-grid {
+    margin-bottom: 3rem;
+    text-align: left;
+}
+.footer-brand-title {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.footer-brand-desc {
+    color: #94a3b8;
+    line-height: 1.6;
+}
+.footer-col-title {
+    color: white;
+    margin-bottom: 1rem;
+}
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-link-item {
+    margin-bottom: 0.5rem;
+}
+.footer-contact-text {
+    color: #94a3b8;
+    margin-bottom: 1rem;
+}
+.footer-email-link {
+    color: white;
+    text-decoration: underline;
+}
+.footer-bottom-flex {
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Front Page - Logos */
+.logos-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+}
+.logos-header {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.logos-container {
+    flex-wrap: wrap;
+    opacity: 0.6;
+    gap: 2rem;
+    justify-content: center;
+}
+.logo-placeholder {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #94a3b8;
+}
+
+/* Front Page - CTA */
+.cta-box {
+    background: var(--color-primary);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: var(--radius-lg);
+}
+.cta-title {
+    color: white;
+    margin-bottom: 1rem;
+}
+.cta-desc {
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Front Page - Blog Grid */
+.blog-header-flex {
+    margin-bottom: 3rem;
+}
+.blog-title {
+    margin-bottom: 0;
+}
+.post-thumb-placeholder {
+    width: 100%;
+    height: 200px;
+    background: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+}
+.post-thumb-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+.post-content-inner {
+    padding: 1.5rem;
+}
+.post-title-link {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* Front Page - Services */
+.services-header {
+    max-width: 600px;
+    margin: 0 auto 4rem auto;
+    text-align: center;
+}
+.service-link {
+    font-weight: 600;
+    font-size: 0.875rem;
 }

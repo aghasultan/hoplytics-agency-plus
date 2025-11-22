@@ -2,7 +2,7 @@
 /**
  * The front page template file
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
 get_header();
@@ -35,16 +35,16 @@ get_header();
 </section>
 
 <!-- Logos / Social Proof -->
-<div class="section" style="padding-top: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--color-border);">
+<div class="section logos-section">
     <div class="container">
-        <p class="text-center" style="color: var(--color-text-light); margin-bottom: 1.5rem; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase;">Trusted by innovative companies</p>
-        <div class="flex items-center justify-between" style="flex-wrap: wrap; opacity: 0.6; gap: 2rem; justify-content: center;">
+        <p class="text-center logos-header">Trusted by innovative companies</p>
+        <div class="flex items-center justify-between logos-container">
             <!-- Generic Company Logos (Placeholders) -->
-            <span style="font-weight: 700; font-size: 1.5rem; color: #94a3b8;">ACME Corp</span>
-            <span style="font-weight: 700; font-size: 1.5rem; color: #94a3b8;">Globex</span>
-            <span style="font-weight: 700; font-size: 1.5rem; color: #94a3b8;">Soylent</span>
-            <span style="font-weight: 700; font-size: 1.5rem; color: #94a3b8;">Initech</span>
-            <span style="font-weight: 700; font-size: 1.5rem; color: #94a3b8;">Umbrella</span>
+            <span class="logo-placeholder">ACME Corp</span>
+            <span class="logo-placeholder">Globex</span>
+            <span class="logo-placeholder">Soylent</span>
+            <span class="logo-placeholder">Initech</span>
+            <span class="logo-placeholder">Umbrella</span>
         </div>
     </div>
 </div>
@@ -52,7 +52,7 @@ get_header();
 <!-- How It Works -->
 <section class="section">
     <div class="container">
-        <div class="text-center" style="max-width: 600px; margin: 0 auto 4rem auto;">
+        <div class="services-header">
             <h2>How We Work</h2>
             <p>Our proven process takes you from chaos to clarity in three simple steps.</p>
         </div>
@@ -97,7 +97,7 @@ get_header();
 <!-- Services -->
 <section id="services" class="section bg-alt">
     <div class="container">
-        <div class="text-center" style="max-width: 600px; margin: 0 auto 4rem auto;">
+        <div class="services-header">
             <h2>Our Services</h2>
             <p>Everything you need to dominate your market.</p>
         </div>
@@ -111,7 +111,7 @@ get_header();
                 </div>
                 <h3>SEO & Content</h3>
                 <p>Rank higher and attract qualified leads with our data-driven SEO and content marketing strategies.</p>
-                <a href="#" style="font-weight: 600; font-size: 0.875rem;">Learn more &rarr;</a>
+                <a href="#" class="service-link">Learn more &rarr;</a>
             </div>
 
             <div class="card">
@@ -122,7 +122,7 @@ get_header();
                 </div>
                 <h3>PPC & Paid Social</h3>
                 <p>Maximize your ad spend with targeted campaigns on Google, LinkedIn, and Facebook.</p>
-                <a href="#" style="font-weight: 600; font-size: 0.875rem;">Learn more &rarr;</a>
+                <a href="#" class="service-link">Learn more &rarr;</a>
             </div>
 
             <div class="card">
@@ -133,7 +133,7 @@ get_header();
                 </div>
                 <h3>Web Design & Dev</h3>
                 <p>Custom WordPress websites designed for speed, conversion, and long-term maintainability.</p>
-                <a href="#" style="font-weight: 600; font-size: 0.875rem;">Learn more &rarr;</a>
+                <a href="#" class="service-link">Learn more &rarr;</a>
             </div>
         </div>
     </div>
@@ -142,9 +142,9 @@ get_header();
 <!-- CTA Section -->
 <section class="section text-center">
     <div class="container">
-        <div style="background: var(--color-primary); color: white; padding: 4rem 2rem; border-radius: var(--radius-lg);">
-            <h2 style="color: white; margin-bottom: 1rem;">Ready to Scale Your Agency?</h2>
-            <p style="color: #cbd5e1; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Stop guessing and start growing. Schedule your free discovery call today and see how we can help.</p>
+        <div class="cta-box">
+            <h2 class="cta-title">Ready to Scale Your Agency?</h2>
+            <p class="cta-desc">Stop guessing and start growing. Schedule your free discovery call today and see how we can help.</p>
             <a href="/contact" class="btn btn-accent">Book Your Call Now</a>
         </div>
     </div>
@@ -153,8 +153,8 @@ get_header();
 <!-- Blog Preview -->
 <section class="section bg-alt">
     <div class="container">
-        <div class="flex items-center justify-between" style="margin-bottom: 3rem;">
-            <h2 style="margin-bottom: 0;">Latest Insights</h2>
+        <div class="flex items-center justify-between blog-header-flex">
+            <h2 class="blog-title">Latest Insights</h2>
             <a href="/blog" class="btn btn-secondary">View All Posts</a>
         </div>
 
@@ -173,15 +173,15 @@ get_header();
             <div class="card" style="padding: 0; overflow: hidden;">
                 <?php if (has_post_thumbnail()) : ?>
                     <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('medium_large', array('style' => 'width: 100%; height: 200px; object-fit: cover; display: block;')); ?>
+                        <?php the_post_thumbnail('medium_large', array('class' => 'post-thumb-img')); ?>
                     </a>
                 <?php else : ?>
-                    <div style="width: 100%; height: 200px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; color: #94a3b8;">No Image</div>
+                    <div class="post-thumb-placeholder">No Image</div>
                 <?php endif; ?>
 
-                <div style="padding: 1.5rem;">
+                <div class="post-content-inner">
                     <div class="post-meta"><?php echo get_the_date(); ?></div>
-                    <h3><a href="<?php the_permalink(); ?>" style="color: var(--color-primary); text-decoration: none;"><?php the_title(); ?></a></h3>
+                    <h3><a href="<?php the_permalink(); ?>" class="post-title-link"><?php the_title(); ?></a></h3>
                     <p><?php echo wp_trim_words(get_the_excerpt(), 15); ?></p>
                     <a href="<?php the_permalink(); ?>" style="font-weight: 600; font-size: 0.875rem;">Read more &rarr;</a>
                 </div>

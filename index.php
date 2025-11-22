@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
 get_header();
@@ -17,7 +17,7 @@ get_header();
                 <?php if ( is_home() && ! is_front_page() ) : ?>
                     <h1 class="page-title"><?php single_post_title(); ?></h1>
                 <?php else : ?>
-                    <h1 class="page-title"><?php esc_html_e( 'Latest Insights', 'agency-plus' ); ?></h1>
+                    <h1 class="page-title"><?php esc_html_e( 'Latest Insights', 'hoplytics' ); ?></h1>
                 <?php endif; ?>
                 <p class="page-subtitle">Thoughts on digital marketing, SEO, and growth.</p>
             </header>
