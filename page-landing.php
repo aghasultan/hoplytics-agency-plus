@@ -23,7 +23,9 @@
 <div id="page" class="site">
     <!-- Simplified Header -->
     <header class="landing-header container">
-        <?php if ( has_custom_logo() ) { the_custom_logo(); } else { echo '<h1 class="site-title">'. get_bloginfo( 'name' ) .'</h1>'; } ?>
+        <a class="site-logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+            <img src="<?php echo esc_url( hoplytics_get_local_logo_url() ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="custom-logo" width="180">
+        </a>
     </header>
 
     <main id="primary" class="site-main">

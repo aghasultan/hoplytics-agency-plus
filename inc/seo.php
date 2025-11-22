@@ -22,7 +22,7 @@ function hoplytics_json_ld() {
             '@type'    => 'Organization',
             'name'     => get_bloginfo( 'name' ),
             'url'      => home_url(),
-            'logo'     => get_theme_mod( 'custom_logo' ) ? wp_get_attachment_url( get_theme_mod( 'custom_logo' ) ) : '',
+            'logo'     => hoplytics_get_local_logo_url(),
             'description' => get_bloginfo( 'description' ),
             'contactPoint' => array(
                 '@type' => 'ContactPoint',
@@ -38,7 +38,7 @@ function hoplytics_json_ld() {
             '@context' => 'https://schema.org',
             '@type'    => 'LocalBusiness',
             'name'     => get_bloginfo( 'name' ),
-            'image'    => get_theme_mod( 'custom_logo' ) ? wp_get_attachment_url( get_theme_mod( 'custom_logo' ) ) : '',
+            'image'    => hoplytics_get_local_logo_url(),
             '@id'      => home_url() . '#localbusiness',
             'url'      => home_url(),
             'telephone' => '+1-555-123-4567',
@@ -91,7 +91,7 @@ function hoplytics_json_ld() {
                 'name'  => get_bloginfo( 'name' ),
                 'logo'  => array(
                     '@type' => 'ImageObject',
-                    'url'   => get_theme_mod( 'custom_logo' ) ? wp_get_attachment_url( get_theme_mod( 'custom_logo' ) ) : ''
+                    'url'   => hoplytics_get_local_logo_url()
                 )
             ),
             'datePublished' => get_the_date( 'c' ),
@@ -116,7 +116,7 @@ function hoplytics_json_ld() {
                 '@type' => 'Organization',
                 'name'  => get_bloginfo( 'name' ),
                 'sameAs' => home_url(),
-                'logo'  => get_theme_mod( 'custom_logo' ) ? wp_get_attachment_url( get_theme_mod( 'custom_logo' ) ) : ''
+                'logo'  => hoplytics_get_local_logo_url()
             ),
             'jobLocation' => array(
                 '@type' => 'Place',

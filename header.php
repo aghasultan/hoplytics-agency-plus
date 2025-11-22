@@ -25,15 +25,9 @@ defined( 'ABSPATH' ) || exit;
         <header id="masthead" class="site-header" role="banner">
             <div class="container header-inner">
                 <div class="site-branding">
-                    <?php
-                    if ( has_custom_logo() ) {
-                        the_custom_logo();
-                    } else {
-                        ?>
-                        <a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-                        <?php
-                    }
-                    ?>
+                    <a class="site-logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                        <img src="<?php echo esc_url( hoplytics_get_local_logo_url() ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="custom-logo" width="180" height="50">
+                    </a>
                 </div><!-- .site-branding -->
 
                 <nav id="site-navigation" class="main-navigation" aria-label="Primary">

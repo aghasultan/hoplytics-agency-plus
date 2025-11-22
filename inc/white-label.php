@@ -15,13 +15,12 @@ defined( 'ABSPATH' ) || exit;
 function hoplytics_login_logo() { ?>
     <style type="text/css">
         #login h1 a, .login h1 a {
-            background-image: none;
-            content: 'Hoplytics';
-            font-weight: bold;
-            font-size: 24px;
-            width: auto;
-            text-indent: 0;
-            color: #0f172a;
+            background-image: url(<?php echo esc_url( hoplytics_get_local_logo_url() ); ?>);
+            height: 80px;
+            width: 300px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            padding-bottom: 30px;
         }
     </style>
 <?php }
