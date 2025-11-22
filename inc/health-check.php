@@ -1,22 +1,23 @@
 <?php
+declare(strict_types=1);
 /**
  * Theme Health Check
  *
  * Adds a dashboard widget to check the theme's status and configuration.
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
-function agency_plus_add_dashboard_widgets() {
+function hoplytics_add_dashboard_widgets() {
 	wp_add_dashboard_widget(
-		'agency_plus_health_check',
-		esc_html__( 'Theme Health Check', 'agency-plus' ),
-		'agency_plus_dashboard_widget_render'
+		'hoplytics_health_check',
+		esc_html__( 'Theme Health Check', 'hoplytics' ),
+		'hoplytics_dashboard_widget_render'
 	);
 }
-add_action( 'wp_dashboard_setup', 'agency_plus_add_dashboard_widgets' );
+add_action( 'wp_dashboard_setup', 'hoplytics_add_dashboard_widgets' );
 
-function agency_plus_dashboard_widget_render() {
+function hoplytics_dashboard_widget_render() {
 	$checks = array();
 
     // Check 1: PHP Version
@@ -64,5 +65,5 @@ function agency_plus_dashboard_widget_render() {
 	}
 	echo '</ul>';
 
-    echo '<p><small>Running Agency Plus v' . esc_html( wp_get_theme()->get( 'Version' ) ) . '</small></p>';
+    echo '<p><small>Running Hoplytics v' . esc_html( wp_get_theme()->get( 'Version' ) ) . '</small></p>';
 }

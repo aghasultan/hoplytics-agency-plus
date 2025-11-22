@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
 ?>
@@ -17,7 +17,7 @@
 			<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
 		</header><!-- .entry-header -->
 
-		<?php agency_plus_post_thumbnail(); ?>
+		<?php hoplytics_post_thumbnail(); ?>
 		
 	<?php } ?>
 
@@ -26,7 +26,7 @@
 		the_content();
 
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'agency-plus' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'hoplytics' ),
 			'after'  => '</div>',
 		) );
 		?>
@@ -39,7 +39,7 @@
 				sprintf(
 					wp_kses(
 						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Edit <span class="screen-reader-text">%s</span>', 'agency-plus' ),
+						__( 'Edit <span class="screen-reader-text">%s</span>', 'hoplytics' ),
 						array(
 							'span' => array(
 								'class' => array(),

@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
 get_header();

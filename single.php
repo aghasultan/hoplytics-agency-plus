@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
 get_header();
@@ -44,7 +44,7 @@ get_header();
                                 the_content();
 
                                 wp_link_pages( array(
-                                    'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'agency-plus' ),
+                                    'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'hoplytics' ),
                                     'after'  => '</div>',
                                 ) );
                                 ?>

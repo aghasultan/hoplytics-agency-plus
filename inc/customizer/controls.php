@@ -2,7 +2,7 @@
 /**
  * Controls
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
 /**
@@ -11,7 +11,7 @@
  * @since  1.0.0
  * @access public
  */
-class Agency_Plus_Customize_Section_Upsell extends WP_Customize_Section {
+class Hoplytics_Customize_Section_Upsell extends WP_Customize_Section {
 
 	/**
 	 * The type of customize section being rendered.

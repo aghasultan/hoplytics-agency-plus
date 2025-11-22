@@ -1,44 +1,36 @@
 <?php
+declare(strict_types=1);
 /**
- * Agency Plus functions and definitions
+ * Hoplytics functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Agency_Plus
+ * @package Hoplytics
  */
 
-if ( ! function_exists( 'agency_plus_setup' ) ) :
+if ( ! function_exists( 'hoplytics_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
-	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
 	 */
-	function agency_plus_setup() {
+	function hoplytics_setup() {
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
 
 		/*
 		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
 		 */
 		add_theme_support( 'title-tag' );
 
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'agency-plus' ),
-			'social' => esc_html__( 'Social', 'agency-plus' ),
+			'menu-1' => esc_html__( 'Primary', 'hoplytics' ),
+			'social' => esc_html__( 'Social', 'hoplytics' ),
 		) );
 
 		/*
@@ -54,7 +46,7 @@ if ( ! function_exists( 'agency_plus_setup' ) ) :
 		) );
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'agency_plus_custom_background_args', array(
+		add_theme_support( 'custom-background', apply_filters( 'hoplytics_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
@@ -73,8 +65,6 @@ if ( ! function_exists( 'agency_plus_setup' ) ) :
 
 		/**
 		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
 		add_theme_support( 'custom-logo', array(
 			'height'      => 250,
@@ -88,41 +78,34 @@ if ( ! function_exists( 'agency_plus_setup' ) ) :
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
 
-		$gallery_zoom = agency_plus_get_option( 'enable_gallery_zoom' );
+		$gallery_zoom = hoplytics_get_option( 'enable_gallery_zoom' );
 
 		if ( 1 == $gallery_zoom ) {
 			add_theme_support( 'wc-product-gallery-zoom' );
 		}
 	}
 endif;
-add_action( 'after_setup_theme', 'agency_plus_setup' );
+add_action( 'after_setup_theme', 'hoplytics_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
- * Priority 0 to make it available to lower priority callbacks.
- *
  * @global int $content_width
  */
-function agency_plus_content_width() {
-	// This variable is intended to be overruled from themes.
-	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'agency_plus_content_width', 800 );
+function hoplytics_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'hoplytics_content_width', 800 );
 }
 
-add_action( 'after_setup_theme', 'agency_plus_content_width', 0 );
+add_action( 'after_setup_theme', 'hoplytics_content_width', 0 );
 
 /**
  * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function agency_plus_widgets_init() {
+function hoplytics_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'agency-plus' ),
+		'name'          => esc_html__( 'Sidebar', 'hoplytics' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'agency-plus' ),
+		'description'   => esc_html__( 'Add widgets here.', 'hoplytics' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -132,7 +115,7 @@ function agency_plus_widgets_init() {
 	for ( $i = 1; $i <= 4; $i ++ ) {
 		register_sidebar( array(
 			/* translators: 1: Widget number. */
-			'name'          => sprintf( esc_html__( 'Footer %d', 'agency-plus' ), $i ),
+			'name'          => sprintf( esc_html__( 'Footer %d', 'hoplytics' ), $i ),
 			'id'            => 'footer-' . $i,
 			'before_widget' => '<div id="%1$s" class="widget footer-widgets %2$s">',
 			'after_widget'  => '</div>',
@@ -142,47 +125,47 @@ function agency_plus_widgets_init() {
 	}
 }
 
-add_action( 'widgets_init', 'agency_plus_widgets_init' );
+add_action( 'widgets_init', 'hoplytics_widgets_init' );
 
 
 /**
  * Enqueue scripts and styles.
  */
-function agency_plus_scripts() {
+function hoplytics_scripts() {
 
 	// Fonts: Inter (Google Fonts)
-	wp_enqueue_style( 'agency-plus-fonts-inter', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap', array(), null );
+	wp_enqueue_style( 'hoplytics-fonts-inter', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap', array(), null );
 
 	// Main Stylesheet
-	wp_enqueue_style( 'agency-plus-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'hoplytics-style', get_stylesheet_uri() );
 
     // Dark Mode Styles
-    wp_enqueue_style( 'agency-plus-dark-mode', get_template_directory_uri() . '/assets/css/dark-mode.css', array(), '1.0.0' );
+    wp_enqueue_style( 'hoplytics-dark-mode', get_template_directory_uri() . '/assets/css/dark-mode.css', array(), '1.0.0' );
 
 	// Main JS (handles mobile menu)
-	wp_enqueue_script( 'agency-plus-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'hoplytics-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true );
 
 	// Three.js (CDN)
     wp_enqueue_script( 'three-js', 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', array(), '0.128.0', true );
 
     // Immersive Scripts
-    wp_enqueue_script( 'agency-plus-three-hero', get_template_directory_uri() . '/assets/js/three-hero.js', array('three-js'), '1.0.0', true );
-    wp_enqueue_script( 'agency-plus-cursor', get_template_directory_uri() . '/assets/js/cursor.js', array(), '1.0.0', true );
-    wp_enqueue_script( 'agency-plus-scroll-effects', get_template_directory_uri() . '/assets/js/scroll-effects.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'hoplytics-three-hero', get_template_directory_uri() . '/assets/js/three-hero.js', array('three-js'), '1.0.0', true );
+    wp_enqueue_script( 'hoplytics-cursor', get_template_directory_uri() . '/assets/js/cursor.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'hoplytics-scroll-effects', get_template_directory_uri() . '/assets/js/scroll-effects.js', array(), '1.0.0', true );
 
     // Dynamic Features
-    wp_enqueue_script( 'agency-plus-dynamic-mode', get_template_directory_uri() . '/assets/js/dynamic-mode.js', array(), '1.0.0', true );
-    wp_enqueue_script( 'agency-plus-instant-load', get_template_directory_uri() . '/assets/js/instant-load.js', array(), '1.0.0', true );
-    wp_enqueue_script( 'agency-plus-dev-tools', get_template_directory_uri() . '/assets/js/dev-tools.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'hoplytics-dynamic-mode', get_template_directory_uri() . '/assets/js/dynamic-mode.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'hoplytics-instant-load', get_template_directory_uri() . '/assets/js/instant-load.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'hoplytics-dev-tools', get_template_directory_uri() . '/assets/js/dev-tools.js', array(), '1.0.0', true );
 
 	// Keep Skip Link Focus Fix for accessibility
-	wp_enqueue_script( 'agency-plus-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'hoplytics-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'agency_plus_scripts' );
+add_action( 'wp_enqueue_scripts', 'hoplytics_scripts' );
 
 /**
  * Custom template tags for this theme.
