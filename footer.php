@@ -70,5 +70,19 @@
 
 <?php wp_footer(); ?>
 
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('<?php echo esc_url( get_template_directory_uri() . '/service-worker.js' ); ?>')
+        .then(registration => {
+          console.log('SW registered: ', registration);
+        })
+        .catch(registrationError => {
+          console.log('SW registration failed: ', registrationError);
+        });
+    });
+  }
+</script>
+
 </body>
 </html>
