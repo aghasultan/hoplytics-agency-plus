@@ -9,9 +9,9 @@
 }
 
 .hero-card {
-    background: rgba(255, 255, 255, 0.03); /* Ultra subtle */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(20, 20, 30, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-lg);
     padding: 2rem;
@@ -49,7 +49,7 @@
     display: block;
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--color-text-muted);
+    color: #e2e8f0;
     margin-bottom: 0.25rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -121,4 +121,9 @@
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Form Input Placeholder */
+.hero-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }

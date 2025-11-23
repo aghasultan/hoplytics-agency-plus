@@ -398,3 +398,31 @@ body.nav-open {
 .roi-results canvas {
     max-height: 320px;
 }
+
+/* Comparison Table Icons */
+.comparison-icon {
+    width: 28px;
+    height: 28px;
+    display: block;
+    margin: 0 auto 0.5rem auto;
+}
+
+/* ROI Calculator Visuals */
+.roi-results canvas {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Service Placeholder */
+.service-placeholder {
+    border: 2px dashed var(--color-border);
+    background: transparent;
+    color: var(--color-text-muted);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+}
