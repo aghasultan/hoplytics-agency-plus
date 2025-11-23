@@ -12,10 +12,24 @@ defined( 'ABSPATH' ) || exit;
         <div class="container">
             <div class="grid grid-4">
                 <div class="footer-brand">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo-link">
-                        <img src="<?php echo esc_url( hoplytics_get_local_logo_url() ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="footer-logo" width="150" style="margin-bottom: 1rem;">
-                    </a>
-                    <p class="text-sm text-muted"><?php bloginfo( 'description' ); ?></p>
+                    <?php
+                    if ( has_custom_logo() ) {
+                        $custom_logo_id = get_theme_mod( 'custom_logo' );
+                        $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                        if ( is_array( $logo ) ) {
+                            echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="footer-logo-link">';
+                            echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" class="footer-logo" width="150" style="margin-bottom: 1rem;">';
+                            echo '</a>';
+                        }
+                    } else {
+                        ?>
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo-link">
+                            <img src="<?php echo esc_url( hoplytics_get_logo_url() ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="footer-logo" width="150" style="margin-bottom: 1rem;">
+                        </a>
+                        <?php
+                    }
+                    ?>
+                    <p class="text-sm text-muted"><?php echo esc_html( get_theme_mod('footer_tagline', get_bloginfo( 'description' )) ); ?></p>
                 </div>
 
                 <div class="footer-links">
@@ -27,6 +41,7 @@ defined( 'ABSPATH' ) || exit;
                             'menu_id'        => 'footer-menu',
                             'container'      => false,
                             'depth'          => 1,
+                            'fallback_cb'    => false,
                         )
                     );
                     ?>
@@ -34,18 +49,38 @@ defined( 'ABSPATH' ) || exit;
 
                 <div class="footer-services">
                     <h4><?php esc_html_e('Services', 'hoplytics'); ?></h4>
-                    <ul>
-                        <!-- Dynamic list of services could go here -->
-                        <li><a href="<?php echo esc_url( home_url( '/services/seo' ) ); ?>"><?php esc_html_e( 'SEO & Content', 'hoplytics' ); ?></a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/services/paid-media' ) ); ?>"><?php esc_html_e( 'Paid Media', 'hoplytics' ); ?></a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/services/cro' ) ); ?>"><?php esc_html_e( 'CRO & Analytics', 'hoplytics' ); ?></a></li>
-                    </ul>
+                    <?php
+                    if ( has_nav_menu( 'footer-services' ) ) {
+                        wp_nav_menu(
+                            array(
+                                'theme_location' => 'footer-services',
+                                'menu_id'        => 'footer-services-menu',
+                                'container'      => false,
+                                'depth'          => 1,
+                                'fallback_cb'    => false,
+                            )
+                        );
+                    } else {
+                         // Default static fallback until they set a menu
+                        ?>
+                        <ul>
+                            <li><a href="#"><?php esc_html_e( 'SEO & Content', 'hoplytics' ); ?></a></li>
+                            <li><a href="#"><?php esc_html_e( 'Paid Media', 'hoplytics' ); ?></a></li>
+                            <li><a href="#"><?php esc_html_e( 'CRO & Analytics', 'hoplytics' ); ?></a></li>
+                        </ul>
+                        <?php
+                    }
+                    ?>
                 </div>
 
                 <div class="footer-contact">
                     <h4><?php esc_html_e('Contact', 'hoplytics'); ?></h4>
-                    <p><?php echo esc_html( 'hello@hoplytics.com' ); ?></p>
-                    <p><?php echo esc_html( '+1 (555) 123-4567' ); ?></p>
+                    <?php
+                    $email = get_theme_mod('footer_contact_email', 'hello@hoplytics.com');
+                    $phone = get_theme_mod('footer_contact_phone', '+1 (555) 123-4567');
+                    ?>
+                    <?php if($email): ?><p><a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html( $email ); ?></a></p><?php endif; ?>
+                    <?php if($phone): ?><p><a href="tel:<?php echo esc_attr($phone); ?>"><?php echo esc_html( $phone ); ?></a></p><?php endif; ?>
                 </div>
             </div>
 
