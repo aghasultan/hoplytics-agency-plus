@@ -1,61 +1,85 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const btn = document.getElementById('roi-calculate-btn');
-    if (!btn) return;
-
-    const ctx = document.getElementById('roiChart').getContext('2d');
+    const budgetInput = document.getElementById('roi-budget');
+    const cpcInput = document.getElementById('roi-cpc');
+    const conversionInput = document.getElementById('roi-conversion');
+    const aovInput = document.getElementById('roi-aov');
+    const revenueOutput = document.getElementById('roi-revenue');
+    const roasOutput = document.getElementById('roi-roas');
+    const resultsContainer = document.getElementById('roi-text-results');
+    const chartCanvas = document.getElementById('roiChart');
     let roiChart = null;
 
-    btn.addEventListener('click', function() {
-        const budget = parseFloat(document.getElementById('roi-budget').value) || 0;
-        const cpc = parseFloat(document.getElementById('roi-cpc').value) || 0;
-        const conversion = parseFloat(document.getElementById('roi-conversion').value) || 0;
-        const aov = parseFloat(document.getElementById('roi-aov').value) || 0;
+    function calculateROI() {
+        const budget = parseFloat(budgetInput.value) || 0;
+        const cpc = parseFloat(cpcInput.value) || 0;
+        const conversion = parseFloat(conversionInput.value) || 0;
+        const aov = parseFloat(aovInput.value) || 0;
 
-        if (cpc === 0) return;
+        if (cpc <= 0) {
+            revenueOutput.innerText = '$0';
+            roasOutput.innerText = '0x';
+            return;
+        }
 
-        const traffic = budget / cpc;
-        const leads = traffic * (conversion / 100);
-        const revenue = leads * aov;
-        const roas = revenue / budget;
+        const clicks = budget / cpc;
+        const conversions = clicks * (conversion / 100);
+        const revenue = conversions * aov;
+        const roas = budget > 0 ? revenue / budget : 0;
 
-        // Update Text
-        document.getElementById('roi-revenue').textContent = '$' + revenue.toLocaleString(undefined, {maximumFractionDigits: 0});
-        document.getElementById('roi-roas').textContent = roas.toFixed(2) + 'x';
-        document.getElementById('roi-text-results').style.display = 'block';
+        revenueOutput.innerText = '$' + revenue.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
+        roasOutput.innerText = roas.toFixed(2) + 'x';
+        resultsContainer.style.display = 'block';
 
-        // Render Chart
-        if (roiChart) roiChart.destroy();
+        updateChart(budget, revenue);
+    }
 
-        roiChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Spend', 'Revenue'],
-                datasets: [{
-                    label: 'ROI Projection',
-                    data: [budget, revenue],
-                    backgroundColor: [
-                        'rgba(203, 213, 225, 0.8)', // Slate 300
-                        'rgba(16, 185, 129, 0.8)'   // Emerald 500
-                    ],
-                    borderColor: [
-                        'rgba(203, 213, 225, 1)',
-                        'rgba(16, 185, 129, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { display: false }
+    function updateChart(cost, revenue) {
+        if (typeof Chart === 'undefined') return;
+
+        if (roiChart) {
+            roiChart.data.datasets[0].data = [cost, revenue];
+            roiChart.update();
+        } else {
+            const ctx = chartCanvas.getContext('2d');
+            roiChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Cost', 'Revenue'],
+                    datasets: [{
+                        label: 'Amount ($)',
+                        data: [cost, revenue],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
                 },
-                scales: {
-                    y: { beginAtZero: true }
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
-            }
-        });
+            });
+        }
+    }
 
-        // Simulate "Gating" logic - show email form after calculation
-        // setTimeout(() => { document.getElementById('roi-gate').style.display = 'block'; }, 2000);
+    const inputs = [budgetInput, cpcInput, conversionInput, aovInput];
+    inputs.forEach(input => {
+        if (input) {
+            input.addEventListener('input', calculateROI);
+        }
     });
+
+    // Initial calculation
+    if (budgetInput) {
+        calculateROI();
+    }
 });

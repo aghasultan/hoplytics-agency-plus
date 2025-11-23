@@ -96,7 +96,7 @@ function hoplytics_register_taxonomies() {
 
     // Industry (Projects)
     register_taxonomy( 'industry', 'project', array(
-        'labels' => array( 'name' => __( 'Industries', 'hoplytics' ) ),
+        'labels' => array( 'name' => __( 'Project Industries', 'hoplytics' ) ),
         'hierarchical' => true,
         'show_in_rest' => true,
     ));
@@ -192,3 +192,13 @@ function hoplytics_save_meta( $post_id ) {
     }
 }
 add_action( 'save_post', 'hoplytics_save_meta' );
+
+/**
+ * Exclude CPTs from Main Blog Query
+ */
+function hoplytics_exclude_cpts_from_blog( $query ) {
+    if ( ! is_admin() && $query->is_home() && $query->is_main_query() ) {
+        $query->set( 'post_type', 'post' );
+    }
+}
+add_action( 'pre_get_posts', 'hoplytics_exclude_cpts_from_blog' );

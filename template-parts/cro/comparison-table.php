@@ -16,23 +16,47 @@ defined( 'ABSPATH' ) || exit;
                 <tbody>
                     <tr class="border-b">
                         <td class="p-4"><strong>Focus</strong></td>
-                        <td class="text-center p-4">Revenue & ROI</td>
-                        <td class="text-center p-4">Traffic & Likes</td>
+                        <td class="text-center p-4">
+                            <svg class="w-6 h-6 text-green-500 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Revenue & ROI
+                        </td>
+                        <td class="text-center p-4">
+                            <svg class="w-6 h-6 text-red-500 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            Traffic & Likes
+                        </td>
                     </tr>
                     <tr class="border-b">
                         <td class="p-4"><strong>Reporting</strong></td>
-                        <td class="text-center p-4">Live Dashboards</td>
-                        <td class="text-center p-4">Monthly PDFs</td>
+                        <td class="text-center p-4">
+                            <svg class="w-6 h-6 text-green-500 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Live Dashboards
+                        </td>
+                        <td class="text-center p-4">
+                             <svg class="w-6 h-6 text-red-500 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            Monthly PDFs
+                        </td>
                     </tr>
                     <tr class="border-b">
                         <td class="p-4"><strong>Speed</strong></td>
-                        <td class="text-center p-4">90+ PageSpeed</td>
-                        <td class="text-center p-4">Slow Wordpress</td>
+                        <td class="text-center p-4">
+                            <svg class="w-6 h-6 text-green-500 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            90+ PageSpeed
+                        </td>
+                        <td class="text-center p-4">
+                            <svg class="w-6 h-6 text-red-500 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            Slow Wordpress
+                        </td>
                     </tr>
                     <tr>
                         <td class="p-4"><strong>Contract</strong></td>
-                        <td class="text-center p-4">Month-to-Month</td>
-                        <td class="text-center p-4">12 Month Lock-in</td>
+                        <td class="text-center p-4">
+                            <svg class="w-6 h-6 text-green-500 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Month-to-Month
+                        </td>
+                        <td class="text-center p-4">
+                            <svg class="w-6 h-6 text-red-500 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            12 Month Lock-in
+                        </td>
                     </tr>
                 </tbody>
             </table>

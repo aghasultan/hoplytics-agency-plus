@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoplytics Frontend Verification</title>
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/hero-form.css">
+    <!-- Mock Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            /* Simulate body class */
+        }
+        /* Wrapper to simulate body class */
+        .style-kit-tech-futurist {
+            min-height: 100vh;
+            background-color: var(--color-bg); /* Should be gradient */
+        }
+
+        /* Inline device styles as they are in functions.php */
+        .device-frame {
+            position: relative;
+            margin: 2rem auto;
+            box-sizing: border-box;
+        }
+
+        /* Laptop Styles */
+        .device-laptop {
+            max-width: 800px;
+        }
+        .device-laptop .device-bezel {
+            background: #1f2937;
+            padding: 3%; /* Bezel width */
+            border-radius: 12px 12px 0 0;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .device-laptop .device-screen {
+            background: #000;
+            overflow: hidden;
+            position: relative;
+        }
+        .device-laptop .device-base {
+            background: #374151;
+            height: 20px;
+            width: 120%;
+            margin-left: -10%;
+            border-radius: 0 0 12px 12px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .device-laptop .device-base::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15%;
+            height: 6px;
+            background: #4b5563;
+            border-radius: 0 0 6px 6px;
+        }
+
+        /* Mobile Styles */
+        .device-mobile {
+            max-width: 300px;
+        }
+        .device-mobile .device-bezel {
+            background: #1f2937;
+            padding: 12px;
+            border-radius: 36px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 4px solid #374151;
+        }
+        .device-mobile .device-screen {
+            background: #000;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .device-screen-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Styles from front-page.php */
+        .hero-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: rgba(59, 130, 246, 0.1); /* Placeholder for container */
+        }
+        /* Ensure relative positioning for hero content to sit on top of bg-container */
+        .hero-content {
+            position: relative;
+        }
+
+        .site-main {
+            padding-top: 80px; /* header height */
+        }
+    </style>
+</head>
+<body class="style-kit-tech-futurist">
+
+    <main id="primary" class="site-main">
+
+        <!-- Hero Section -->
+        <section class="hero-section section">
+            <div class="container">
+                <div class="grid grid-2 items-center">
+                    <div class="hero-content">
+                        <div class="hero-bg-container"></div>
+                        <h1>Turn Your Traffic Into Revenue</h1>
+                        <p class="text-lg text-muted">We are the growth agency that focuses on what matters: ROI, ROAS, and Bottom Line.</p>
+                    </div>
+                    <div class="hero-visual">
+                        <!-- Hero Lead Form Component -->
+                        <div class="hero-lead-form-wrapper">
+                            <div class="hero-card">
+                                <div class="hero-card-header">
+                                    <h3 class="hero-card-title">Get Your Free Growth Plan</h3>
+                                    <p class="hero-card-subtitle">See exactly how we can scale your revenue.</p>
+                                </div>
+
+                                <form action="#" method="post" class="hero-form multi-step-form">
+                                    <!-- Step 1 -->
+                                    <div class="form-step" id="step-1">
+                                        <div class="form-group">
+                                            <label for="hero-website">Website URL</label>
+                                            <input type="url" id="hero-website" name="website" placeholder="https://company.com" required>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-block btn-glow next-step" onclick="document.getElementById('step-1').style.display='none'; document.getElementById('step-2').style.display='block';">
+                                            Next
+                                        </button>
+                                    </div>
+
+                                    <!-- Step 2 -->
+                                    <div class="form-step" id="step-2" style="display:none;">
+                                        <div class="form-group">
+                                            <label for="hero-name">Full Name</label>
+                                            <input type="text" id="hero-name" name="name" placeholder="John Doe" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="hero-email">Work Email</label>
+                                            <input type="email" id="hero-email" name="email" placeholder="john@company.com" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="hero-service">I need help with...</label>
+                                            <select id="hero-service" name="service">
+                                                <option value="paid_ads">Paid Advertising (PPC/Social)</option>
+                                                <option value="seo">SEO & Organic Growth</option>
+                                                <option value="content">Content Marketing</option>
+                                                <option value="cro">Conversion Optimization</option>
+                                                <option value="full_stack">Full Stack Growth</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block btn-glow">
+                                            Get My Free Plan
+                                        </button>
+                                        <button type="button" class="btn btn-link btn-block btn-sm text-muted" onclick="document.getElementById('step-2').style.display='none'; document.getElementById('step-1').style.display='block';">
+                                            Back
+                                        </button>
+                                    </div>
+
+                                    <div class="form-footer">
+                                        No credit card required. 100% free audit.
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <div class="comparison-table-wrapper section">
+            <div class="container">
+                <h2 class="text-center mb-8">Us vs. Traditional Agencies</h2>
+                <div class="card overflow-hidden p-0">
+                    <table class="w-100" style="width: 100%; border-collapse: collapse;">
+                        <thead class="bg-alt">
+                            <tr>
+                                <th class="text-left p-4">Feature</th>
+                                <th class="text-center p-4 text-primary">Hoplytics</th>
+                                <th class="text-center p-4 text-muted">Others</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="p-4"><strong>Focus</strong></td>
+                                <td class="text-center p-4">
+                                    <svg class="w-6 h-6 text-green-500 inline-block mr-1" fill="none" stroke="green" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:1.5rem;height:1.5rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                                    Revenue & ROI
+                                </td>
+                                <td class="text-center p-4">
+                                    <svg class="w-6 h-6 text-red-500 inline-block mr-1" fill="none" stroke="red" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:1.5rem;height:1.5rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                    Traffic & Likes
+                                </td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-4"><strong>Reporting</strong></td>
+                                <td class="text-center p-4">
+                                    <svg class="w-6 h-6 text-green-500 inline-block mr-1" fill="none" stroke="green" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:1.5rem;height:1.5rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                                    Live Dashboards
+                                </td>
+                                <td class="text-center p-4">
+                                    <svg class="w-6 h-6 text-red-500 inline-block mr-1" fill="none" stroke="red" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:1.5rem;height:1.5rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                    Monthly PDFs
+                                </td>
+                            </tr>
+                            <!-- Truncated for brevity, testing concept -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROI Calculator -->
+        <section id="roi-calc" class="section bg-alt">
+            <div class="container">
+                <h2 class="text-center mb-8">Calculate Your Potential</h2>
+                <div class="roi-calculator-wrapper card">
+                    <h3 class="text-center">Marketing ROI Calculator</h3>
+                    <div class="roi-grid grid-2">
+                        <div class="roi-inputs">
+                            <div class="form-group">
+                                <label for="roi-budget">Monthly Budget ($)</label>
+                                <input type="number" id="roi-budget" value="5000" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="roi-cpc">Average Cost Per Click ($)</label>
+                                <input type="number" id="roi-cpc" value="2.50" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label for="roi-conversion">Conversion Rate (%)</label>
+                                <input type="number" id="roi-conversion" value="3.5" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label for="roi-aov">Average Order Value ($)</label>
+                                <input type="number" id="roi-aov" value="150" min="0">
+                            </div>
+                        </div>
+                        <div class="roi-results text-center">
+                            <canvas id="roiChart"></canvas>
+                            <div id="roi-text-results" class="roi-text-results" style="display: none;">
+                                <p>Estimated Revenue: <strong class="h3" id="roi-revenue">$0</strong></p>
+                                <p>Projected ROAS: <strong class="h3" id="roi-roas">0x</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Card Hover Test -->
+        <section class="section">
+            <div class="container">
+                <h2>Card Hover Test</h2>
+                <div class="grid grid-3">
+                    <div class="card">
+                        <h3>Card 1</h3>
+                        <p>Hover me to see the effect.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Device Frame Test -->
+        <section class="section">
+            <div class="container">
+                <h2>Device Mockup</h2>
+                <!-- Simulated output of [device_frame type="laptop"] -->
+                <div class="device-frame device-laptop">
+                    <div class="device-bezel">
+                        <div class="device-screen">
+                            <div style="background: #333; color: #fff; padding: 20px; text-align: center; height: 200px;">
+                                Screen Content (Image)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="device-base"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../assets/js/roi-calculator.js"></script>
+</body>
+</html>

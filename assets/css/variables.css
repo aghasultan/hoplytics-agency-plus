@@ -20,7 +20,7 @@
  * 1. Tech-Futurist (Dark Mode Default, Neon Accents)
  */
 body.style-kit-tech-futurist {
-    --color-bg: #0B0F19;
+    --color-bg: radial-gradient(circle at center, #1a202c 0%, #0B0F19 100%);
     --color-bg-alt: #111827;
     --color-text: #F3F4F6;
     --color-text-muted: #9CA3AF;

@@ -17,6 +17,7 @@ get_header();
             <div class="container">
                 <div class="grid grid-2 items-center">
                     <div class="hero-content">
+                        <div class="hero-bg-container"></div>
                         <h1><?php echo esc_html( get_theme_mod('hero_headline', 'Turn Your Traffic Into Revenue') ); ?></h1>
                         <p class="text-lg text-muted"><?php echo esc_html( get_theme_mod('hero_subheadline', 'We are the growth agency that focuses on what matters: ROI, ROAS, and Bottom Line.') ); ?></p>
                         <div class="flex gap-4 mt-4 flex-wrap">
@@ -97,7 +98,7 @@ get_header();
             <div class="container">
                 <?php
                 get_template_part( 'template-parts/cro/lead-magnet-gate', null, array(
-                    'title' => 'The 2024 Growth Playbook',
+                    'title' => 'The 2025 Growth Playbook',
                     'button_text' => 'Get Instant Access'
                 ));
                 ?>

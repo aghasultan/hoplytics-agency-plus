@@ -38,7 +38,7 @@ function hoplytics_roi_calculator_shortcode() {
                     <label for="roi-aov"><?php esc_html_e( 'Average Order Value ($)', 'hoplytics' ); ?></label>
                     <input type="number" id="roi-aov" value="<?php echo esc_attr( 150 ); ?>" min="0">
                 </div>
-                <button id="roi-calculate-btn" class="btn btn-primary w-100" type="button"><?php esc_html_e( 'Calculate Potential Revenue', 'hoplytics' ); ?></button>
+                <!-- Button Removed for Real-Time Calculation -->
             </div>
             <div class="roi-results text-center">
                 <canvas id="roiChart"></canvas>
