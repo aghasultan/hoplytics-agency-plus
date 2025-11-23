@@ -49,12 +49,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         label: 'Amount ($)',
                         data: [cost, revenue],
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.5)',
-                            'rgba(54, 162, 235, 0.5)'
+                            'rgba(255, 255, 255, 0.3)',
+                            'rgba(16, 185, 129, 0.8)'
                         ],
                         borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)'
+                            'rgba(255, 255, 255, 0.5)',
+                            'rgba(16, 185, 129, 1)'
                         ],
                         borderWidth: 1
                     }]

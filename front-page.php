@@ -75,7 +75,7 @@ get_header();
                         wp_reset_postdata();
                     else :
                         // Fallback for empty state
-                        echo '<div class="card"><h3 class="text-center">Services Coming Soon</h3></div>';
+                        echo '<div class="card service-placeholder"><h3 class="text-center">Services Coming Soon</h3></div>';
                     endif;
                     ?>
                 </div>
