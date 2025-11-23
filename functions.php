@@ -15,12 +15,30 @@ if ( ! defined( 'HOPLYTICS_VERSION' ) ) {
 }
 
 /**
- * Helper to get the local logo URL.
+ * Helper to get the site logo URL (Customizer or Fallback).
  *
- * @return string The URL of the local logo image.
+ * @return string The URL of the logo image.
  */
-function hoplytics_get_local_logo_url() {
+function hoplytics_get_logo_url(): string {
+    $custom_logo_id = get_theme_mod( 'custom_logo' );
+    if ( $custom_logo_id ) {
+        $image = wp_get_attachment_image_src( $custom_logo_id, 'full' );
+        if ( is_array( $image ) ) {
+            return $image[0];
+        }
+    }
+    // Fallback
 	return get_template_directory_uri() . '/assets/images/logo-horizontal.png';
+}
+
+/**
+ * Deprecated: Helper to get the local logo URL.
+ * Kept for backward compatibility if needed, but aliases to new function.
+ *
+ * @return string
+ */
+function hoplytics_get_local_logo_url(): string {
+    return hoplytics_get_logo_url();
 }
 
 /**

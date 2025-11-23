@@ -21,7 +21,7 @@ function hoplytics_scripts() {
     wp_enqueue_style( 'hoplytics-main', get_template_directory_uri() . '/assets/css/main.css', array('hoplytics-variables'), HOPLYTICS_VERSION );
 
     // Main Theme Script (Mobile Menu, Interactions)
-        wp_enqueue_script( 'hoplytics-main', get_template_directory_uri() . '/assets/js/main.js', array(), HOPLYTICS_VERSION, true );
+    wp_enqueue_script( 'hoplytics-main', get_template_directory_uri() . '/assets/js/main.js', array(), HOPLYTICS_VERSION, true );
 
     // Conditional Loading: Chart.js for ROI Calculator or specific visualizations
     // We only load this if the ROI calculator is on the page or if we are on a page using charts

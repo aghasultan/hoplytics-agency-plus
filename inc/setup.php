@@ -45,8 +45,9 @@ if ( ! function_exists( 'hoplytics_setup' ) ) :
 		// Register Navigation Menus
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'hoplytics' ),
-				'footer' => esc_html__( 'Footer', 'hoplytics' ),
+				'menu-1'          => esc_html__( 'Primary', 'hoplytics' ),
+				'footer'          => esc_html__( 'Footer Company', 'hoplytics' ),
+				'footer-services' => esc_html__( 'Footer Services', 'hoplytics' ),
 			)
 		);
 

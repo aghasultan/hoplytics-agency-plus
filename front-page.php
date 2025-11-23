@@ -17,18 +17,36 @@ get_header();
             <div class="container">
                 <div class="grid grid-2 items-center">
                     <div class="hero-content">
-                        <h1><?php esc_html_e( 'Turn Your Traffic Into Revenue', 'hoplytics' ); ?></h1>
-                        <p class="text-lg text-muted"><?php esc_html_e( 'We are the growth agency that focuses on what matters: ROI, ROAS, and Bottom Line.', 'hoplytics' ); ?></p>
-                        <div class="flex gap-4 mt-4">
-                            <a href="#audit" class="btn btn-primary"><?php esc_html_e( 'Get Free Audit', 'hoplytics' ); ?></a>
-                            <a href="#portfolio" class="btn btn-outline"><?php esc_html_e( 'View Work', 'hoplytics' ); ?></a>
+                        <h1><?php echo esc_html( get_theme_mod('hero_headline', 'Turn Your Traffic Into Revenue') ); ?></h1>
+                        <p class="text-lg text-muted"><?php echo esc_html( get_theme_mod('hero_subheadline', 'We are the growth agency that focuses on what matters: ROI, ROAS, and Bottom Line.') ); ?></p>
+                        <div class="flex gap-4 mt-4 flex-wrap">
+                            <?php
+                            $btn1_text = get_theme_mod('hero_btn_1_text', 'Get Free Audit');
+                            $btn1_url = get_theme_mod('hero_btn_1_url', '#audit');
+                            if ( $btn1_text ) : ?>
+                                <a href="<?php echo esc_url($btn1_url); ?>" class="btn btn-primary"><?php echo esc_html($btn1_text); ?></a>
+                            <?php endif; ?>
+
+                            <?php
+                            $btn2_text = get_theme_mod('hero_btn_2_text', 'View Work');
+                            $btn2_url = get_theme_mod('hero_btn_2_url', '#portfolio');
+                            if ( $btn2_text ) : ?>
+                                <a href="<?php echo esc_url($btn2_url); ?>" class="btn btn-outline"><?php echo esc_html($btn2_text); ?></a>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="hero-visual">
-                        <!-- Placeholder for 3D or Image -->
-                        <div class="card bg-alt" style="height: 400px; display: flex; align-items: center; justify-content: center;">
-                            <span class="text-muted">Hero Visual / 3D Element</span>
-                        </div>
+                        <?php
+                        $hero_image_id = get_theme_mod('hero_visual_image');
+                        if ( $hero_image_id ) {
+                            echo wp_get_attachment_image( $hero_image_id, 'large', false, array('class' => 'rounded shadow-lg') );
+                        } else {
+                        ?>
+                            <!-- Fallback Placeholder -->
+                            <div class="card bg-alt" style="height: 400px; display: flex; align-items: center; justify-content: center;">
+                                <span class="text-muted"><?php esc_html_e('Hero Visual / 3D Element', 'hoplytics'); ?></span>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

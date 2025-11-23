@@ -25,26 +25,42 @@ defined( 'ABSPATH' ) || exit;
         <header id="masthead" class="site-header" role="banner">
             <div class="container header-inner">
                 <div class="site-branding">
-                    <a class="site-logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-                        <img src="<?php echo esc_url( hoplytics_get_local_logo_url() ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="custom-logo" width="180" height="50">
-                    </a>
+                    <?php
+                    if ( has_custom_logo() ) {
+                        the_custom_logo();
+                    } else {
+                        ?>
+                        <a class="site-logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                            <img src="<?php echo esc_url( hoplytics_get_logo_url() ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="custom-logo" width="180" height="50">
+                        </a>
+                        <?php
+                    }
+                    ?>
                 </div><!-- .site-branding -->
 
-                <nav id="site-navigation" class="main-navigation" aria-label="Primary">
+                <nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Primary', 'hoplytics' ); ?>">
                     <?php
                     wp_nav_menu(
                         array(
                             'theme_location' => 'menu-1',
                             'menu_id'        => 'primary-menu',
                             'container'      => false,
+                            'fallback_cb'    => false,
                         )
                     );
                     ?>
                 </nav><!-- #site-navigation -->
 
                 <div class="header-actions">
-                    <a href="#contact" class="btn btn-primary header-cta"><?php esc_html_e( 'Get a Proposal', 'hoplytics' ); ?></a>
-                    <button class="menu-toggle" type="button" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php echo esc_attr__( 'Toggle navigation', 'hoplytics' ); ?>">
+                    <?php
+                    $cta_text = get_theme_mod('header_cta_text', __('Get a Proposal', 'hoplytics'));
+                    $cta_url = get_theme_mod('header_cta_url', '#contact');
+                    if ( ! empty( $cta_text ) ) :
+                    ?>
+                    <a href="<?php echo esc_url($cta_url); ?>" class="btn btn-primary header-cta"><?php echo esc_html($cta_text); ?></a>
+                    <?php endif; ?>
+
+                    <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="<?php echo esc_attr__( 'Toggle navigation', 'hoplytics' ); ?>">
                         <span class="menu-toggle-bar" aria-hidden="true"></span>
                         <span class="menu-toggle-bar" aria-hidden="true"></span>
                         <span class="menu-toggle-bar" aria-hidden="true"></span>
