@@ -41,12 +41,10 @@ get_header();
                         if ( $hero_image_id ) {
                             echo wp_get_attachment_image( $hero_image_id, 'large', false, array('class' => 'rounded shadow-lg') );
                         } else {
+                            // High-Converting Hero Lead Form Component
+                            get_template_part( 'template-parts/components/hero-lead-form' );
+                        }
                         ?>
-                            <!-- Fallback Placeholder -->
-                            <div class="card bg-alt" style="height: 400px; display: flex; align-items: center; justify-content: center;">
-                                <span class="text-muted"><?php esc_html_e('Hero Visual / 3D Element', 'hoplytics'); ?></span>
-                            </div>
-                        <?php } ?>
                     </div>
                 </div>
             </div>

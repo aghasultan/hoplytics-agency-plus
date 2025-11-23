@@ -81,3 +81,4 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/modules/roi-calculator.php';
 require get_template_directory() . '/inc/modules/seo-audit.php';
+require get_template_directory() . '/inc/modules/hero-form-handler.php';

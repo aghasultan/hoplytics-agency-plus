@@ -40,14 +40,33 @@ defined( 'ABSPATH' ) || exit;
 
                 <nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Primary', 'hoplytics' ); ?>">
                     <?php
-                    wp_nav_menu(
-                        array(
-                            'theme_location' => 'menu-1',
-                            'menu_id'        => 'primary-menu',
-                            'container'      => false,
-                            'fallback_cb'    => false,
-                        )
-                    );
+                    if ( has_nav_menu( 'menu-1' ) ) {
+                        wp_nav_menu(
+                            array(
+                                'theme_location' => 'menu-1',
+                                'menu_id'        => 'primary-menu',
+                                'container'      => false,
+                                'fallback_cb'    => false,
+                            )
+                        );
+                    } else {
+                        // High-End Mega Menu Fallback (State of the Art Demo)
+                        ?>
+                        <ul id="primary-menu">
+                            <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Services</a>
+                                <ul class="sub-menu">
+                                    <li><a href="#social">Social Media Marketing</a></li>
+                                    <li><a href="#sem">Search Engine Marketing</a></li>
+                                    <li><a href="#seo">Search Engine Optimization</a></li>
+                                    <li><a href="#content">Content Marketing</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#insights">Insights</a></li>
+                        </ul>
+                        <?php
+                    }
                     ?>
                 </nav><!-- #site-navigation -->
 
