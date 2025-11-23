@@ -207,7 +207,8 @@ body.style-kit-creative-disruptor .card {
 }
 
 .card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); /* Glowing blue border effect */
 }
 
 /* ==========================================================================

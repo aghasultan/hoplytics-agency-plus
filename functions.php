@@ -64,7 +64,7 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Custom Post Types & Taxonomies.
  */
-require get_template_directory() . '/inc/cpt.php';
+require get_template_directory() . '/inc/custom-post-types.php';
 
 /**
  * SEO & Schema.
@@ -82,3 +82,4 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/modules/roi-calculator.php';
 require get_template_directory() . '/inc/modules/seo-audit.php';
 require get_template_directory() . '/inc/modules/hero-form-handler.php';
+require get_template_directory() . '/inc/modules/device-frame.php';
