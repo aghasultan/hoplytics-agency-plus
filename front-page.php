@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+        <main id="primary" class="site-main">
 
         <!-- Hero Section -->
         <section class="hero-section section">
@@ -18,22 +18,10 @@ get_header();
                 <div class="grid grid-2 items-center">
                     <div class="hero-content">
                         <div class="hero-bg-container"></div>
-                        <h1><?php echo esc_html( get_theme_mod('hero_headline', 'Turn Your Traffic Into Revenue') ); ?></h1>
-                        <p class="text-lg text-muted"><?php echo esc_html( get_theme_mod('hero_subheadline', 'We are the growth agency that focuses on what matters: ROI, ROAS, and Bottom Line.') ); ?></p>
+                        <h1>High-Value Client Acquisition for Lead Generation for Insurance &amp; High-Ticket Marketing</h1>
+                        <h2 class="text-lg text-muted">Add $500k ARR with a predictable pipeline—no recycled leads, no guesswork.</h2>
                         <div class="flex gap-4 mt-4 flex-wrap">
-                            <?php
-                            $btn1_text = get_theme_mod('hero_btn_1_text', 'Get Free Audit');
-                            $btn1_url = get_theme_mod('hero_btn_1_url', '#audit');
-                            if ( $btn1_text ) : ?>
-                                <a href="<?php echo esc_url($btn1_url); ?>" class="btn btn-primary"><?php echo esc_html($btn1_text); ?></a>
-                            <?php endif; ?>
-
-                            <?php
-                            $btn2_text = get_theme_mod('hero_btn_2_text', 'View Work');
-                            $btn2_url = get_theme_mod('hero_btn_2_url', '#portfolio');
-                            if ( $btn2_text ) : ?>
-                                <a href="<?php echo esc_url($btn2_url); ?>" class="btn btn-outline"><?php echo esc_html($btn2_text); ?></a>
-                            <?php endif; ?>
+                            <a href="#growth-audit" class="btn btn-primary">Get My Free Growth Audit</a>
                         </div>
                     </div>
                     <div class="hero-visual">
@@ -42,7 +30,6 @@ get_header();
                         if ( $hero_image_id ) {
                             echo wp_get_attachment_image( $hero_image_id, 'large', false, array('class' => 'rounded shadow-lg') );
                         } else {
-                            // High-Converting Hero Lead Form Component
                             get_template_part( 'template-parts/components/hero-lead-form' );
                         }
                         ?>
@@ -51,61 +38,41 @@ get_header();
             </div>
         </section>
 
-        <!-- Social Proof Bar -->
-        <?php get_template_part( 'template-parts/cro/social-proof-bar' ); ?>
-
-        <!-- Pain-Agitate-Solution -->
-        <?php get_template_part( 'template-parts/cro/pain-agitate-solution' ); ?>
-
-        <!-- Services Grid -->
-        <section id="services" class="section">
-            <div class="container">
-                <h2 class="text-center mb-8"><?php esc_html_e( 'Our Expertise', 'hoplytics' ); ?></h2>
-                <div class="grid grid-3">
-                    <?php
-                    $services = new WP_Query( array(
-                        'post_type' => 'service',
-                        'posts_per_page' => 3,
-                    ));
-
-                    if ( $services->have_posts() ) :
-                        while ( $services->have_posts() ) : $services->the_post();
-                            get_template_part( 'template-parts/content', 'card' );
-                        endwhile;
-                        wp_reset_postdata();
-                    else :
-                        // Fallback for empty state
-                        echo '<div class="card service-placeholder"><h3 class="text-center">Services Coming Soon</h3></div>';
-                    endif;
-                    ?>
+        <!-- Problem / Agitation -->
+        <section class="pain-section section bg-alt" id="growth-audit">
+            <div class="container grid grid-2 items-center">
+                <div>
+                    <h2>Still Buying Recycled Leads or Wasting Money on Ads?</h2>
+                    <p>You deserve conversations with decision-makers, not tire-kickers. Stop bleeding cash on low-intent leads, slow follow-ups, and ad spend that never converts into premium policies.</p>
+                    <p>When you partner with Hoplytics, every dollar is engineered to attract ready-to-buy prospects who respect your time and your expertise.</p>
+                </div>
+                <div class="card">
+                    <?php get_template_part( 'template-parts/cro/lead-magnet-gate', null, array( 'title' => 'Your Free Growth Audit', 'button_text' => 'Claim My Session' ) ); ?>
                 </div>
             </div>
         </section>
 
-        <!-- Comparison Table -->
-        <?php get_template_part( 'template-parts/cro/comparison-table' ); ?>
-
         <!-- ROI Calculator -->
-        <section id="roi-calc" class="section bg-alt">
-            <div class="container">
-                <h2 class="text-center mb-8"><?php esc_html_e( 'Calculate Your Potential', 'hoplytics' ); ?></h2>
-                <?php echo do_shortcode( '[roi_calculator]' ); ?>
+        <section class="roi-section section">
+            <div class="container text-center">
+                <h2>Calculate Your Potential Revenue</h2>
+                <div class="roi-calculator-placeholder">
+                    <!-- ROI Calculator will be embedded here -->
+                </div>
             </div>
         </section>
 
-        <!-- Lead Magnet -->
-        <section class="section">
-            <div class="container">
-                <?php
-                get_template_part( 'template-parts/cro/lead-magnet-gate', null, array(
-                    'title' => 'The 2025 Growth Playbook',
-                    'button_text' => 'Get Instant Access'
-                ));
-                ?>
+        <!-- Social Proof -->
+        <section class="social-proof section bg-alt">
+            <div class="container text-center">
+                <h2>Trusted by Top Brokers</h2>
+                <div class="logo-grid grid grid-4 mt-6">
+                    <!-- Logo grid placeholder -->
+                </div>
             </div>
         </section>
 
-	</main><!-- #main -->
+        </main><!-- #main -->
 
 <?php
 get_footer();

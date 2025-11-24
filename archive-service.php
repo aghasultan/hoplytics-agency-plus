@@ -8,31 +8,30 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main container section">
+        <main id="primary" class="site-main container section">
         <header class="page-header text-center mb-12">
-            <h1 class="page-title"><?php post_type_archive_title(); ?></h1>
+            <h1 class="page-title">The Growth Ecosystem for High-Ticket Marketing &amp; Lead Generation for Insurance</h1>
             <div class="archive-description max-w-2xl mx-auto text-muted">
-                <?php the_archive_description(); ?>
+                <p>Integrated acquisition, authority, and conversion systems built for life insurance brokers and financial advisors who demand measurable growth.</p>
             </div>
         </header>
 
-        <div class="grid grid-3">
-		<?php
-		if ( have_posts() ) :
-			while ( have_posts() ) :
-				the_post();
-				get_template_part( 'template-parts/content', 'card' );
-			endwhile;
+        <section class="service-cards grid grid-3">
+            <article class="service-card card">
+                <h2>Acquisition Systems</h2>
+                <p>We stop the scroll. High-intent campaigns that target users ready to buy, converting attention into booked consultations fast.</p>
+            </article>
+            <article class="service-card card">
+                <h2>Authority Building</h2>
+                <p>Dominate search results so clients find YOU first. SEO engineered to position you as the premium choice in your market.</p>
+            </article>
+            <article class="service-card card">
+                <h2>Conversion Engines</h2>
+                <p>Turning traffic into appointments on autopilot with CRO frameworks that pre-qualify prospects before they ever hit your calendar.</p>
+            </article>
+        </section>
 
-            the_posts_navigation();
-
-		else :
-			get_template_part( 'template-parts/content', 'none' );
-		endif;
-		?>
-        </div>
-
-	</main>
+        </main>
 
 <?php
 get_footer();
