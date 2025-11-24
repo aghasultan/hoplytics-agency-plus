@@ -46,8 +46,8 @@ Text Domain: hoplytics
     position: sticky;
     top: 0;
     z-index: 9999;
-    background-color: var(--color-bg-dark); /* Fallback */
-    background: linear-gradient(90deg, #111827, #1f2937);
+    background-color: #DC2626; /* Fallback */
+    background: linear-gradient(90deg, #DC2626, #B91C1C);
     color: #fff;
     padding: 0.75rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
