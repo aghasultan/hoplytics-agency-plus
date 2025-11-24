@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoplytics Agency Plus Verification</title>
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        /* Mock theme settings */
+        body { font-family: 'Inter', sans-serif; background: #0B0F19; color: #fff; margin: 0; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 2rem; }
+        .sticky { position: sticky; top: 0; z-index: 9999; }
+        /* Include the new styles manually for verification since PHP doesn't run */
+        .scarcity-bar {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background-color: var(--color-bg-dark);
+            background: linear-gradient(90deg, #111827, #1f2937);
+            color: #fff;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .scarcity-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .scarcity-btn {
+            padding: 0.25rem 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background-color: var(--color-primary);
+            color: #fff;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        /* Testimonial Grid Styles */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            padding: 1.5rem;
+            background: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scarcity Bar -->
+    <div id="scarcity-bar" class="scarcity-bar">
+        <div class="container scarcity-content">
+            <span class="scarcity-text">
+                📅 November Slots: Only 2 Client Openings Remaining.
+            </span>
+            <a href="#contact" class="btn btn-sm btn-accent scarcity-btn">
+                Book Now
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Theme Verification</h1>
+
+        <!-- ROI Calculator -->
+        <h2>ROI Calculator</h2>
+        <div class="roi-calculator-wrapper card p-8 border rounded-lg shadow-lg bg-surface" style="background: #1e1e1e; padding: 2rem; border-radius: 8px;">
+            <h3 class="text-2xl font-bold mb-6 text-center text-primary">Marketing ROI Calculator</h3>
+
+            <div class="grid grid-2 gap-8" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div class="roi-inputs space-y-4">
+                    <div class="form-group">
+                        <label class="block text-sm font-medium mb-1">Monthly Traffic (Visitors)</label>
+                        <input type="number" class="roi-traffic form-input w-full p-2 border rounded" value="5000">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block text-sm font-medium mb-1">Conversion Rate (%)</label>
+                        <input type="number" class="roi-conversion form-input w-full p-2 border rounded" value="2.5">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block text-sm font-medium mb-1">Customer Lifetime Value ($)</label>
+                        <input type="number" class="roi-clv form-input w-full p-2 border rounded" value="1500">
+                    </div>
+                </div>
+
+                <div class="roi-results flex flex-col items-center justify-center p-6 bg-alt rounded-lg text-center" style="background: #2a2a2a; padding: 2rem; border-radius: 8px; text-align: center;">
+                    <h4 class="text-lg uppercase tracking-widest text-muted mb-2">Projected Revenue</h4>
+                    <div class="roi-revenue text-4xl font-extrabold text-success mb-4" style="font-size: 2.5rem; color: #10b981;">$0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials -->
+        <h2>Testimonials</h2>
+        <div class="testimonial-grid-wrapper my-12">
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-content italic text-muted mb-4">"Great service!"</p>
+                    <h4 class="testimonial-author text-sm font-bold uppercase text-primary">Client A</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content italic text-muted mb-4">"Amazing results."</p>
+                    <h4 class="testimonial-author text-sm font-bold uppercase text-primary">Client B</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content italic text-muted mb-4">"Highly recommended."</p>
+                    <h4 class="testimonial-author text-sm font-bold uppercase text-primary">Client C</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/roi-calculator.js"></script>
+</body>
+</html>

@@ -67,6 +67,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/custom-post-types.php';
 
 /**
+ * Testimonial CPT.
+ */
+require get_template_directory() . '/inc/cpt-testimonials.php';
+
+/**
  * SEO & Schema.
  */
 require get_template_directory() . '/inc/seo.php';
