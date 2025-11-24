@@ -83,3 +83,4 @@ require get_template_directory() . '/inc/modules/roi-calculator.php';
 require get_template_directory() . '/inc/modules/seo-audit.php';
 require get_template_directory() . '/inc/modules/hero-form-handler.php';
 require get_template_directory() . '/inc/modules/device-frame.php';
+require get_template_directory() . '/inc/modules/demo-content-seeder.php';

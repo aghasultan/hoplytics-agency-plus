@@ -256,7 +256,7 @@ input, textarea, select {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid var(--color-border);
-    background: var(--color-bg);
+    background: var(--color-bg-alt);
     color: var(--color-text);
     border-radius: var(--radius-md);
     margin-bottom: 1rem;
@@ -488,4 +488,41 @@ body.style-kit-corporate-stabilizer .comparison-table-wrapper tbody tr:nth-child
     align-items: center;
     justify-content: center;
     box-shadow: none;
+}
+
+/* ==========================================================================
+   #Accessibility & Contrast Safeguards
+   ========================================================================== */
+
+/* Force dark text on explicitly white backgrounds (e.g. Gutenberg blocks) */
+.has-white-background-color,
+.has-background-white,
+.bg-white {
+    color: #1a202c !important;
+    --color-text: #1a202c;
+    --color-text-muted: #4a5568;
+}
+
+.has-white-background-color h1,
+.has-white-background-color h2,
+.has-white-background-color h3,
+.has-white-background-color h4,
+.has-white-background-color h5,
+.has-white-background-color h6 {
+    color: #111827 !important;
+}
+
+/* Force light text on explicitly dark backgrounds */
+.has-black-background-color,
+.has-background-black,
+.bg-black {
+    color: #F3F4F6 !important;
+    --color-text: #F3F4F6;
+    --color-text-muted: #9CA3AF;
+}
+
+/* Table Contrast Fix */
+.comparison-table-wrapper th {
+    background-color: var(--color-bg-alt); /* Ensure header has background */
+    color: var(--color-text);
 }
