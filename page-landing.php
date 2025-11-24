@@ -9,9 +9,9 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<?php wp_head(); ?>
+        <meta charset="<?php bloginfo( 'charset' ); ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <?php wp_head(); ?>
     <style>
         /* Hide Header/Footer for this template strictly */
         .site-header, .site-footer { display: none !important; }
@@ -32,16 +32,12 @@
         <div class="container section">
             <div class="grid grid-2 items-center">
                 <div class="landing-content">
-                    <?php
-                    while ( have_posts() ) :
-                        the_post();
-                        the_content();
-                    endwhile;
-                    ?>
+                    <h1>Apply to Work With Us</h1>
+                    <p>We only work with 3 new partners per month. Please fill out the form to see if you qualify.</p>
                 </div>
                 <div class="landing-form card bg-alt">
-                    <h3 class="text-center mb-4"><?php esc_html_e('Claim Offer', 'hoplytics'); ?></h3>
-                    <?php echo do_shortcode('[seo_audit]'); // Example hook, or a gravity form ?>
+                    <h2 class="text-center mb-4">Your Strategy Session Awaits</h2>
+                    <?php echo do_shortcode('[seo_audit]'); ?>
                 </div>
             </div>
         </div>
