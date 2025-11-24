@@ -67,10 +67,35 @@ get_header();
                         </ul>
                     </div>
 
-                    <!-- Right Column: Visual Placeholder -->
+                    <!-- Right Column: SEO Deliverables -->
                     <div class="features-visual">
-                        <div class="service-placeholder rounded-lg">
-                            <span class="font-bold">SEO Performance Visualization</span>
+                        <div class="card p-8 bg-alt border-primary shadow-lg" style="border-width: 2px;">
+                            <h3 class="text-xl font-bold mb-4 text-center">Monthly Deliverables</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-2">
+                                    <span class="text-success text-xl">✓</span>
+                                    <span>Keyword Strategy Audit</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-success text-xl">✓</span>
+                                    <span>Core Web Vitals Optimization</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-success text-xl">✓</span>
+                                    <span>2 High-DA Guest Posts</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-success text-xl">✓</span>
+                                    <span>Local Map Pack Tracking</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-success text-xl">✓</span>
+                                    <span>Competitor Gap Analysis</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6 text-center">
+                                <a href="#contact" class="btn btn-primary btn-sm w-100">Claim Your Ranking</a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -34,19 +34,19 @@ function hoplytics_run_seeder() {
             'excerpt' => 'Build a loyal community and drive engagement with data-driven social strategies.',
         ],
         'Search Engine Marketing' => [
-            'slug' => 'sem',
+            'slug' => 'search-engine-marketing',
             'icon' => 'dashicons-chart-area',
             'content' => hoplytics_get_sem_content(),
             'excerpt' => 'Maximize ROI with precision PPC campaigns and ad spend optimization.',
         ],
         'Search Engine Optimization' => [
-            'slug' => 'seo',
+            'slug' => 'search-engine-optimization',
             'icon' => 'dashicons-search',
             'content' => hoplytics_get_seo_content(),
             'excerpt' => 'Dominate search rankings and drive organic traffic that converts.',
         ],
         'Content Marketing Services' => [
-            'slug' => 'content-marketing',
+            'slug' => 'content-marketing-services',
             'icon' => 'dashicons-format-aside',
             'content' => hoplytics_get_content_marketing_content(),
             'excerpt' => 'Tell your story with high-impact content that educates and converts.',
@@ -54,7 +54,11 @@ function hoplytics_run_seeder() {
     ];
 
     foreach ( $services as $title => $data ) {
-        hoplytics_create_page_if_missing( $title, $data['content'], 'service', $data['excerpt'] );
+        // We actually want to force the slug if we can, but wp_insert_post takes 'post_name' for slug.
+        // We'll update the helper to support slug or just pass it in content if needed,
+        // but hoplytics_create_page_if_missing checks by TITLE.
+        // If we want to ensure the SLUG matches our new templates, we should pass it.
+        hoplytics_create_page_if_missing( $title, $data['content'], 'service', $data['excerpt'], $data['slug'] ?? '' );
     }
 
     // 2. Seed Insights Page (Blog)
@@ -75,11 +79,28 @@ add_action( 'admin_init', 'hoplytics_run_seeder' );
 /**
  * Helper: Create Page/Post if missing
  */
-function hoplytics_create_page_if_missing( $title, $content, $type = 'page', $excerpt = '' ) {
+function hoplytics_create_page_if_missing( $title, $content, $type = 'page', $excerpt = '', $slug = '' ) {
+    // Check by title first
     $existing = get_page_by_title( $title, OBJECT, $type );
 
     if ( $existing ) {
+        // If the page exists but the slug doesn't match the desired slug, update it.
+        // This ensures old pages (e.g., 'seo') get moved to new URLs (e.g., 'search-engine-optimization').
+        if ( ! empty( $slug ) && $existing->post_name !== $slug ) {
+            wp_update_post( array(
+                'ID'        => $existing->ID,
+                'post_name' => $slug,
+            ) );
+        }
         return $existing->ID;
+    }
+
+    // Also check by slug if provided, to avoid duplicates if title changed
+    if ( ! empty( $slug ) ) {
+        $existing_by_slug = get_page_by_path( $slug, OBJECT, $type );
+        if ( $existing_by_slug ) {
+            return $existing_by_slug->ID;
+        }
     }
 
     $post_data = array(
@@ -90,6 +111,10 @@ function hoplytics_create_page_if_missing( $title, $content, $type = 'page', $ex
         'post_excerpt'  => $excerpt,
         'post_author'   => get_current_user_id(),
     );
+
+    if ( ! empty( $slug ) ) {
+        $post_data['post_name'] = $slug;
+    }
 
     return wp_insert_post( $post_data );
 }

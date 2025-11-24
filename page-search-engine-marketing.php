@@ -37,6 +37,31 @@ get_header();
             </div>
         </section>
 
+        <!-- Platforms Section -->
+        <section class="platforms-section section bg-alt">
+             <div class="container text-center">
+                <h2 class="mb-8">Platforms We Master</h2>
+                <div class="grid grid-4 gap-4">
+                    <div class="card p-4 bg-white border-gray-200">
+                        <span class="font-bold text-lg">Google Ads</span>
+                        <p class="text-sm text-muted mt-2">Search & Display</p>
+                    </div>
+                    <div class="card p-4 bg-white border-gray-200">
+                        <span class="font-bold text-lg">YouTube</span>
+                        <p class="text-sm text-muted mt-2">In-Stream Video</p>
+                    </div>
+                    <div class="card p-4 bg-white border-gray-200">
+                        <span class="font-bold text-lg">LinkedIn</span>
+                        <p class="text-sm text-muted mt-2">B2B Lead Gen</p>
+                    </div>
+                    <div class="card p-4 bg-white border-gray-200">
+                        <span class="font-bold text-lg">Meta</span>
+                        <p class="text-sm text-muted mt-2">Retargeting</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
         <!-- Metrics Section -->
         <section class="metrics-section section">
             <div class="container">

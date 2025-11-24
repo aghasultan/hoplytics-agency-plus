@@ -70,6 +70,44 @@ get_header();
             </div>
         </section>
 
+        <!-- Monthly Deliverables Section -->
+        <section class="deliverables-section section bg-alt">
+            <div class="container">
+                <div class="text-center mb-12">
+                     <h2>What We Ship Every Month</h2>
+                </div>
+                <div class="grid grid-3">
+                    <div class="card p-6 border-primary bg-white">
+                        <h4 class="font-bold mb-3">Content Creation</h4>
+                        <ul class="text-sm space-y-2">
+                            <li>• 12 Short-form Videos</li>
+                            <li>• 5 Static Image Posts</li>
+                            <li>• 3 Carousel Educationals</li>
+                            <li>• Unlimited Story Updates</li>
+                        </ul>
+                    </div>
+                    <div class="card p-6 border-primary bg-white">
+                        <h4 class="font-bold mb-3">Community Growth</h4>
+                        <ul class="text-sm space-y-2">
+                            <li>• Daily Engagement (30m)</li>
+                            <li>• DM Triage & Routing</li>
+                            <li>• Spam/Bot Removal</li>
+                            <li>• Influencer Outreach</li>
+                        </ul>
+                    </div>
+                    <div class="card p-6 border-primary bg-white">
+                        <h4 class="font-bold mb-3">Performance Data</h4>
+                        <ul class="text-sm space-y-2">
+                            <li>• Monthly Sentiment Analysis</li>
+                            <li>• Follower Growth Tracking</li>
+                            <li>• Conversion Attribution</li>
+                            <li>• Content A/B Testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- "The Process" Section -->
         <section class="process-section section">
             <div class="container">

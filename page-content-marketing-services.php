@@ -51,8 +51,34 @@ get_header();
                     </div>
 
                     <div class="framework-visual">
-                         <div class="service-placeholder rounded-lg">
-                            <span class="font-bold">Hub & Spoke Visualization</span>
+                        <div class="hub-spoke-visual p-8 text-center">
+                            <!-- Hub -->
+                            <div class="hub bg-primary text-white p-6 rounded-full inline-block mb-8 relative z-10 shadow-lg">
+                                <span class="font-bold text-lg">Pillar Content</span>
+                            </div>
+
+                            <!-- Spokes Visual (CSS Lines could be complex, using simple grid for clarity) -->
+                            <div class="grid grid-3 gap-4">
+                                <div class="spoke card p-3 bg-alt border-gray-200">
+                                    <span class="font-bold text-sm">Blog Posts</span>
+                                </div>
+                                <div class="spoke card p-3 bg-alt border-gray-200">
+                                    <span class="font-bold text-sm">Social Snippets</span>
+                                </div>
+                                <div class="spoke card p-3 bg-alt border-gray-200">
+                                    <span class="font-bold text-sm">Email Series</span>
+                                </div>
+                                <div class="spoke card p-3 bg-alt border-gray-200">
+                                    <span class="font-bold text-sm">Infographics</span>
+                                </div>
+                                <div class="spoke card p-3 bg-alt border-gray-200">
+                                    <span class="font-bold text-sm">Video Scripts</span>
+                                </div>
+                                <div class="spoke card p-3 bg-alt border-gray-200">
+                                    <span class="font-bold text-sm">Webinars</span>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-sm text-muted">1 Asset → 6+ Channels</p>
                         </div>
                     </div>
                 </div>
