@@ -74,6 +74,45 @@ img {
     .grid-2 { grid-template-columns: 1fr 1fr; }
     .grid-3 { grid-template-columns: repeat(3, 1fr); }
     .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-5 { grid-template-columns: repeat(5, 1fr); }
+}
+
+/* Trusted Logos Grid Styling */
+.logo-grid {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+}
+
+@media (max-width: 767px) {
+    .logo-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    }
+}
+
+.logo-grid img {
+    max-height: 40px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.6);
+    transition: all 0.3s ease;
+}
+
+.logo-grid img:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: translateY(-2px);
+}
+
+/* Invert logos for light-themed style kits to ensure visibility */
+body.style-kit-corporate-stabilizer .logo-grid img,
+body.style-kit-creative-disruptor .logo-grid img {
+    filter: grayscale(100%) invert(1) opacity(0.8);
+}
+
+body.style-kit-corporate-stabilizer .logo-grid img:hover,
+body.style-kit-creative-disruptor .logo-grid img:hover {
+    filter: grayscale(0%) invert(1) opacity(1);
 }
 
 .section {

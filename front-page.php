@@ -84,11 +84,23 @@ get_header();
         <section class="social-proof section bg-alt">
             <div class="container text-center">
                 <h2>Trusted by the Top 1% of Producers.</h2>
-                <div class="logo-grid grid grid-3 items-center justify-center mt-8 opacity-75">
-                    <!-- Text Placeholders -->
-                    <div class="logo-placeholder text-2xl font-bold text-muted">Halo Life</div>
-                    <div class="logo-placeholder text-2xl font-bold text-muted">Smartly</div>
-                    <div class="logo-placeholder text-2xl font-bold text-muted">Apex Insurance</div>
+                <div class="logo-grid grid grid-5 items-center justify-center mt-8">
+                    <!-- Client Logos -->
+                    <div class="logo-item">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logos/epic-resource-group.webp" alt="Epic Resource Group" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logos/gameday-mens-health.svg" alt="Gameday Men's Health" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logos/man-with-a-pram.avif" alt="Man with a Pram" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logos/title-vertical.svg" alt="Title Vertical" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logos/peres-siding.avif" alt="Peres Siding" loading="lazy">
+                    </div>
                 </div>
             </div>
         </section>
