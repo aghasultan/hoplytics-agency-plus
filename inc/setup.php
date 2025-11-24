@@ -134,3 +134,36 @@ function hoplytics_widgets_init() {
 	);
 }
 add_action( 'widgets_init', 'hoplytics_widgets_init' );
+
+/**
+ * Admin Notice for Content Seeding
+ */
+function hoplytics_admin_notices() {
+    $screen = get_current_screen();
+    if ( ! $screen || $screen->base !== 'dashboard' ) {
+        return;
+    }
+
+    if ( isset( $_GET['seeded'] ) && $_GET['seeded'] == 'true' ) {
+        ?>
+        <div class="notice notice-success is-dismissible">
+            <p><?php _e( 'Hoplytics content has been successfully seeded! Check your Pages and Posts.', 'hoplytics' ); ?></p>
+        </div>
+        <?php
+    } else {
+        // Show "Install Demo Content" prompt if Social Media Marketing page is missing
+        if ( ! get_page_by_path( 'social-media-marketing', OBJECT, 'service' ) ) {
+            $url = admin_url( '?seed_hoplytics_content=true' );
+            ?>
+            <div class="notice notice-info is-dismissible">
+                <p>
+                    <strong><?php _e( 'Welcome to Hoplytics!', 'hoplytics' ); ?></strong>
+                    <?php _e( 'It looks like you are missing the core service pages.', 'hoplytics' ); ?>
+                    <a href="<?php echo esc_url( $url ); ?>" class="button button-primary" style="margin-left: 10px;"><?php _e( 'Install Demo Content', 'hoplytics' ); ?></a>
+                </p>
+            </div>
+            <?php
+        }
+    }
+}
+add_action( 'admin_notices', 'hoplytics_admin_notices' );
