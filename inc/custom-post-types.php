@@ -58,20 +58,6 @@ function hoplytics_register_cpts() {
         'show_in_rest' => true,
     ));
 
-    // 4. Testimonials
-    register_post_type( 'testimonial', array(
-        'labels' => array(
-            'name' => __( 'Testimonials', 'hoplytics' ),
-            'singular_name' => __( 'Testimonial', 'hoplytics' ),
-            'add_new_item' => __( 'Add Testimonial', 'hoplytics' ),
-        ),
-        'public' => true,
-        'has_archive' => true,
-        'menu_icon' => 'dashicons-format-quote',
-        'supports' => array( 'title', 'editor', 'thumbnail' ), // Title = Client Name, Editor = Quote
-        'show_in_rest' => true,
-    ));
-
     // 5. Careers
     register_post_type( 'career', array(
         'labels' => array(

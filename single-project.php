@@ -18,7 +18,38 @@ get_header();
             $service_id = get_post_meta( get_the_ID(), '_related_service_id', true );
             $tech_stack = get_the_terms( get_the_ID(), 'tech_stack' );
             $industry   = get_the_terms( get_the_ID(), 'industry' );
+
+            // Schema Markup
+            $schema = array(
+                '@context' => 'https://schema.org',
+                '@type'    => 'Article',
+                'headline' => get_the_title(),
+                'image'    => has_post_thumbnail() ? get_the_post_thumbnail_url(null, 'full') : '',
+                'datePublished' => get_the_date('c'),
+                'dateModified'  => get_the_modified_date('c'),
+                'author'   => array(
+                    '@type' => 'Organization',
+                    'name'  => get_bloginfo('name'),
+                    'url'   => home_url()
+                ),
+                'publisher' => array(
+                    '@type' => 'Organization',
+                    'name'  => get_bloginfo('name'),
+                    'logo'  => array(
+                        '@type' => 'ImageObject',
+                        'url'   => hoplytics_get_logo_url()
+                    )
+                ),
+                'articleBody' => wp_strip_all_tags( get_the_content() ),
+                'mainEntityOfPage' => array(
+                    '@type' => 'WebPage',
+                    '@id'   => get_permalink()
+                )
+            );
 		?>
+            <script type="application/ld+json">
+                <?php echo json_encode( $schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ); ?>
+            </script>
 
             <div class="grid grid-3" style="grid-template-columns: 2fr 1fr;">
                 <!-- Main Content -->
