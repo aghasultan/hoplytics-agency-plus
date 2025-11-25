@@ -121,6 +121,6 @@ function hoplytics_enqueue_device_styles() {
         display: block;
     }
     ";
-    wp_add_inline_style( 'hoplytics-style', $css );
+    wp_add_inline_style( 'hoplytics-main', $css );
 }
 add_action( 'wp_enqueue_scripts', 'hoplytics_enqueue_device_styles' );
