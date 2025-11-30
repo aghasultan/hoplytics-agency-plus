@@ -173,3 +173,18 @@ Text Domain: hoplytics
         text-align: center;
     }
 }
+
+/* Bento Grid Pattern */
+@media (max-width: 768px) {
+    .hoplytics-bento-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+    }
+
+    .hoplytics-bento-grid > .wp-block-group {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        width: 100% !important;
+    }
+}
