@@ -42,13 +42,6 @@ function hoplytics_scripts() {
         wp_enqueue_script( 'chart-js' );
     }
 
-    // ROI Calculator Script
-    // Required on Front Page (hardcoded in template) or via Shortcode/Block
-    $should_load_roi = is_front_page() || $has_roi_shortcode;
-
-    if ( $should_load_roi ) {
-        wp_enqueue_script( 'hoplytics-roi-calculator', get_template_directory_uri() . '/assets/js/roi-calculator.js', array(), HOPLYTICS_VERSION, true );
-    }
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
