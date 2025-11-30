@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator Block Verification</title>
+    <style>
+        /* Minimal styles to simulate theme environment */
+        body { font-family: sans-serif; padding: 20px; }
+        .wp-block-hoplytics-roi-calculator {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .roi-input-group { margin-bottom: 20px; }
+        .range-input-wrapper { display: flex; align-items: center; gap: 10px; }
+        .roi-calculator-result { margin-top: 30px; font-weight: bold; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+
+    <!-- ROI Calculator Block Markup (Simulated Output) -->
+    <!-- Instance 1 -->
+    <div class="wp-block-hoplytics-roi-calculator">
+        <div class="roi-calculator-form">
+            <div class="roi-input-group">
+                <label for="roi-1-ad-spend-range">Monthly Ad Spend</label>
+                <div class="range-input-wrapper">
+                    <input type="range" id="roi-1-ad-spend-range" class="roi-ad-spend-range" min="1000" max="50000" step="500" value="5000">
+                    <div class="number-input-wrapper">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" id="roi-1-ad-spend-number" class="roi-ad-spend-number" min="1000" max="50000" step="500" value="5000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="roi-input-group">
+                <label for="roi-1-close-rate-range">Close Rate</label>
+                <div class="range-input-wrapper">
+                    <input type="range" id="roi-1-close-rate-range" class="roi-close-rate-range" min="1" max="100" step="1" value="20">
+                    <div class="number-input-wrapper">
+                        <input type="number" id="roi-1-close-rate-number" class="roi-close-rate-number" min="1" max="100" step="1" value="20">
+                        <span class="percentage-symbol">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="roi-input-group">
+                <label for="roi-1-deal-value">Average Deal Value</label>
+                <div class="number-input-wrapper">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="roi-1-deal-value" class="roi-deal-value" min="0" step="100" value="1000">
+                </div>
+            </div>
+        </div>
+
+        <div class="roi-calculator-result">
+            <span class="roi-label">Estimated Revenue</span>
+            <span class="roi-revenue-display">$0</span>
+        </div>
+    </div>
+
+    <!-- Instance 2 (to verify scoping) -->
+    <div class="wp-block-hoplytics-roi-calculator" style="margin-top: 50px;">
+        <h3>Instance 2</h3>
+        <div class="roi-calculator-form">
+            <div class="roi-input-group">
+                <label for="roi-2-ad-spend-range">Monthly Ad Spend</label>
+                <div class="range-input-wrapper">
+                    <input type="range" id="roi-2-ad-spend-range" class="roi-ad-spend-range" min="1000" max="50000" step="500" value="10000">
+                    <div class="number-input-wrapper">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" id="roi-2-ad-spend-number" class="roi-ad-spend-number" min="1000" max="50000" step="500" value="10000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="roi-input-group">
+                <label for="roi-2-close-rate-range">Close Rate</label>
+                <div class="range-input-wrapper">
+                    <input type="range" id="roi-2-close-rate-range" class="roi-close-rate-range" min="1" max="100" step="1" value="50">
+                    <div class="number-input-wrapper">
+                        <input type="number" id="roi-2-close-rate-number" class="roi-close-rate-number" min="1" max="100" step="1" value="50">
+                        <span class="percentage-symbol">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="roi-input-group">
+                <label for="roi-2-deal-value">Average Deal Value</label>
+                <div class="number-input-wrapper">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="roi-2-deal-value" class="roi-deal-value" min="0" step="100" value="2000">
+                </div>
+            </div>
+        </div>
+
+        <div class="roi-calculator-result">
+            <span class="roi-label">Estimated Revenue</span>
+            <span class="roi-revenue-display">$0</span>
+        </div>
+    </div>
+
+    <!-- Load View Script -->
+    <script src="../blocks/roi-calculator/view.js"></script>
+</body>
+</html>
