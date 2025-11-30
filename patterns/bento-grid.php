@@ -10,8 +10,11 @@
     <!-- wp:group {"style":{"color":{"background":"var(--wp--preset--color--primary)","text":"var(--wp--preset--color--surface)"}},"layout":{"type":"constrained"}} -->
     <div class="wp-block-group has-text-color has-background has-surface-color has-primary-background-color" style="grid-column: span 2; grid-row: span 2; padding: 2rem; background-color: var(--wp--preset--color--primary); color: var(--wp--preset--color--surface);">
         <!-- wp:heading {"level":1} -->
-        <h1 class="wp-block-heading">Hero Intro</h1>
+        <h1 class="wp-block-heading">We Build Digital Ecosystems.</h1>
         <!-- /wp:heading -->
+        <!-- wp:paragraph -->
+        <p>Specializing in FSE, Headless WP, and AI Integrations.</p>
+        <!-- /wp:paragraph -->
         <!-- wp:buttons -->
         <div class="wp-block-buttons"><!-- wp:button -->
         <div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Get Started</a></div>
@@ -27,13 +30,16 @@
         <!-- /wp:heading -->
         <!-- wp:list -->
         <ul><!-- wp:list-item -->
-        <li>SEO</li>
+        <li>Fullstack Architecture</li>
         <!-- /wp:list-item -->
         <!-- wp:list-item -->
-        <li>PPC</li>
+        <li>Next.js Integration</li>
         <!-- /wp:list-item -->
         <!-- wp:list-item -->
-        <li>Content</li>
+        <li>Block Theme Dev</li>
+        <!-- /wp:list-item -->
+        <!-- wp:list-item -->
+        <li>Automated QA</li>
         <!-- /wp:list-item --></ul>
         <!-- /wp:list -->
     </div>
@@ -48,7 +54,7 @@
     <!-- wp:group {"layout":{"type":"constrained"}} -->
     <div class="wp-block-group" style="grid-column: span 2; grid-row: span 1; padding: 2rem;">
         <!-- wp:heading {"level":3} -->
-        <h3 class="wp-block-heading">Latest Insights</h3>
+        <h3 class="wp-block-heading">Engineering Logs</h3>
         <!-- /wp:heading -->
         <!-- wp:query {"queryId":1,"query":{"perPage":2,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false},"displayLayout":{"type":"flex","columns":2}} -->
         <div class="wp-block-query">
