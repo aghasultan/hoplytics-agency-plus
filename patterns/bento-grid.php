@@ -1,45 +1,39 @@
 <?php
 /**
- * Title: Bento Grid
+ * Title: Bento Home Grid
  * Slug: hoplytics/bento-grid
  * Categories: featured
- * Description: A bento grid layout for the front page.
  */
 ?>
-<!-- wp:group {"align":"full","layout":{"type":"grid","columnCount":3,"minimumColumnWidth":null},"style":{"spacing":{"blockGap":"var:preset|spacing|50"}}} -->
-<div class="wp-block-group alignfull">
-    <!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"primary","textColor":"white"} -->
-    <div class="wp-block-group has-white-color has-primary-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
+<!-- wp:group {"className":"hoplytics-bento-grid","style":{"spacing":{"blockGap":"1.5rem"}}} -->
+<div class="wp-block-group hoplytics-bento-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto auto; gap: 1.5rem;">
+    <!-- wp:group {"style":{"color":{"background":"var(--wp--preset--color--primary)","text":"var(--wp--preset--color--surface)"}},"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group has-text-color has-background has-surface-color has-primary-background-color" style="grid-column: span 2; grid-row: span 2; padding: 2rem; background-color: var(--wp--preset--color--primary); color: var(--wp--preset--color--surface);">
         <!-- wp:heading {"level":1} -->
         <h1 class="wp-block-heading">We Build Digital Ecosystems.</h1>
         <!-- /wp:heading -->
-
         <!-- wp:paragraph -->
         <p>Specializing in FSE, Headless WP, and AI Integrations.</p>
         <!-- /wp:paragraph -->
     </div>
     <!-- /wp:group -->
 
-    <!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"base"} -->
-    <div class="wp-block-group has-base-background-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
+    <!-- wp:group {"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group" style="grid-column: span 1; grid-row: span 2; padding: 2rem; border: 1px solid var(--wp--preset--color--text);">
         <!-- wp:heading {"level":3} -->
         <h3 class="wp-block-heading">Services</h3>
         <!-- /wp:heading -->
-
         <!-- wp:list -->
         <ul>
             <!-- wp:list-item -->
             <li>Fullstack Architecture</li>
             <!-- /wp:list-item -->
-
             <!-- wp:list-item -->
             <li>Next.js Integration</li>
             <!-- /wp:list-item -->
-
             <!-- wp:list-item -->
             <li>Block Theme Dev</li>
             <!-- /wp:list-item -->
-
             <!-- wp:list-item -->
             <li>Automated QA</li>
             <!-- /wp:list-item -->
@@ -48,13 +42,32 @@
     </div>
     <!-- /wp:group -->
 
-    <!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"base"} -->
-    <div class="wp-block-group has-base-background-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
+    <!-- wp:group {"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group" style="grid-column: span 1; grid-row: span 2;">
+        <!-- wp:hoplytics/roi-calculator /-->
+    </div>
+    <!-- /wp:group -->
+
+    <!-- wp:group {"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group" style="grid-column: span 2; grid-row: span 1; padding: 2rem;">
         <!-- wp:heading {"level":3} -->
         <h3 class="wp-block-heading">Engineering Logs</h3>
         <!-- /wp:heading -->
+        <!-- wp:query {"queryId":1,"query":{"perPage":2,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false},"displayLayout":{"type":"flex","columns":2}} -->
+        <div class="wp-block-query">
+            <!-- wp:post-template -->
+            <!-- wp:post-title /-->
+            <!-- /wp:post-template -->
+        </div>
+        <!-- /wp:query -->
+    </div>
+    <!-- /wp:group -->
 
-        <!-- wp:latest-posts {"postsToShow":3,"displayPostDate":true} /-->
+    <!-- wp:group {"style":{"color":{"background":"var(--wp--preset--color--accent)","text":"#ffffff"}},"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group has-text-color has-background" style="background-color:var(--wp--preset--color--accent);color:#ffffff;grid-column: span 2; grid-row: span 1; padding: 2rem; display: flex; align-items: center; justify-content: center;">
+        <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1.5rem","fontWeight":"bold"}}} -->
+        <p class="has-text-align-center" style="font-size:1.5rem;font-weight:bold"><a href="/contact" style="color: inherit; text-decoration: underline;">Book Now</a></p>
+        <!-- /wp:paragraph -->
     </div>
     <!-- /wp:group -->
 </div>

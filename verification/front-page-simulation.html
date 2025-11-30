@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Front Page Simulation</title>
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../assets/css/main.css"> <!-- Assuming this exists from comments in style.css -->
+    <link rel="stylesheet" href="../assets/css/main.css">
     <style>
         /* Basic reset and variable shim for simulation */
         :root {
@@ -17,6 +17,9 @@
             --wp--preset--color--contrast: #0F172A;
             --wp--preset--color--tertiary: #F97316; /* Orange 500 */
             --wp--preset--color--white: #FFFFFF;
+            --wp--preset--color--surface: #F8FAFC; /* Guessing based on "has-surface-color" */
+            --wp--preset--color--accent: #F97316;
+            --wp--preset--color--text: #0F172A;
         }
         body {
             font-family: system-ui, -apple-system, sans-serif;
@@ -33,14 +36,18 @@
         .wp-block-heading {
             margin-top: 0;
         }
-        /* Grid simulation */
-        .wp-block-group.alignfull > .wp-block-group:first-child {
-            /* Mimic the grid container */
+
+        /* Grid simulation matching 'main' layout */
+        .hoplytics-bento-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Corrected from 2 to 3 to match PHP logic update if applicable, but PHP code said 3 */
-            gap: var(--wp--preset--spacing--50);
-            padding: var(--wp--preset--spacing--50);
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
+
         /* Apply background colors */
         .has-primary-background-color { background-color: var(--wp--preset--color--primary); color: white; }
         .has-secondary-background-color { background-color: var(--wp--preset--color--secondary); color: white; }
@@ -63,38 +70,45 @@
 </header>
 
 <!-- Bento Grid Pattern Content -->
-<div class="wp-block-group alignfull">
-    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 2rem;">
+<div class="wp-block-group hoplytics-bento-grid">
 
-        <!-- Hero Tile -->
-        <div class="wp-block-group has-white-color has-primary-background-color has-text-color has-background" style="padding: 2rem; grid-column: span 2;">
-            <h1 class="wp-block-heading">We Build Digital Ecosystems.</h1>
-            <p>Specializing in FSE, Headless WP, and AI Integrations.</p>
-        </div>
-
-        <!-- Services List -->
-        <div class="wp-block-group has-base-background-color has-background" style="padding: 2rem;">
-            <h3 class="wp-block-heading">Services</h3>
-            <ul>
-                <li>Fullstack Architecture</li>
-                <li>Next.js Integration</li>
-                <li>Block Theme Dev</li>
-                <li>Automated QA</li>
-            </ul>
-        </div>
-
-        <!-- Insights Header (Engineering Logs) -->
-        <div class="wp-block-group has-base-background-color has-background" style="padding: 2rem; grid-column: span 3;">
-            <h3 class="wp-block-heading">Engineering Logs</h3>
-            <!-- Mock posts -->
-            <ul>
-                <li><a href="#">Log Entry 1</a> - Oct 20</li>
-                <li><a href="#">Log Entry 2</a> - Oct 18</li>
-                <li><a href="#">Log Entry 3</a> - Oct 15</li>
-            </ul>
-        </div>
-
+    <!-- Hero Tile -->
+    <div class="wp-block-group has-text-color has-background has-surface-color has-primary-background-color" style="grid-column: span 2; grid-row: span 2; padding: 2rem; background-color: var(--wp--preset--color--primary); color: white;">
+        <h1 class="wp-block-heading">We Build Digital Ecosystems.</h1>
+        <p>Specializing in FSE, Headless WP, and AI Integrations.</p>
     </div>
+
+    <!-- Services List -->
+    <div class="wp-block-group" style="grid-column: span 1; grid-row: span 2; padding: 2rem; border: 1px solid var(--wp--preset--color--text);">
+        <h3 class="wp-block-heading">Services</h3>
+        <ul>
+            <li>Fullstack Architecture</li>
+            <li>Next.js Integration</li>
+            <li>Block Theme Dev</li>
+            <li>Automated QA</li>
+        </ul>
+    </div>
+
+    <!-- ROI Calculator Placeholder -->
+    <div class="wp-block-group" style="grid-column: span 1; grid-row: span 2; padding: 2rem; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center;">
+        <p>[ROI Calculator Block]</p>
+    </div>
+
+    <!-- Insights Header (Engineering Logs) -->
+    <div class="wp-block-group" style="grid-column: span 2; grid-row: span 1; padding: 2rem; border: 1px solid #eee;">
+        <h3 class="wp-block-heading">Engineering Logs</h3>
+        <!-- Mock posts -->
+        <div class="wp-block-query">
+            <p><a href="#">Log Entry 1</a></p>
+            <p><a href="#">Log Entry 2</a></p>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="wp-block-group has-text-color has-background" style="background-color:var(--wp--preset--color--accent);color:#ffffff;grid-column: span 2; grid-row: span 1; padding: 2rem; display: flex; align-items: center; justify-content: center;">
+        <p class="has-text-align-center" style="font-size:1.5rem;font-weight:bold"><a href="/contact" style="color: inherit; text-decoration: underline;">Book Now</a></p>
+    </div>
+
 </div>
 
 <footer>
