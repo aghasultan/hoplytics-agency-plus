@@ -17,6 +17,94 @@ Text Domain: hoplytics
  * and theme.json configuration.
  */
 
+/* ROI Calculator Block */
+.wp-block-hoplytics-roi-calculator {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.roi-input-group {
+    margin-bottom: 1.5rem;
+}
+
+.roi-input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.range-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.range-input-wrapper input[type="range"] {
+    flex: 1;
+    min-width: 150px;
+}
+
+.number-input-wrapper {
+    position: relative;
+    width: 140px;
+}
+
+.number-input-wrapper input {
+    padding-left: 1.75rem;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.number-input-wrapper .currency-symbol {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.number-input-wrapper .percentage-symbol {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.roi-calculator-result {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.roi-label {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+.roi-revenue-display {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
 /* Testimonial Grid */
 .testimonial-grid {
     display: grid;
