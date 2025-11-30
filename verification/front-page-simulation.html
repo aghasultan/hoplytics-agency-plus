@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front Page Simulation</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../assets/css/main.css"> <!-- Assuming this exists from comments in style.css -->
+    <style>
+        /* Basic reset and variable shim for simulation */
+        :root {
+            --wp--preset--spacing--50: 2rem;
+            --wp--preset--spacing--40: 1.5rem;
+            --wp--preset--color--primary: #0F172A; /* Slate 900 */
+            --wp--preset--color--secondary: #3B82F6; /* Blue 500 */
+            --wp--preset--color--base: #F8FAFC; /* Slate 50 */
+            --wp--preset--color--contrast: #0F172A;
+            --wp--preset--color--tertiary: #F97316; /* Orange 500 */
+            --wp--preset--color--white: #FFFFFF;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .alignfull {
+            width: 100%;
+            max-width: 100%;
+        }
+        .wp-block-group {
+            box-sizing: border-box;
+        }
+        .wp-block-heading {
+            margin-top: 0;
+        }
+        /* Grid simulation */
+        .wp-block-group.alignfull > .wp-block-group:first-child {
+            /* Mimic the grid container */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Corrected from 2 to 3 to match PHP logic update if applicable, but PHP code said 3 */
+            gap: var(--wp--preset--spacing--50);
+            padding: var(--wp--preset--spacing--50);
+        }
+        /* Apply background colors */
+        .has-primary-background-color { background-color: var(--wp--preset--color--primary); color: white; }
+        .has-secondary-background-color { background-color: var(--wp--preset--color--secondary); color: white; }
+        .has-tertiary-background-color { background-color: var(--wp--preset--color--tertiary); color: white; }
+        .has-base-background-color { background-color: var(--wp--preset--color--base); color: black; }
+        .has-contrast-background-color { background-color: var(--wp--preset--color--contrast); color: white; }
+        .has-white-color { color: white; }
+
+        header, footer {
+            background: #eee;
+            padding: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Header Template Part Simulation</h1>
+</header>
+
+<!-- Bento Grid Pattern Content -->
+<div class="wp-block-group alignfull">
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 2rem;">
+
+        <!-- Hero Tile -->
+        <div class="wp-block-group has-white-color has-primary-background-color has-text-color has-background" style="padding: 2rem; grid-column: span 2;">
+            <h1 class="wp-block-heading">We Build Digital Ecosystems.</h1>
+            <p>Specializing in FSE, Headless WP, and AI Integrations.</p>
+        </div>
+
+        <!-- Services List -->
+        <div class="wp-block-group has-base-background-color has-background" style="padding: 2rem;">
+            <h3 class="wp-block-heading">Services</h3>
+            <ul>
+                <li>Fullstack Architecture</li>
+                <li>Next.js Integration</li>
+                <li>Block Theme Dev</li>
+                <li>Automated QA</li>
+            </ul>
+        </div>
+
+        <!-- Insights Header (Engineering Logs) -->
+        <div class="wp-block-group has-base-background-color has-background" style="padding: 2rem; grid-column: span 3;">
+            <h3 class="wp-block-heading">Engineering Logs</h3>
+            <!-- Mock posts -->
+            <ul>
+                <li><a href="#">Log Entry 1</a> - Oct 20</li>
+                <li><a href="#">Log Entry 2</a> - Oct 18</li>
+                <li><a href="#">Log Entry 3</a> - Oct 15</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <p>Footer Template Part Simulation</p>
+</footer>
+
+</body>
+</html>
