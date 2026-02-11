@@ -47,12 +47,17 @@ function hoplytics_register_lead_cpt(): void
     });
 
     add_action('manage_hoplytics_lead_posts_custom_column', function (string $column, int $post_id): void {
-        match ($column) {
-            'lead_email' => print ('<a href="mailto:' . esc_attr(get_post_meta($post_id, '_lead_email', true)) . '">' . esc_html(get_post_meta($post_id, '_lead_email', true)) . '</a>'),
-            'lead_source' => print (esc_html(get_post_meta($post_id, '_lead_source', true))),
-            'lead_score' => print ('<strong>' . esc_html(get_post_meta($post_id, '_lead_score', true)) . '</strong>'),
-            default => null,
-        };
+        switch ($column) {
+            case 'lead_email':
+                echo '<a href="mailto:' . esc_attr(get_post_meta($post_id, '_lead_email', true)) . '">' . esc_html(get_post_meta($post_id, '_lead_email', true)) . '</a>';
+                break;
+            case 'lead_source':
+                echo esc_html(get_post_meta($post_id, '_lead_source', true));
+                break;
+            case 'lead_score':
+                echo '<strong>' . esc_html(get_post_meta($post_id, '_lead_score', true)) . '</strong>';
+                break;
+        }
     }, 10, 2);
 }
 add_action('init', 'hoplytics_register_lead_cpt');
@@ -282,12 +287,8 @@ function hoplytics_contact_form(WP_REST_Request $request): WP_REST_Response
     if ($website)
         $score += 10;
     if ($budget) {
-        $score += match ($budget) {
-            '5k-10k' => 15,
-            '10k-25k' => 25,
-            '25k+' => 40,
-            default => 5,
-        };
+        $budget_scores = ['5k-10k' => 15, '10k-25k' => 25, '25k+' => 40];
+        $score += $budget_scores[$budget] ?? 5;
     }
 
     // Save as lead

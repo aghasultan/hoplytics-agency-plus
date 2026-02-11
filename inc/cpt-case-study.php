@@ -93,12 +93,17 @@ function hoplytics_register_case_study_cpt(): void
     });
 
     add_action('manage_case_study_posts_custom_column', function (string $column, int $post_id): void {
-        match ($column) {
-            'client' => print (esc_html(get_post_meta($post_id, '_cs_client', true))),
-            'industry' => print (esc_html(get_post_meta($post_id, '_cs_industry', true))),
-            'services' => print (esc_html(get_post_meta($post_id, '_cs_services', true))),
-            default => null,
-        };
+        switch ($column) {
+            case 'client':
+                echo esc_html(get_post_meta($post_id, '_cs_client', true));
+                break;
+            case 'industry':
+                echo esc_html(get_post_meta($post_id, '_cs_industry', true));
+                break;
+            case 'services':
+                echo esc_html(get_post_meta($post_id, '_cs_services', true));
+                break;
+        }
     }, 10, 2);
 
     // Add meta boxes for case study details

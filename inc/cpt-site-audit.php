@@ -46,12 +46,17 @@ function hoplytics_register_audit_cpt(): void
     });
 
     add_action('manage_site_audit_posts_custom_column', function (string $column, int $post_id): void {
-        match ($column) {
-            'audit_url' => print ('<code>' . esc_html(get_post_meta($post_id, '_audit_url', true)) . '</code>'),
-            'audit_score' => print ('<strong>' . esc_html(get_post_meta($post_id, '_audit_score', true)) . '/100</strong>'),
-            'audit_date' => print (esc_html(get_post_meta($post_id, '_audit_date', true))),
-            default => null,
-        };
+        switch ($column) {
+            case 'audit_url':
+                echo '<code>' . esc_html(get_post_meta($post_id, '_audit_url', true)) . '</code>';
+                break;
+            case 'audit_score':
+                echo '<strong>' . esc_html(get_post_meta($post_id, '_audit_score', true)) . '/100</strong>';
+                break;
+            case 'audit_date':
+                echo esc_html(get_post_meta($post_id, '_audit_date', true));
+                break;
+        }
     }, 10, 2);
 }
 add_action('init', 'hoplytics_register_audit_cpt');

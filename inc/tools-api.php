@@ -332,13 +332,7 @@ function hoplytics_website_audit(WP_REST_Request $request): WP_REST_Response
         'success' => true,
         'url' => $url,
         'score' => $final_score,
-        'grade' => match (true) {
-            $final_score >= 90 => 'A',
-            $final_score >= 80 => 'B',
-            $final_score >= 60 => 'C',
-            $final_score >= 40 => 'D',
-            default => 'F',
-        },
+        'grade' => $final_score >= 90 ? 'A' : ($final_score >= 80 ? 'B' : ($final_score >= 60 ? 'C' : ($final_score >= 40 ? 'D' : 'F'))),
         'summary' => [
             'critical' => count($critical),
             'warnings' => count($warnings),
@@ -646,13 +640,7 @@ function hoplytics_seo_score(WP_REST_Request $request): WP_REST_Response
         'success' => true,
         'url' => $url,
         'score' => $final,
-        'grade' => match (true) {
-            $final >= 90 => 'A',
-            $final >= 80 => 'B',
-            $final >= 60 => 'C',
-            $final >= 40 => 'D',
-            default => 'F',
-        },
+        'grade' => $final >= 90 ? 'A' : ($final >= 80 ? 'B' : ($final >= 60 ? 'C' : ($final >= 40 ? 'D' : 'F'))),
         'items' => $items,
         'word_count' => $word_count,
     ], 200);
@@ -824,13 +812,17 @@ function hoplytics_speed_check(WP_REST_Request $request): WP_REST_Response
     $final_score = $max > 0 ? (int) round(($score / $max) * 100) : 0;
 
     // Performance grade with emoji
-    $grade_data = match (true) {
-        $final_score >= 90 => ['grade' => 'A', 'emoji' => '🚀', 'label' => 'Excellent'],
-        $final_score >= 70 => ['grade' => 'B', 'emoji' => '✅', 'label' => 'Good'],
-        $final_score >= 50 => ['grade' => 'C', 'emoji' => '⚠️', 'label' => 'Needs Work'],
-        $final_score >= 30 => ['grade' => 'D', 'emoji' => '🐌', 'label' => 'Slow'],
-        default => ['grade' => 'F', 'emoji' => '🔴', 'label' => 'Critical'],
-    };
+    if ($final_score >= 90) {
+        $grade_data = ['grade' => 'A', 'emoji' => '🚀', 'label' => 'Excellent'];
+    } elseif ($final_score >= 70) {
+        $grade_data = ['grade' => 'B', 'emoji' => '✅', 'label' => 'Good'];
+    } elseif ($final_score >= 50) {
+        $grade_data = ['grade' => 'C', 'emoji' => '⚠️', 'label' => 'Needs Work'];
+    } elseif ($final_score >= 30) {
+        $grade_data = ['grade' => 'D', 'emoji' => '🐌', 'label' => 'Slow'];
+    } else {
+        $grade_data = ['grade' => 'F', 'emoji' => '🔴', 'label' => 'Critical'];
+    }
 
     return new WP_REST_Response([
         'success' => true,
@@ -1126,22 +1118,12 @@ function hoplytics_pricing_estimate(WP_REST_Request $request): WP_REST_Response
     ];
 
     // Business size multipliers
-    $size_multiplier = match ($business_size) {
-        'startup' => 0.75,
-        'small' => 1.0,
-        'medium' => 1.5,
-        'enterprise' => 2.5,
-        default => 1.0,
-    };
+    $size_map = ['startup' => 0.75, 'small' => 1.0, 'medium' => 1.5, 'enterprise' => 2.5];
+    $size_multiplier = $size_map[$business_size] ?? 1.0;
 
     // Timeline multiplier (rush = premium)
-    $timeline_multiplier = match ($timeline) {
-        'urgent' => 1.3,
-        'fast' => 1.15,
-        'standard' => 1.0,
-        'flexible' => 0.9,
-        default => 1.0,
-    };
+    $timeline_map = ['urgent' => 1.3, 'fast' => 1.15, 'standard' => 1.0, 'flexible' => 0.9];
+    $timeline_multiplier = $timeline_map[$timeline] ?? 1.0;
 
     // Goal complexity bonus
     $goal_bonus = 1.0;

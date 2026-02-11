@@ -9,47 +9,33 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
-/**
- * Runtime PHP version guard.
- * Prevents fatal errors on hosts running PHP < 8.2 where enum syntax is unsupported.
- * The style.css "Requires PHP" header handles WP activation, but this catches edge cases.
- */
-if (version_compare(PHP_VERSION, '8.2', '<')) {
-	add_action('admin_notices', function (): void {
-		$message = sprintf(
-			/* translators: 1: Required PHP version 2: Current PHP version */
-			__('<strong>Hoplytics</strong> requires PHP %1$s or higher. You are running PHP %2$s. Please upgrade your hosting.', 'hoplytics'),
-			'8.2',
-			PHP_VERSION
-		);
-		echo '<div class="notice notice-error"><p>' . wp_kses_post($message) . '</p></div>';
-	});
-
-	// Switch to a default theme to avoid a broken site
-	switch_theme(WP_DEFAULT_THEME);
-	return;
-}
-
 if (!defined('HOPLYTICS_VERSION')) {
 	define('HOPLYTICS_VERSION', '3.1.0');
 }
 
 /**
- * Style Kit Enum — PHP 8.1+ backed enum for theme design presets.
+ * Style Kit — PHP 7.4+ compatible class for theme design presets.
  */
-enum StyleKit: string
+class StyleKit
 {
-	case TechFuturist = 'tech-futurist';
-	case CorporateStabilizer = 'corporate-stabilizer';
-	case CreativeDisruptor = 'creative-disruptor';
+	const TECH_FUTURIST = 'tech-futurist';
+	const CORPORATE_STABILIZER = 'corporate-stabilizer';
+	const CREATIVE_DISRUPTOR = 'creative-disruptor';
 
-	public function label(): string
+	/**
+	 * Get label for a kit value.
+	 *
+	 * @param string $value
+	 * @return string
+	 */
+	public static function label(string $value): string
 	{
-		return match ($this) {
-			self::TechFuturist => __('Tech-Futurist (Dark, Neon)', 'hoplytics'),
-			self::CorporateStabilizer => __('Corporate-Stabilizer (Clean, Muted)', 'hoplytics'),
-			self::CreativeDisruptor => __('Creative-Disruptor (Bold, Kinetic)', 'hoplytics'),
-		};
+		$labels = [
+			self::TECH_FUTURIST => __('Tech-Futurist (Dark, Neon)', 'hoplytics'),
+			self::CORPORATE_STABILIZER => __('Corporate-Stabilizer (Clean, Muted)', 'hoplytics'),
+			self::CREATIVE_DISRUPTOR => __('Creative-Disruptor (Bold, Kinetic)', 'hoplytics'),
+		];
+		return $labels[$value] ?? $labels[self::TECH_FUTURIST];
 	}
 
 	/**
@@ -59,20 +45,23 @@ enum StyleKit: string
 	 */
 	public static function choices(): array
 	{
-		$choices = [];
-		foreach (self::cases() as $kit) {
-			$choices[$kit->value] = $kit->label();
-		}
-		return $choices;
+		return [
+			self::TECH_FUTURIST => self::label(self::TECH_FUTURIST),
+			self::CORPORATE_STABILIZER => self::label(self::CORPORATE_STABILIZER),
+			self::CREATIVE_DISRUPTOR => self::label(self::CREATIVE_DISRUPTOR),
+		];
 	}
 
 	/**
-	 * Sanitize callback for Customizer — validates against enum values.
+	 * Sanitize callback for Customizer — validates against known values.
+	 *
+	 * @param string $value
+	 * @return string
 	 */
 	public static function sanitize(string $value): string
 	{
-		$kit = self::tryFrom($value);
-		return $kit?->value ?? self::TechFuturist->value;
+		$valid = [self::TECH_FUTURIST, self::CORPORATE_STABILIZER, self::CREATIVE_DISRUPTOR];
+		return in_array($value, $valid, true) ? $value : self::TECH_FUTURIST;
 	}
 }
 

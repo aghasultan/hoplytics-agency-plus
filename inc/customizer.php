@@ -46,9 +46,9 @@ function hoplytics_customize_register(WP_Customize_Manager $wp_customize): void
     ));
 
     $wp_customize->add_setting('hoplytics_style_kit', array(
-        'default' => StyleKit::TechFuturist->value,
+        'default' => StyleKit::TECH_FUTURIST,
         'transport' => 'refresh',
-        'sanitize_callback' => StyleKit::sanitize(...),
+        'sanitize_callback' => array('StyleKit', 'sanitize'),
     ));
 
     $wp_customize->add_control('hoplytics_style_kit', array(

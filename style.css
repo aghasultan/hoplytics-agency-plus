@@ -5,7 +5,7 @@ Author: Hoplytics Team
 Author URI: https://hoplytics.com/
 Description: A high-performance, conversion-focused hybrid WordPress theme for digital agencies. Features integrated CRO tools, style kits, and deep schema integration.
 Version: 3.0.0
-Requires PHP: 8.2
+Requires PHP: 7.4
 Tested up to: 6.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -134,7 +134,8 @@ Text Domain: hoplytics
     position: sticky;
     top: 0;
     z-index: 9999;
-    background-color: #DC2626; /* Fallback */
+    background-color: #DC2626;
+    /* Fallback */
     background: linear-gradient(90deg, #DC2626, #B91C1C);
     color: #fff;
     padding: 0.75rem 0;
@@ -182,7 +183,7 @@ Text Domain: hoplytics
         grid-template-columns: 1fr !important;
     }
 
-    .hoplytics-bento-grid > .wp-block-group {
+    .hoplytics-bento-grid>.wp-block-group {
         grid-column: auto !important;
         grid-row: auto !important;
         width: 100% !important;
