@@ -1,0 +1,182 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}},"layout":{"type":"constrained","contentSize":"700px"}} -->
+<div class="wp-block-group alignfull"
+    style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)">
+
+    <!-- wp:heading {"level":1,"textAlign":"center"} -->
+    <h1 class="wp-block-heading has-text-align-center">Let's <span class="gradient-text">Grow Together</span></h1>
+    <!-- /wp:heading -->
+
+    <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1.125rem"},"color":{"text":"#9CA3AF"}}} -->
+    <p class="has-text-align-center" style="color:#9CA3AF;font-size:1.125rem">Book a free 30-minute strategy session. No
+        sales pitch — just real insights into what's holding your marketing back.</p>
+    <!-- /wp:paragraph -->
+
+    <!-- wp:html -->
+    <div id="hoplytics-contact-form" class="free-tool">
+        <form class="contact-form" aria-label="Contact form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="contact-name">Full Name <span class="required">*</span></label>
+                    <input type="text" id="contact-name" name="name" required placeholder="John Doe" />
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="contact-email" name="email" required placeholder="john@company.com" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="contact-company">Company</label>
+                    <input type="text" id="contact-company" name="company" placeholder="Acme Corp" />
+                </div>
+                <div class="form-group">
+                    <label for="contact-website">Website URL</label>
+                    <input type="url" id="contact-website" name="website" placeholder="https://your-site.com" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="contact-service">Service Interested In <span class="required">*</span></label>
+                    <select id="contact-service" name="service" required>
+                        <option value="">Select a service...</option>
+                        <option value="seo">Search Engine Optimization</option>
+                        <option value="ppc">Paid Advertising (PPC)</option>
+                        <option value="social">Social Media Marketing</option>
+                        <option value="content">Content Marketing</option>
+                        <option value="webdev">Web Development</option>
+                        <option value="automation">Marketing Automation</option>
+                        <option value="full-service">Full-Service (Everything)</option>
+                        <option value="other">Other / Not Sure</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="contact-budget">Monthly Budget Range</label>
+                    <select id="contact-budget" name="budget">
+                        <option value="">Prefer not to say</option>
+                        <option value="under-2k">Under $2,000</option>
+                        <option value="2k-5k">$2,000 – $5,000</option>
+                        <option value="5k-10k">$5,000 – $10,000</option>
+                        <option value="10k-25k">$10,000 – $25,000</option>
+                        <option value="25k+">$25,000+</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="contact-message">Tell Us About Your Goals <span class="required">*</span></label>
+                <textarea id="contact-message" name="message" required rows="5"
+                    placeholder="What are your biggest marketing challenges? What would success look like for your business?"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Send My Inquiry →</button>
+
+            <p class="form-disclaimer">By submitting this form, you agree to our <a href="/privacy-policy">Privacy
+                    Policy</a>. We'll never share your data.</p>
+        </form>
+
+        <div class="tool-loading" hidden>
+            <div class="spinner" aria-label="Sending message"></div>
+            <p>Sending your message...</p>
+        </div>
+
+        <div class="tool-results" hidden aria-live="polite"></div>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+            const form = document.querySelector('#hoplytics-contact-form form');
+            if (!form) return;
+
+            const loading = document.querySelector('#hoplytics-contact-form .tool-loading');
+            const results = document.querySelector('#hoplytics-contact-form .tool-results');
+            const API = window.hoplyticsApi?.restUrl || '/wp-json/hoplytics/v1';
+            const NONCE = window.hoplyticsApi?.nonce || '';
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                form.hidden = true;
+                loading.hidden = false;
+
+                try {
+                    const data = Object.fromEntries(new FormData(form));
+                    const res = await fetch(`${API}/lead/contact`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': NONCE },
+                        body: JSON.stringify(data),
+                    });
+                    const json = await res.json();
+
+                    if (json.success) {
+                        results.innerHTML = `
+                    <div style="text-align:center;padding:3rem">
+                        <p style="font-size:3rem">🎉</p>
+                        <h3>Message Sent!</h3>
+                        <p style="color:var(--color-text-muted)">${json.message}</p>
+                        <p style="margin-top:2rem"><a href="/free-tools" class="btn btn-secondary">Try Our Free Tools While You Wait →</a></p>
+                    </div>`;
+                    } else {
+                        results.innerHTML = `<div class="tool-error">${json.message}</div>`;
+                        form.hidden = false;
+                    }
+                } catch (err) {
+                    results.innerHTML = '<div class="tool-error">Network error. Please try again.</div>';
+                    form.hidden = false;
+                }
+
+                loading.hidden = true;
+                results.hidden = false;
+            });
+        })();
+    </script>
+    <!-- /wp:html -->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}},"color":{"background":"#111827"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-background"
+    style="background-color:#111827;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+
+    <!-- wp:heading {"textAlign":"center","level":3} -->
+    <h3 class="wp-block-heading has-text-align-center">Or Reach Us Directly</h3>
+    <!-- /wp:heading -->
+
+    <!-- wp:columns {"align":"wide"} -->
+    <div class="wp-block-columns alignwide">
+
+        <!-- wp:column -->
+        <div class="wp-block-column" style="text-align:center">
+            <p style="font-size:2rem">📧</p>
+            <p><strong>Email</strong></p>
+            <p><a href="mailto:hello@hoplytics.com">hello@hoplytics.com</a></p>
+        </div>
+        <!-- /wp:column -->
+
+        <!-- wp:column -->
+        <div class="wp-block-column" style="text-align:center">
+            <p style="font-size:2rem">📱</p>
+            <p><strong>Social</strong></p>
+            <p><a href="https://instagram.com/hoplytics">@hoplytics</a></p>
+        </div>
+        <!-- /wp:column -->
+
+        <!-- wp:column -->
+        <div class="wp-block-column" style="text-align:center">
+            <p style="font-size:2rem">⏰</p>
+            <p><strong>Response Time</strong></p>
+            <p>Under 24 hours</p>
+        </div>
+        <!-- /wp:column -->
+
+    </div>
+    <!-- /wp:columns -->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->

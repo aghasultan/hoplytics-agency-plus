@@ -1,0 +1,102 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:html -->
+<div class="reading-progress-bar" id="reading-progress"></div>
+<!-- /wp:html -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|40"}}},"layout":{"type":"constrained","contentSize":"800px"}} -->
+<div class="wp-block-group alignfull"
+    style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--40)">
+
+    <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"},"style":{"spacing":{"blockGap":"0.75rem","margin":{"bottom":"1rem"}}}} -->
+    <div class="wp-block-group" style="margin-bottom:1rem">
+        <!-- wp:post-terms {"term":"category","style":{"typography":{"fontSize":"0.8rem","fontWeight":"600","textTransform":"uppercase","letterSpacing":"0.05em"},"elements":{"link":{"color":{"text":"var:preset|color|primary"}}}}} /-->
+    </div>
+    <!-- /wp:group -->
+
+    <!-- wp:post-title {"level":1,"style":{"typography":{"lineHeight":"1.25"}}} /-->
+
+    <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"},"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"2rem"}}}} -->
+    <div class="wp-block-group" style="margin-top:1.5rem;margin-bottom:2rem">
+        <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"},"style":{"spacing":{"blockGap":"0.5rem"}}} -->
+        <div class="wp-block-group">
+            <!-- wp:post-author-name {"style":{"typography":{"fontSize":"0.9rem"}}} /-->
+            <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.9rem"},"color":{"text":"#6B7280"}}} -->
+            <p style="color:#6B7280;font-size:0.9rem">·</p>
+            <!-- /wp:paragraph -->
+            <!-- wp:post-date {"style":{"typography":{"fontSize":"0.9rem"},"color":{"text":"#6B7280"}}} /-->
+        </div>
+        <!-- /wp:group -->
+    </div>
+    <!-- /wp:group -->
+
+    <!-- wp:post-featured-image {"align":"wide","aspectRatio":"21/9","style":{"border":{"radius":"12px"},"spacing":{"margin":{"bottom":"2rem"}}}} /-->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"0","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained","contentSize":"720px"}} -->
+<div class="wp-block-group alignfull" style="padding-top:0;padding-bottom:var(--wp--preset--spacing--60)">
+
+    <!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+
+    <!-- wp:separator {"className":"is-style-gradient-line","style":{"spacing":{"margin":{"top":"3rem","bottom":"2rem"}}}} -->
+    <hr class="wp-block-separator is-style-gradient-line" style="margin-top:3rem;margin-bottom:2rem" />
+    <!-- /wp:separator -->
+
+    <!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap"},"style":{"spacing":{"blockGap":"0.5rem"}}} -->
+    <div class="wp-block-group">
+        <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.85rem","fontWeight":"600"},"color":{"text":"#9CA3AF"}}} -->
+        <p style="color:#9CA3AF;font-size:0.85rem;font-weight:600">Tags:</p>
+        <!-- /wp:paragraph -->
+        <!-- wp:post-terms {"term":"post_tag","style":{"typography":{"fontSize":"0.85rem"}}} /-->
+    </div>
+    <!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}},"color":{"background":"#111827"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-background"
+    style="background-color:#111827;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+
+    <!-- wp:heading {"textAlign":"center"} -->
+    <h2 class="wp-block-heading has-text-align-center">Ready to Put These <span class="gradient-text">Strategies to
+            Work?</span></h2>
+    <!-- /wp:heading -->
+
+    <!-- wp:paragraph {"align":"center","style":{"color":{"text":"#9CA3AF"}}} -->
+    <p class="has-text-align-center" style="color:#9CA3AF">Our team implements the exact strategies we write about.
+        Let's grow your business together.</p>
+    <!-- /wp:paragraph -->
+
+    <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"1.5rem"}}}} -->
+    <div class="wp-block-buttons" style="margin-top:1.5rem">
+        <!-- wp:button {"className":"is-style-gradient btn-lg"} -->
+        <div class="wp-block-button is-style-gradient btn-lg"><a class="wp-block-button__link" href="/get-started">Book
+                Your Free Strategy Call →</a></div>
+        <!-- /wp:button -->
+    </div>
+    <!-- /wp:buttons -->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:html -->
+<script>
+    (function () {
+        const bar = document.getElementById('reading-progress');
+        if (!bar) return;
+        function update() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+            bar.style.transform = 'scaleX(' + pct + ')';
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+</script>
+<!-- /wp:html -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->

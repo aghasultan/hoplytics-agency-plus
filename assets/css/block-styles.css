@@ -1,0 +1,157 @@
+/* ==========================================================================
+   #Block Styles — Custom style variants for core blocks
+   ========================================================================== */
+
+/* --- Buttons --- */
+
+.wp-block-button.is-style-gradient .wp-block-button__link {
+    background: var(--gradient-primary);
+    border: none;
+    color: #fff;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.wp-block-button.is-style-gradient .wp-block-button__link:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.wp-block-button.is-style-glow .wp-block-button__link {
+    background: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    transition: box-shadow 0.3s ease;
+}
+
+.wp-block-button.is-style-glow .wp-block-button__link:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(59, 130, 246, 0.2);
+}
+
+.wp-block-button.is-style-pill .wp-block-button__link {
+    border-radius: 9999px;
+    padding: 0.6rem 2rem;
+}
+
+/* --- Group / Cards --- */
+
+.wp-block-group.is-style-card {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wp-block-group.is-style-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.wp-block-group.is-style-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+}
+
+.wp-block-group.is-style-bordered {
+    background: transparent;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+}
+
+.wp-block-group.is-style-elevated {
+    background: var(--color-bg-alt);
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* --- Image --- */
+
+.wp-block-image.is-style-rounded-shadow img {
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.wp-block-image.is-style-frame img {
+    border: 4px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 4px;
+}
+
+/* --- Quote / Testimonial --- */
+
+.wp-block-quote.is-style-testimonial {
+    border-left: none;
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    position: relative;
+}
+
+.wp-block-quote.is-style-testimonial::before {
+    content: "\201C";
+    display: block;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--color-accent);
+    font-family: Georgia, serif;
+    margin-bottom: 0.5rem;
+}
+
+.wp-block-quote.is-style-testimonial cite {
+    display: block;
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.wp-block-quote.is-style-highlight {
+    border-left: 4px solid var(--color-accent);
+    background: rgba(249, 115, 22, 0.05);
+    padding: 1.5rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* --- Columns --- */
+
+.wp-block-columns.is-style-card-grid>.wp-block-column {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: transform 0.2s ease;
+}
+
+.wp-block-columns.is-style-card-grid>.wp-block-column:hover {
+    transform: translateY(-4px);
+}
+
+/* --- Separator --- */
+
+.wp-block-separator.is-style-gradient-line {
+    border: none;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+/* --- Cover --- */
+
+.wp-block-cover.is-style-hero {
+    min-height: 80vh;
+    border-radius: 0;
+}
+
+.wp-block-cover.is-style-cta-banner {
+    border-radius: var(--radius-lg);
+    min-height: 300px;
+    overflow: hidden;
+}

@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
-if ( ! function_exists( 'hoplytics_setup' ) ) :
+if (!function_exists('hoplytics_setup')):
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -17,15 +17,16 @@ if ( ! function_exists( 'hoplytics_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function hoplytics_setup() {
+	function hoplytics_setup(): void
+	{
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 */
-		load_theme_textdomain( 'hoplytics', get_template_directory() . '/languages' );
+		load_theme_textdomain('hoplytics', get_template_directory() . '/languages');
 
 		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+		add_theme_support('automatic-feed-links');
 
 		/*
 		 * Let WordPress manage the document title.
@@ -33,21 +34,21 @@ if ( ! function_exists( 'hoplytics_setup' ) ) :
 		 * hard-coded <title> tag in the document head, and expect WordPress to
 		 * provide it for us.
 		 */
-		add_theme_support( 'title-tag' );
+		add_theme_support('title-tag');
 
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
 		 *
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
-		add_theme_support( 'post-thumbnails' );
+		add_theme_support('post-thumbnails');
 
 		// Register Navigation Menus
 		register_nav_menus(
 			array(
-				'menu-1'          => esc_html__( 'Primary', 'hoplytics' ),
-				'footer'          => esc_html__( 'Footer Company', 'hoplytics' ),
-				'footer-services' => esc_html__( 'Footer Services', 'hoplytics' ),
+				'menu-1' => esc_html__('Primary', 'hoplytics'),
+				'footer' => esc_html__('Footer Company', 'hoplytics'),
+				'footer-services' => esc_html__('Footer Services', 'hoplytics'),
 			)
 		);
 
@@ -69,7 +70,7 @@ if ( ! function_exists( 'hoplytics_setup' ) ) :
 		);
 
 		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
+		add_theme_support('customize-selective-refresh-widgets');
 
 		/**
 		 * Add support for core custom logo.
@@ -79,29 +80,29 @@ if ( ! function_exists( 'hoplytics_setup' ) ) :
 		add_theme_support(
 			'custom-logo',
 			array(
-				'height'      => 250,
-				'width'       => 250,
-				'flex-width'  => true,
+				'height' => 250,
+				'width' => 250,
+				'flex-width' => true,
 				'flex-height' => true,
 			)
 		);
 
 		// Add support for Block Styles.
-		add_theme_support( 'wp-block-styles' );
+		add_theme_support('wp-block-styles');
 
 		// Add support for full and wide align images.
-		add_theme_support( 'align-wide' );
+		add_theme_support('align-wide');
 
 		// Add support for responsive embeds.
-		add_theme_support( 'responsive-embeds' );
+		add_theme_support('responsive-embeds');
 
-        // Image Sizes for optimization
-        add_image_size( 'card-large', 800, 600, true ); // For large cards/portfolios
-        add_image_size( 'card-small', 400, 300, true ); // For grid items
-        add_image_size( 'avatar', 200, 200, true ); // For team/testimonials
+		// Image Sizes for optimization
+		add_image_size('card-large', 800, 600, true); // For large cards/portfolios
+		add_image_size('card-small', 400, 300, true); // For grid items
+		add_image_size('avatar', 200, 200, true); // For team/testimonials
 	}
 endif;
-add_action( 'after_setup_theme', 'hoplytics_setup' );
+add_action('after_setup_theme', 'hoplytics_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -110,60 +111,64 @@ add_action( 'after_setup_theme', 'hoplytics_setup' );
  *
  * @global int $content_width
  */
-function hoplytics_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'hoplytics_content_width', 1200 );
+function hoplytics_content_width()
+{
+	$GLOBALS['content_width'] = apply_filters('hoplytics_content_width', 1200);
 }
-add_action( 'after_setup_theme', 'hoplytics_content_width', 0 );
+add_action('after_setup_theme', 'hoplytics_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function hoplytics_widgets_init() {
+function hoplytics_widgets_init(): void
+{
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'hoplytics' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'hoplytics' ),
+			'name' => esc_html__('Sidebar', 'hoplytics'),
+			'id' => 'sidebar-1',
+			'description' => esc_html__('Add widgets here.', 'hoplytics'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'after_widget' => '</section>',
+			'before_title' => '<h2 class="widget-title">',
+			'after_title' => '</h2>',
 		)
 	);
 }
-add_action( 'widgets_init', 'hoplytics_widgets_init' );
+add_action('widgets_init', 'hoplytics_widgets_init');
 
 /**
  * Admin Notice for Content Seeding
  */
-function hoplytics_admin_notices() {
-    $screen = get_current_screen();
-    if ( ! $screen || $screen->base !== 'dashboard' ) {
-        return;
-    }
+function hoplytics_admin_notices()
+{
+	$screen = get_current_screen();
+	if (!$screen || $screen->base !== 'dashboard') {
+		return;
+	}
 
-    if ( isset( $_GET['seeded'] ) && $_GET['seeded'] == 'true' ) {
-        ?>
-        <div class="notice notice-success is-dismissible">
-            <p><?php _e( 'Hoplytics content has been successfully seeded! Check your Pages and Posts.', 'hoplytics' ); ?></p>
-        </div>
-        <?php
-    } else {
-        // Show "Install Demo Content" prompt if Social Media Marketing page is missing
-        if ( ! get_page_by_path( 'social-media-marketing', OBJECT, 'service' ) ) {
-            $url = admin_url( '?seed_hoplytics_content=true' );
-            ?>
-            <div class="notice notice-info is-dismissible">
-                <p>
-                    <strong><?php _e( 'Welcome to Hoplytics!', 'hoplytics' ); ?></strong>
-                    <?php _e( 'It looks like you are missing the core service pages.', 'hoplytics' ); ?>
-                    <a href="<?php echo esc_url( $url ); ?>" class="button button-primary" style="margin-left: 10px;"><?php _e( 'Install Demo Content', 'hoplytics' ); ?></a>
-                </p>
-            </div>
-            <?php
-        }
-    }
+	if (isset($_GET['seeded']) && $_GET['seeded'] == 'true') {
+		?>
+		<div class="notice notice-success is-dismissible">
+			<p><?php _e('Hoplytics content has been successfully seeded! Check your Pages and Posts.', 'hoplytics'); ?></p>
+		</div>
+		<?php
+	} else {
+		// Show "Install Demo Content" prompt if Social Media Marketing page is missing
+		if (!get_page_by_path('social-media-marketing', OBJECT, 'service')) {
+			$url = admin_url('?seed_hoplytics_content=true');
+			?>
+			<div class="notice notice-info is-dismissible">
+				<p>
+					<strong><?php _e('Welcome to Hoplytics!', 'hoplytics'); ?></strong>
+					<?php _e('It looks like you are missing the core service pages.', 'hoplytics'); ?>
+					<a href="<?php echo esc_url($url); ?>" class="button button-primary"
+						style="margin-left: 10px;"><?php _e('Install Demo Content', 'hoplytics'); ?></a>
+				</p>
+			</div>
+			<?php
+		}
+	}
 }
-add_action( 'admin_notices', 'hoplytics_admin_notices' );
+add_action('admin_notices', 'hoplytics_admin_notices');
