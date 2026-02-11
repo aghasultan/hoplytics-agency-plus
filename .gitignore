@@ -1,26 +1,39 @@
-# Dependencies
+# ─── Dependencies ───
 node_modules/
 
-# Build output (uncomment for dev, comment out for deployment)
-# dist/
-
-# OS files
+# ─── OS files ───
 .DS_Store
 Thumbs.db
 
-# Editor files
+# ─── Editor & IDE ───
 *.swp
 *.swo
 *~
 .idea/
 .vscode/
 
-# WordPress uploads (if committed accidentally)
-wp-content/uploads/
-
-# Archive (legacy files)
-_archive/
-
-# Environment
+# ─── Environment ───
 .env
 .env.local
+
+# ─── WordPress uploads ───
+wp-content/uploads/
+
+# ─── Development-only (kept local, excluded from deploy zip) ───
+_archive/
+_bmad/
+_bmad-output/
+docs/
+verification/
+.github/
+.agent/
+
+# Build tooling configs
+docker-compose.yml
+phpstan.neon
+.stylelintrc.json
+vite.config.js
+package.json
+package-lock.json
+preview.html
+README.md
