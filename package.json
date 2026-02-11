@@ -1,0 +1,30 @@
+{
+    "name": "hoplytics-agency-plus",
+    "version": "3.1.0",
+    "description": "High-performance WordPress theme for marketing agencies.",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "lint:css": "stylelint 'assets/css/**/*.css'",
+        "lint:js": "eslint 'assets/js/**/*.js' 'blocks/**/*.js'",
+        "lint": "npm run lint:css && npm run lint:js",
+        "i18n:pot": "npx @wordpress/create-block --no-plugin --variant static --namespace hoplytics || wp i18n make-pot . languages/hoplytics.pot --domain=hoplytics --exclude=node_modules,dist,_archive,vendor",
+        "analyze": "php vendor/bin/phpstan analyse -c phpstan.neon",
+        "zip": "npm run build && cd .. && zip -r hoplytics-agency-plus.zip hoplytics-agency-plus -x 'hoplytics-agency-plus/node_modules/*' 'hoplytics-agency-plus/_archive/*' 'hoplytics-agency-plus/.git/*'"
+    },
+    "devDependencies": {
+        "vite": "^6.0.0",
+        "vite-plugin-static-copy": "^2.2.0",
+        "stylelint": "^16.0.0",
+        "stylelint-config-standard": "^37.0.0",
+        "eslint": "^9.0.0"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ]
+}

@@ -1,0 +1,23 @@
+parameters:
+    level: 6
+    phpVersion: 80200
+    paths:
+        - functions.php
+        - inc/
+        - blocks/
+        - patterns/
+    excludePaths:
+        - _archive/
+        - node_modules/
+        - vendor/
+        - dist/
+    scanDirectories:
+        - inc/
+    bootstrapFiles: []
+    treatPhpDocTypesAsCertain: false
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        # WordPress global functions not in scope without stubs
+        - '#Function (get_theme_mod|wp_enqueue_|register_|add_action|add_filter|wp_|get_template_directory|esc_|__|has_|is_|get_option|get_post|get_the_|current_user_can|sanitize_|wp_kses|switch_theme|defined|comments_open|register_rest_route|rest_url|wp_create_nonce|wp_date|wp_mail|wp_unique_id|wp_interactivity_data_wp_context|get_block_wrapper_attributes|register_block_bindings_source|register_post_meta|register_block_style) not found\.#'
+        - '#Class (WP_Customize_Manager|WP_REST_Request|WP_REST_Response|WP_REST_Server|WP_Block|WP_Post) not found\.#'
+        - '#Constant (ABSPATH|WP_DEFAULT_THEME) not found\.#'

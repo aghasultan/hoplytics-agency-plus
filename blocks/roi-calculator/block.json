@@ -2,15 +2,27 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "hoplytics/roi-calculator",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"title": "ROI Calculator",
 	"category": "widgets",
 	"icon": "calculator",
-	"description": "Calculate your potential ROI based on ad spend and close rate.",
+	"description": "Interactive ROI calculator powered by the WordPress Interactivity API.",
 	"supports": {
-		"interactive": true
+		"interactivity": true,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
 	},
 	"textdomain": "hoplytics",
 	"render": "file:./render.php",
-	"viewScript": "file:./view.js"
+	"viewScriptModule": "file:./view.js"
 }

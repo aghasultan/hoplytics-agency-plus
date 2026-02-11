@@ -1,0 +1,18 @@
+{
+    "extends": "stylelint-config-standard",
+    "rules": {
+        "at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": [
+                    "view-transition"
+                ]
+            }
+        ],
+        "selector-class-pattern": null,
+        "custom-property-pattern": null,
+        "no-descending-specificity": null,
+        "property-no-vendor-prefix": null,
+        "declaration-block-no-redundant-longhand-properties": null
+    }
+}
