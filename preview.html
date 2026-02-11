@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoplytics Agency — Free Marketing Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Vite dev server will inject these -->
+    <link rel="stylesheet" href="/assets/css/variables.css">
+    <link rel="stylesheet" href="/assets/css/design-system.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/header-nav.css">
+    <link rel="stylesheet" href="/assets/css/free-tools.css">
+    <link rel="stylesheet" href="/assets/css/contact-form.css">
+
+    <style>
+        /* Preview-only overrides */
+        :root {
+            --color-bg: #0B0F19;
+            --color-bg-alt: #111827;
+            --color-text: #F9FAFB;
+            --color-text-muted: #9CA3AF;
+            --color-text-secondary: #D1D5DB;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --color-primary: #3B82F6;
+            --color-accent: #8B5CF6;
+            --gradient-primary: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            --font-heading: 'Inter', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .is-style-card {
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .is-style-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary,
+        .btn.btn-primary {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-primary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* Header */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-header .brand {
+            font-size: 1.25rem;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .site-header nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .site-header nav a {
+            color: #9CA3AF;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .site-header nav a:hover,
+        .site-header nav a.active {
+            color: #fff;
+        }
+
+        .nav-cta {
+            padding: 0.5rem 1rem !important;
+            background: var(--gradient-primary) !important;
+            color: #fff !important;
+            border-radius: var(--radius-md);
+            font-weight: 600 !important;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #070A12;
+            border-top: 1px solid var(--color-border);
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .site-footer p {
+            color: #6B7280;
+            font-size: 0.85rem;
+        }
+
+        /* Layout helpers */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .columns {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .cols-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 768px) {
+
+            .cols-4,
+            .cols-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+        }
+
+        /* Tool nav cards */
+        .tool-nav-card {
+            padding: 1.5rem;
+        }
+
+        .tool-nav-card p {
+            margin: 0;
+        }
+
+        .tool-nav-card .emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-nav-card .desc {
+            font-size: 0.85rem;
+            color: #9CA3AF;
+            margin-bottom: 0.75rem;
+        }
+
+        /* CTA banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            color: #fff;
+        }
+
+        .cta-banner p {
+            color: #ffffffcc;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .cta-banner .btn-cta {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #fff;
+            color: #0B0F19;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s;
+            font-size: 1.05rem;
+        }
+
+        .cta-banner .btn-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Page sections */
+        section.free-tool-section {
+            border-top: 1px solid var(--color-border);
+            margin-top: 2rem;
+            padding-top: 2rem;
+        }
+
+        /* Nav active indicator */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .page-nav a {
+            padding: 0.4rem 0.85rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .page-nav a:hover {
+            background: var(--color-primary);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <header class="site-header">
+        <a href="#" class="brand"><span class="gradient-text">Hoplytics</span></a>
+        <nav>
+            <a href="#tools-grid">Free Tools</a>
+            <a href="#audit-tool">Audit</a>
+            <a href="#roi-tool">ROI</a>
+            <a href="#pricing-tool">Pricing</a>
+            <a href="#cta" class="nav-cta">Get Started →</a>
+        </nav>
+    </header>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="section">
+        <div class="container text-center">
+            <h1>Free <span class="gradient-text">Marketing Tools</span></h1>
+            <p style="color:#9CA3AF;font-size:1.15rem;max-width:600px;margin:0 auto 2rem">Professional-grade diagnostics
+                — completely free. No signup required to start.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════ TOOL CARDS GRID ═══════════════ -->
+    <section id="tools-grid" class="container" style="padding-bottom:2rem">
+        <div class="columns cols-4">
+            <div class="is-style-card tool-nav-card">
+                <p class="emoji">🔍</p>
+                <h4>Website Audit</h4>
+                <p class="desc">10-point health check — SSL, SEO, accessibility & more</p>
+                <a href="#audit-tool" class="btn-sm">Run Audit →</a>
+            </div>
+            <div class="is-style-card tool-nav-card">
+                <p class="emoji">📡</p>
+                <h4>Pixel Checker</h4>
+                <p class="desc">Detect FB Pixel, GTM, GA4 & 10+ tracking scripts</p>
+                <a href="#pixel-tool" class="btn-sm">Check Pixels →</a>
+            </div>
+            <div class="is-style-card tool-nav-card">
+                <p class="emoji">📊</p>
+                <h4>SEO Score</h4>
+                <p class="desc">10-factor SEO analysis with scoring breakdown</p>
+                <a href="#seo-tool" class="btn-sm">Calculate Score →</a>
+            </div>
+            <div class="is-style-card tool-nav-card">
+                <p class="emoji">🚀</p>
+                <h4>Speed Analyzer</h4>
+                <p class="desc">Load time, compression, caching & resource audit</p>
+                <a href="#speed-tool" class="btn-sm">Check Speed →</a>
+            </div>
+        </div>
+        <div class="columns cols-4" style="margin-top:1.5rem">
+            <div class="is-style-card tool-nav-card">
+                <p class="emoji">📱</p>
+                <h4>Social Presence</h4>
+                <p class="desc">Check 8 platforms, RSS, newsletter & blog signals</p>
+                <a href="#social-tool" class="btn-sm">Check Social →</a>
+            </div>
+            <div class="is-style-card tool-nav-card">
+                <p class="emoji">💰</p>
+                <h4>ROI Calculator</h4>
+                <p class="desc">See current vs projected ROAS, leads & 12-month gain</p>
+                <a href="#roi-tool" class="btn-sm">Calculate ROI →</a>
+            </div>
+            <div class="is-style-card tool-nav-card">
+                <p class="emoji">🏷️</p>
+                <h4>Pricing Estimator</h4>
+                <p class="desc">Get instant cost ranges based on services & goals</p>
+                <a href="#pricing-tool" class="btn-sm">Estimate Pricing →</a>
+            </div>
+            <div style="opacity:0;pointer-events:none"></div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ TOOL SECTIONS ═══════════════ -->
+    <div class="container" style="padding-bottom:3rem">
+
+        <!-- AUDIT TOOL -->
+        <section id="audit-tool" class="free-tool-section">
+            <div id="hoplytics-website-audit" class="free-tool">
+                <h2>🔍 Website Audit Tool</h2>
+                <p class="tool-subtitle">Enter any URL to get a comprehensive health report with actionable
+                    recommendations.</p>
+                <form class="tool-form" aria-label="Website audit form">
+                    <input type="url" name="url" placeholder="https://example.com" required
+                        aria-label="Website URL to audit" />
+                    <button type="submit">Audit My Site</button>
+                </form>
+                <div class="tool-loading" hidden>
+                    <div class="spinner" aria-label="Analyzing website"></div>
+                    <p>Analyzing your website... This may take a few seconds.</p>
+                </div>
+                <div class="tool-results" hidden aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- PIXEL CHECKER -->
+        <section id="pixel-tool" class="free-tool-section">
+            <div id="hoplytics-pixel-checker" class="free-tool">
+                <h2>📡 Meta Pixel &amp; Tracking Checker</h2>
+                <p class="tool-subtitle">Check if your Facebook Pixel, Google Tag Manager, GA4, and other tracking
+                    scripts are installed correctly.</p>
+                <form class="tool-form" aria-label="Pixel checker form">
+                    <input type="url" name="url" placeholder="https://example.com" required
+                        aria-label="Website URL to check" />
+                    <button type="submit">Check Tracking</button>
+                </form>
+                <div class="tool-loading" hidden>
+                    <div class="spinner" aria-label="Scanning for pixels"></div>
+                    <p>Scanning for tracking pixels and tags...</p>
+                </div>
+                <div class="tool-results" hidden aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- SEO SCORE -->
+        <section id="seo-tool" class="free-tool-section">
+            <div id="hoplytics-seo-score" class="free-tool">
+                <h2>📊 SEO Score Calculator</h2>
+                <p class="tool-subtitle">Get a detailed SEO score breakdown for any page — see exactly what to fix.</p>
+                <form class="tool-form" aria-label="SEO score form">
+                    <input type="url" name="url" placeholder="https://example.com/your-page" required
+                        aria-label="Page URL to analyze" />
+                    <button type="submit">Calculate SEO Score</button>
+                </form>
+                <div class="tool-loading" hidden>
+                    <div class="spinner" aria-label="Analyzing SEO"></div>
+                    <p>Running SEO analysis on 10 ranking factors...</p>
+                </div>
+                <div class="tool-results" hidden aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- SPEED ANALYZER -->
+        <section id="speed-tool" class="free-tool-section">
+            <div id="hoplytics-speed-check" class="free-tool">
+                <h2>🚀 Page Speed Analyzer</h2>
+                <p class="tool-subtitle">Measure load time, resource count, compression, caching, and render-blocking
+                    issues.</p>
+                <form class="tool-form" aria-label="Speed check form">
+                    <input type="url" name="url" placeholder="https://example.com" required
+                        aria-label="Website URL to test" />
+                    <button type="submit">Analyze Speed</button>
+                </form>
+                <div class="tool-loading" hidden>
+                    <div class="spinner" aria-label="Measuring speed"></div>
+                    <p>Loading your page and measuring performance...</p>
+                </div>
+                <div class="tool-results" hidden aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- SOCIAL PRESENCE -->
+        <section id="social-tool" class="free-tool-section">
+            <div id="hoplytics-social-check" class="free-tool">
+                <h2>📱 Social Media Presence Checker</h2>
+                <p class="tool-subtitle">See which social platforms you're linked to and which you're missing.</p>
+                <form class="tool-form" aria-label="Social check form">
+                    <input type="url" name="url" placeholder="https://example.com" required
+                        aria-label="Website URL to check" />
+                    <button type="submit">Check Social Presence</button>
+                </form>
+                <div class="tool-loading" hidden>
+                    <div class="spinner" aria-label="Checking social profiles"></div>
+                    <p>Scanning for social media profiles...</p>
+                </div>
+                <div class="tool-results" hidden aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- ROI CALCULATOR -->
+        <section id="roi-tool" class="free-tool-section">
+            <div id="hoplytics-roi-calculator" class="free-tool">
+                <h2>💰 Marketing ROI Calculator</h2>
+                <p class="tool-subtitle">Enter your current numbers and see how much more revenue you could generate.
+                </p>
+                <form class="tool-form tool-form-grid" aria-label="ROI calculator form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="roi-spend">Monthly Ad Spend ($)</label>
+                            <input type="number" id="roi-spend" name="monthly_spend" placeholder="5000" required
+                                min="0" />
+                        </div>
+                        <div class="form-group">
+                            <label for="roi-revenue">Monthly Revenue ($)</label>
+                            <input type="number" id="roi-revenue" name="monthly_revenue" placeholder="15000" required
+                                min="0" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="roi-traffic">Monthly Website Traffic</label>
+                            <input type="number" id="roi-traffic" name="monthly_traffic" placeholder="1000" min="0" />
+                        </div>
+                        <div class="form-group">
+                            <label for="roi-conv">Conversion Rate (%)</label>
+                            <input type="number" id="roi-conv" name="conversion_rate" placeholder="2.5" step="0.1"
+                                min="0" max="100" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="roi-deal">Avg. Deal Value ($)</label>
+                            <input type="number" id="roi-deal" name="avg_deal_value" placeholder="500" min="0" />
+                        </div>
+                        <div class="form-group">
+                            <label for="roi-industry">Industry</label>
+                            <select id="roi-industry" name="industry">
+                                <option value="general">General</option>
+                                <option value="ecommerce">E-Commerce</option>
+                                <option value="saas">SaaS / Tech</option>
+                                <option value="agency">Agency / Services</option>
+                                <option value="local">Local Business</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="realestate">Real Estate</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" style="width:100%">Calculate My ROI</button>
+                </form>
+                <div class="tool-loading" hidden>
+                    <div class="spinner" aria-label="Calculating ROI"></div>
+                    <p>Crunching the numbers with industry benchmarks...</p>
+                </div>
+                <div class="tool-results" hidden aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- PRICING ESTIMATOR -->
+        <section id="pricing-tool" class="free-tool-section">
+            <div id="hoplytics-pricing-estimator" class="free-tool">
+                <h2>🏷️ Pricing Estimator</h2>
+                <p class="tool-subtitle">Select your services and business details to get an instant cost estimate.</p>
+                <form class="tool-form tool-form-grid" aria-label="Pricing estimator form">
+                    <div class="form-group">
+                        <label>Services Needed</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label"><input type="checkbox" name="services" value="seo" /> 🔍
+                                SEO</label>
+                            <label class="checkbox-label"><input type="checkbox" name="services" value="ppc" /> 🎯 Paid
+                                Ads (PPC)</label>
+                            <label class="checkbox-label"><input type="checkbox" name="services" value="social" /> 📱
+                                Social Media</label>
+                            <label class="checkbox-label"><input type="checkbox" name="services" value="content" /> ✍️
+                                Content Marketing</label>
+                            <label class="checkbox-label"><input type="checkbox" name="services" value="webdev" /> 🌐
+                                Web Development</label>
+                            <label class="checkbox-label"><input type="checkbox" name="services" value="automation" />
+                                🤖 Automation</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pricing-size">Business Size</label>
+                            <select id="pricing-size" name="business_size">
+                                <option value="startup">Startup</option>
+                                <option value="small" selected>Small Business</option>
+                                <option value="medium">Medium Business</option>
+                                <option value="enterprise">Enterprise</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pricing-timeline">Timeline</label>
+                            <select id="pricing-timeline" name="timeline">
+                                <option value="flexible">Flexible (-10%)</option>
+                                <option value="standard" selected>Standard</option>
+                                <option value="fast">Fast (+15%)</option>
+                                <option value="urgent">Urgent (+30%)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Goals</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label"><input type="checkbox" name="goals" value="lead_generation" />
+                                Lead Generation</label>
+                            <label class="checkbox-label"><input type="checkbox" name="goals" value="brand_awareness" />
+                                Brand Awareness</label>
+                            <label class="checkbox-label"><input type="checkbox" name="goals" value="ecommerce_sales" />
+                                E-Commerce Sales</label>
+                            <label class="checkbox-label"><input type="checkbox" name="goals" value="local_dominance" />
+                                Local Dominance</label>
+                        </div>
+                    </div>
+                    <button type="submit" style="width:100%">Get My Estimate</button>
+                </form>
+                <div class="tool-loading" hidden>
+                    <div class="spinner" aria-label="Generating estimate"></div>
+                    <p>Building your custom pricing estimate...</p>
+                </div>
+                <div class="tool-results" hidden aria-live="polite"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ═══════════════ CTA BANNER ═══════════════ -->
+    <section id="cta" class="cta-banner">
+        <h2>Need <span class="gradient-text">Professional Help?</span></h2>
+        <p>Our experts can fix every issue found in your audit. Book a free strategy call — no pitch deck, just real
+            answers.</p>
+        <a href="#" class="btn-cta">Book Your Free Strategy Call →</a>
+    </section>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="site-footer">
+        <p style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem"><span class="gradient-text">Hoplytics</span>
+        </p>
+        <p>© 2026 Hoplytics Agency. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="/assets/js/free-tools.js"></script>
+    <script type="module" src="/assets/js/dark-mode-toggle.js"></script>
+    <script type="module" src="/assets/js/animations.js"></script>
+
+</body>
+
+</html>

@@ -10,7 +10,11 @@ import { defineConfig } from 'vite';
 import path from 'path';
 
 export default defineConfig({
-    // No dev server proxy needed — this is a WP theme, not an SPA
+    // Dev server for preview
+    server: {
+        port: 3000,
+        open: '/preview.html',
+    },
     build: {
         outDir: 'dist',
         emptyOutDir: true,
