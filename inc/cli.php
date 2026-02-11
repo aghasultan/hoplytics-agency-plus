@@ -10,6 +10,7 @@
  *   wp hoplytics cleanup      — Delete sample posts, fix typos, clean stale content
  *   wp hoplytics seed-cases   — Seed demo case studies with metrics
  *   wp hoplytics create-pages — Create missing pages (About, Free Tools, Services)
+ *   wp hoplytics seo-check    — Audit SEO completeness across all published content
  *
  * @package Hoplytics
  */
@@ -568,6 +569,120 @@ class Hoplytics_CLI
 
         WP_CLI::log('');
         WP_CLI::success('All pages created and templates assigned. 📄');
+    }
+
+    /**
+     * SEO completeness audit across all published content.
+     *
+     * ## EXAMPLES
+     *     wp hoplytics seo-check
+     *
+     * @subcommand seo-check
+     */
+    public function seo_check(array $args, array $assoc_args): void
+    {
+        WP_CLI::log('');
+        WP_CLI::log(WP_CLI::colorize('%B━━━ SEO Completeness Audit ━━━%n'));
+
+        $post_types = ['post', 'page', 'case_study'];
+        $issues = 0;
+        $total = 0;
+
+        foreach ($post_types as $pt) {
+            $posts = get_posts([
+                'post_type' => $pt,
+                'post_status' => 'publish',
+                'posts_per_page' => -1,
+            ]);
+
+            if (empty($posts))
+                continue;
+
+            WP_CLI::log('');
+            WP_CLI::log(WP_CLI::colorize(sprintf('  %s%%B %s (%d)%%n', '', ucfirst(str_replace('_', ' ', $pt)), count($posts))));
+
+            foreach ($posts as $post) {
+                $total++;
+                $post_issues = [];
+
+                // Check meta description
+                $meta_desc = get_post_meta($post->ID, '_hoplytics_meta_description', true);
+                $has_excerpt = !empty(trim($post->post_excerpt));
+                if (empty($meta_desc) && !$has_excerpt) {
+                    $post_issues[] = 'No meta description or excerpt';
+                }
+
+                // Check title length
+                $title_len = mb_strlen($post->post_title);
+                if ($title_len > 60) {
+                    $post_issues[] = sprintf('Title too long (%d chars, max 60)', $title_len);
+                } elseif ($title_len < 10) {
+                    $post_issues[] = sprintf('Title too short (%d chars)', $title_len);
+                }
+
+                // Check featured image
+                if ($pt !== 'page' && !has_post_thumbnail($post->ID)) {
+                    $post_issues[] = 'No featured image';
+                }
+
+                // Check content length
+                $word_count = str_word_count(wp_strip_all_tags($post->post_content));
+                if ($pt === 'post' && $word_count < 300) {
+                    $post_issues[] = sprintf('Thin content (%d words, aim for 300+)', $word_count);
+                }
+
+                // Check noindex
+                $noindex = get_post_meta($post->ID, '_hoplytics_noindex', true);
+                if ($noindex === '1') {
+                    $post_issues[] = '⚠️ Marked as noindex';
+                }
+
+                if (!empty($post_issues)) {
+                    $issues += count($post_issues);
+                    WP_CLI::log(sprintf('    ❌ "%s" (ID: %d)', $post->post_title, $post->ID));
+                    foreach ($post_issues as $issue) {
+                        WP_CLI::log(sprintf('       └─ %s', $issue));
+                    }
+                } else {
+                    WP_CLI::log(sprintf('    ✅ "%s"', $post->post_title));
+                }
+            }
+        }
+
+        // Check infrastructure
+        WP_CLI::log('');
+        WP_CLI::log(WP_CLI::colorize('%B  Infrastructure%n'));
+
+        // Sitemap
+        $sitemap_url = home_url('/wp-sitemap.xml');
+        WP_CLI::log(sprintf('    📍 Sitemap: %s', $sitemap_url));
+
+        // Structured data files
+        $sd_file = get_template_directory() . '/inc/structured-data.php';
+        WP_CLI::log(sprintf('    📍 Structured Data: %s', file_exists($sd_file) ? '✅ Loaded' : '❌ Missing'));
+
+        $meta_file = get_template_directory() . '/inc/seo-meta.php';
+        WP_CLI::log(sprintf('    📍 SEO Meta Tags: %s', file_exists($meta_file) ? '✅ Loaded' : '❌ Missing'));
+
+        $sitemap_file = get_template_directory() . '/inc/sitemap.php';
+        WP_CLI::log(sprintf('    📍 Sitemap Enhancements: %s', file_exists($sitemap_file) ? '✅ Loaded' : '❌ Missing'));
+
+        // OG image
+        $og_image = get_template_directory() . '/assets/images/og-default.png';
+        WP_CLI::log(sprintf('    📍 OG Default Image: %s', file_exists($og_image) ? '✅ Found' : '⚠️ Missing (create assets/images/og-default.png)'));
+
+        // Summary
+        WP_CLI::log('');
+        $score = $total > 0 ? round((($total * 4 - $issues) / ($total * 4)) * 100) : 0;
+        WP_CLI::log(sprintf('  📊 %d pages audited, %d issues found', $total, $issues));
+        WP_CLI::log(sprintf('  📊 SEO Score: %d%%', $score));
+        WP_CLI::log('');
+
+        if ($issues === 0) {
+            WP_CLI::success('Perfect SEO score! All content is optimised. 🏆');
+        } else {
+            WP_CLI::warning(sprintf('%d SEO issues found. Review and fix the items above.', $issues));
+        }
     }
 }
 

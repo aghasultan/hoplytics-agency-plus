@@ -127,6 +127,8 @@ require $theme_dir . '/inc/cpt-site-audit.php';
 
 // SEO Infrastructure
 require $theme_dir . '/inc/structured-data.php';
+require $theme_dir . '/inc/seo-meta.php';
+require $theme_dir . '/inc/sitemap.php';
 
 // Page Patterns (Service pages)
 require $theme_dir . '/inc/page-patterns.php';
