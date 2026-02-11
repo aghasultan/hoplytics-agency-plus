@@ -96,4 +96,25 @@
             }));
         });
     }
+
+    // --- Newsletter Subscription Form ---
+    const nlForms = document.querySelectorAll('.newsletter-form');
+    nlForms.forEach((nlForm) => {
+        nlForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = nlForm.querySelector('input[type="email"]');
+            if (!emailInput?.value) return;
+
+            handleForm(nlForm, 'newsletter/subscribe', () => ({
+                email: emailInput.value,
+                source: nlForm.dataset.source || 'blog',
+            }));
+
+            // Auto-clear success message after 5s
+            setTimeout(() => {
+                const msg = nlForm.querySelector('.form-feedback.form-success');
+                if (msg) msg.remove();
+            }, 5000);
+        });
+    });
 })();

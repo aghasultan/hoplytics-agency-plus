@@ -141,3 +141,7 @@ require $theme_dir . '/inc/cpt-case-study.php';
 
 // Analytics Dashboard
 require $theme_dir . '/inc/admin-dashboard.php';
+
+// Content Strategy (Epic 6)
+require $theme_dir . '/inc/newsletter.php';
+require $theme_dir . '/inc/editorial-calendar.php';
